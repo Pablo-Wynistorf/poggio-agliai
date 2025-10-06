@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>Poggio Agliai · Tuscan Vacation Home</title>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: '#F4E9DA',
+            terracotta: '#C46B4D',
+            olive: {
+              100: '#F1F0EA',
+              300: '#C4C7B2',
+              500: '#8E9A66',
+              700: '#5F6F3A',
+              900: '#2F3D1F'
+            },
+            stone: '#4F3A2D'
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Source Sans 3"', 'sans-serif']
+          },
+          boxShadow: {
+            glow: '0 25px 70px -20px rgba(96, 72, 42, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+  <script defer src='https://cdn.jsdelivr.net/npm/fslightbox/index.js'></script>
+</head>
+<body class='bg-sand font-sans text-stone antialiased'>
+  <header class='relative overflow-hidden'>
+    <div class='absolute inset-0'>
+      <img src='images/DJI_0006-min-- (1).jpg' alt='Tuscan villa exterior' class='h-full w-full object-cover' />
+      <div class='absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-sand/90'></div>
+    </div>
+    <div class='relative mx-auto flex max-w-6xl flex-col gap-16 px-6 py-20 sm:py-28 lg:px-8'>
+      <nav class='flex items-center justify-between text-sm font-semibold text-sand/90'>
+        <span class='font-display text-2xl tracking-[0.2em] text-white'>Poggio Agliai</span>
+        <div class='hidden items-center gap-6 sm:flex'>
+          <a href='#about' class='transition hover:text-white'>About</a>
+          <a href='#gallery' class='transition hover:text-white'>Gallery</a>
+          <a href='#contact' class='transition hover:text-white'>Contact</a>
+        </div>
+      </nav>
+      <div class='max-w-2xl text-white'>
+        <p class='mb-4 text-sm uppercase tracking-[0.5em] text-sand/80'>Tuscan Countryside Retreat</p>
+        <h1 class='font-display text-4xl leading-tight sm:text-5xl lg:text-6xl'>Experience the poetry of slow living at Poggio Agliai</h1>
+        <p class='mt-6 text-lg text-sand/90'>Nestled among olive groves near the medieval village of Suvereto, this lovingly restored stone farmhouse invites you to savor sun-drenched mornings, fragrant gardens, and evenings filled with regional wine and laughter.</p>
+        <div class='mt-10 flex flex-wrap items-center gap-4'>
+          <a href='#contact' class='rounded-full bg-terracotta px-8 py-3 text-base font-semibold uppercase tracking-[0.3em] text-white shadow-glow transition hover:bg-terracotta/90'>Book Your Stay</a>
+          <a href='#about' class='rounded-full border border-white/40 px-8 py-3 text-base font-semibold uppercase tracking-[0.3em] text-white/90 transition hover:border-white hover:text-white'>Discover More</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class='relative z-10 -mt-10 space-y-12 sm:space-y-16 lg:space-y-24'>
+    <section id='about' class='mx-auto max-w-5xl rounded-[3rem] bg-white/90 px-6 py-12 shadow-glow backdrop-blur sm:px-10 sm:py-16 lg:-mt-24 lg:px-16 lg:py-20'>
+      <div class='grid gap-10 lg:grid-cols-[2fr,1fr] lg:items-start'>
+        <div>
+          <p class='text-sm font-semibold uppercase tracking-[0.3em] text-terracotta'>About the Residence</p>
+          <h2 class='mt-4 font-display text-3xl text-olive-900 sm:text-4xl'>A sanctuary of comfort in the Val di Cornia</h2>
+          <p class='mt-6 text-lg leading-relaxed text-stone/80'>Poggio Agliai is a 19th-century farmhouse lovingly renovated to honour its Tuscan heritage while offering every modern comfort. Four spacious ensuite bedrooms sleep up to eight guests, while generous living areas open onto pergola-shaded terraces and a glistening saltwater pool. An aromatic herb garden, private olive grove, and panoramic views of the rolling countryside set the stage for la dolce vita.</p>
+          <p class='mt-4 text-lg leading-relaxed text-stone/80'>Spend your days exploring nearby Suvereto, Bolgheri, and the Etruscan Coast, or indulge in private wine tastings and chef-prepared meals at home. As evening falls, the warm glow of terracotta tiles and stone walls creates an atmosphere of intimate serenity.</p>
+        </div>
+        <div class='space-y-6 rounded-3xl bg-olive-100 p-8 text-olive-900 shadow-inner'>
+          <h3 class='font-display text-2xl'>Highlights</h3>
+          <ul class='space-y-3 text-base'>
+            <li class='flex items-start gap-3'><span class='mt-1 inline-flex h-2 w-2 flex-none rounded-full bg-terracotta'></span><span>Four ensuite bedrooms with handcrafted linens</span></li>
+            <li class='flex items-start gap-3'><span class='mt-1 inline-flex h-2 w-2 flex-none rounded-full bg-terracotta'></span><span>Chef's kitchen opening to al fresco dining pergola</span></li>
+            <li class='flex items-start gap-3'><span class='mt-1 inline-flex h-2 w-2 flex-none rounded-full bg-terracotta'></span><span>Heated saltwater pool with panoramic countryside views</span></li>
+            <li class='flex items-start gap-3'><span class='mt-1 inline-flex h-2 w-2 flex-none rounded-full bg-terracotta'></span><span>Private olive grove, herb gardens, and sunset terraces</span></li>
+            <li class='flex items-start gap-3'><span class='mt-1 inline-flex h-2 w-2 flex-none rounded-full bg-terracotta'></span><span>Curated experiences: wine tastings, cycling tours, chef-at-home</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class='mt-12 grid gap-8 sm:grid-cols-2'>
+        <div class='rounded-3xl bg-white/80 p-8 shadow-lg shadow-olive-900/10'>
+          <h3 class='font-display text-2xl text-olive-900'>At a Glance</h3>
+          <dl class='mt-6 space-y-4 text-stone/80'>
+            <div class='flex justify-between'><dt>Bedrooms</dt><dd class='font-semibold text-olive-700'>4 ensuite suites</dd></div>
+            <div class='flex justify-between'><dt>Bathrooms</dt><dd class='font-semibold text-olive-700'>4.5 modern baths</dd></div>
+            <div class='flex justify-between'><dt>Capacity</dt><dd class='font-semibold text-olive-700'>Up to 8 guests</dd></div>
+            <div class='flex justify-between'><dt>Size</dt><dd class='font-semibold text-olive-700'>420 m² interior · 2 hectares of grounds</dd></div>
+          </dl>
+        </div>
+        <div class='rounded-3xl bg-white/80 p-8 shadow-lg shadow-olive-900/10'>
+          <h3 class='font-display text-2xl text-olive-900'>Nearby Inspirations</h3>
+          <ul class='mt-6 space-y-3 text-stone/80'>
+            <li><span class='font-semibold text-olive-700'>Suvereto:</span> medieval hilltown 10 minutes away</li>
+            <li><span class='font-semibold text-olive-700'>Bolgheri Wine Route:</span> world-class vineyards within 30 minutes</li>
+            <li><span class='font-semibold text-olive-700'>Etruscan Coast:</span> sandy beaches and sailing in under 25 minutes</li>
+            <li><span class='font-semibold text-olive-700'>Thermal Springs:</span> nearby wellness spas at Venturina and Sassetta</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id='gallery' class='bg-gradient-to-b from-olive-100/60 to-transparent py-16 sm:py-20 lg:py-24'>
+      <div class='mx-auto max-w-3xl px-6 text-center lg:px-8'>
+        <p class='text-sm font-semibold uppercase tracking-[0.3em] text-terracotta'>Gallery</p>
+        <h2 class='mt-4 font-display text-4xl text-olive-900 sm:text-5xl'>A glimpse into life at Poggio Agliai</h2>
+        <p class='mt-5 text-lg text-stone/70'>Explore every corner of the estate—from sun-washed facades and manicured gardens to the elegant interiors designed for convivial gatherings.</p>
+      </div>
+    </section>
+
+    
+        <section class='py-12 sm:py-16 lg:py-20'>
+          <div class='mx-auto max-w-6xl px-6 lg:px-8'>
+            <div class='mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'>
+              <div>
+                <p class='text-sm font-semibold uppercase tracking-[0.3em] text-amber-600'>Gallery</p>
+                <h3 class='font-display text-3xl text-olive-900 sm:text-4xl'>Aerial & Exterior Vistas</h3>
+              </div>
+            </div>
+            <div class='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+              
+            <a href='images/DJI_0006-min-- (1).jpg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/DJI_0006-min-- (1).jpg' alt='Dji 0006 Min   (1)' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0001_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0001_small.jpeg' alt='Poccio Frühling 2023 0001 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0002_small - Copy.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0002_small - Copy.jpeg' alt='Poccio Frühling 2023 0002 Small   Copy' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0002_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0002_small.jpeg' alt='Poccio Frühling 2023 0002 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0003_small - Copy.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0003_small - Copy.jpeg' alt='Poccio Frühling 2023 0003 Small   Copy' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0003_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0003_small.jpeg' alt='Poccio Frühling 2023 0003 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0004_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0004_small.jpeg' alt='Poccio Frühling 2023 0004 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0005_small - Copy.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0005_small - Copy.jpeg' alt='Poccio Frühling 2023 0005 Small   Copy' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0005_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0005_small.jpeg' alt='Poccio Frühling 2023 0005 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0006_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0006_small.jpeg' alt='Poccio Frühling 2023 0006 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0007_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0007_small.jpeg' alt='Poccio Frühling 2023 0007 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0008_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0008_small.jpeg' alt='Poccio Frühling 2023 0008 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0009_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0009_small.jpeg' alt='Poccio Frühling 2023 0009 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0010_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0010_small.jpeg' alt='Poccio Frühling 2023 0010 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0011_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0011_small.jpeg' alt='Poccio Frühling 2023 0011 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0012_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0012_small.jpeg' alt='Poccio Frühling 2023 0012 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0013_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0013_small.jpeg' alt='Poccio Frühling 2023 0013 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0014_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0014_small.jpeg' alt='Poccio Frühling 2023 0014 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0015_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0015_small.jpeg' alt='Poccio Frühling 2023 0015 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+            </div>
+          </div>
+        </section>
+    
+
+        <section class='py-12 sm:py-16 lg:py-20'>
+          <div class='mx-auto max-w-6xl px-6 lg:px-8'>
+            <div class='mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'>
+              <div>
+                <p class='text-sm font-semibold uppercase tracking-[0.3em] text-amber-600'>Gallery</p>
+                <h3 class='font-display text-3xl text-olive-900 sm:text-4xl'>Garden & Outdoor Living</h3>
+              </div>
+            </div>
+            <div class='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+              
+            <a href='images/Poccio_Frühling_2023_0016_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0016_small.jpeg' alt='Poccio Frühling 2023 0016 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0017_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0017_small.jpeg' alt='Poccio Frühling 2023 0017 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0018_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0018_small.jpeg' alt='Poccio Frühling 2023 0018 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0019_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0019_small.jpeg' alt='Poccio Frühling 2023 0019 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0020_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0020_small.jpeg' alt='Poccio Frühling 2023 0020 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0021_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0021_small.jpeg' alt='Poccio Frühling 2023 0021 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0022_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0022_small.jpeg' alt='Poccio Frühling 2023 0022 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0023_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0023_small.jpeg' alt='Poccio Frühling 2023 0023 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0024_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0024_small.jpeg' alt='Poccio Frühling 2023 0024 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0025_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0025_small.jpeg' alt='Poccio Frühling 2023 0025 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0026_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0026_small.jpeg' alt='Poccio Frühling 2023 0026 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0027_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0027_small.jpeg' alt='Poccio Frühling 2023 0027 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0028_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0028_small.jpeg' alt='Poccio Frühling 2023 0028 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+            </div>
+          </div>
+        </section>
+    
+
+        <section class='py-12 sm:py-16 lg:py-20'>
+          <div class='mx-auto max-w-6xl px-6 lg:px-8'>
+            <div class='mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'>
+              <div>
+                <p class='text-sm font-semibold uppercase tracking-[0.3em] text-amber-600'>Gallery</p>
+                <h3 class='font-display text-3xl text-olive-900 sm:text-4xl'>Living & Dining Interiors</h3>
+              </div>
+            </div>
+            <div class='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+              
+            <a href='images/Poccio_Frühling_2023_0029_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0029_small.jpeg' alt='Poccio Frühling 2023 0029 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0030_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0030_small.jpeg' alt='Poccio Frühling 2023 0030 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0031_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0031_small.jpeg' alt='Poccio Frühling 2023 0031 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0032_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0032_small.jpeg' alt='Poccio Frühling 2023 0032 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0033_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0033_small.jpeg' alt='Poccio Frühling 2023 0033 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0034_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0034_small.jpeg' alt='Poccio Frühling 2023 0034 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0035_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0035_small.jpeg' alt='Poccio Frühling 2023 0035 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0036_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0036_small.jpeg' alt='Poccio Frühling 2023 0036 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0037_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0037_small.jpeg' alt='Poccio Frühling 2023 0037 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0038_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0038_small.jpeg' alt='Poccio Frühling 2023 0038 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+            </div>
+          </div>
+        </section>
+    
+
+        <section class='py-12 sm:py-16 lg:py-20'>
+          <div class='mx-auto max-w-6xl px-6 lg:px-8'>
+            <div class='mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'>
+              <div>
+                <p class='text-sm font-semibold uppercase tracking-[0.3em] text-amber-600'>Gallery</p>
+                <h3 class='font-display text-3xl text-olive-900 sm:text-4xl'>Bedrooms & Private Retreats</h3>
+              </div>
+            </div>
+            <div class='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+              
+            <a href='images/Poccio_Frühling_2023_0039_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0039_small.jpeg' alt='Poccio Frühling 2023 0039 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0040_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0040_small.jpeg' alt='Poccio Frühling 2023 0040 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0041_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0041_small.jpeg' alt='Poccio Frühling 2023 0041 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0042_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0042_small.jpeg' alt='Poccio Frühling 2023 0042 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0043_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0043_small.jpeg' alt='Poccio Frühling 2023 0043 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0044_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0044_small.jpeg' alt='Poccio Frühling 2023 0044 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0045_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0045_small.jpeg' alt='Poccio Frühling 2023 0045 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0046_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0046_small.jpeg' alt='Poccio Frühling 2023 0046 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0047_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0047_small.jpeg' alt='Poccio Frühling 2023 0047 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0048_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0048_small.jpeg' alt='Poccio Frühling 2023 0048 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+            </div>
+          </div>
+        </section>
+    
+
+        <section class='py-12 sm:py-16 lg:py-20'>
+          <div class='mx-auto max-w-6xl px-6 lg:px-8'>
+            <div class='mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'>
+              <div>
+                <p class='text-sm font-semibold uppercase tracking-[0.3em] text-amber-600'>Gallery</p>
+                <h3 class='font-display text-3xl text-olive-900 sm:text-4xl'>Tuscan Details & Surroundings</h3>
+              </div>
+            </div>
+            <div class='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+              
+            <a href='images/Poccio_Frühling_2023_0049_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0049_small.jpeg' alt='Poccio Frühling 2023 0049 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0050_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0050_small.jpeg' alt='Poccio Frühling 2023 0050 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0051_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0051_small.jpeg' alt='Poccio Frühling 2023 0051 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0052_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0052_small.jpeg' alt='Poccio Frühling 2023 0052 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0053_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0053_small.jpeg' alt='Poccio Frühling 2023 0053 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0054_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0054_small.jpeg' alt='Poccio Frühling 2023 0054 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0055_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0055_small.jpeg' alt='Poccio Frühling 2023 0055 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0056_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0056_small.jpeg' alt='Poccio Frühling 2023 0056 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0057_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0057_small.jpeg' alt='Poccio Frühling 2023 0057 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0058_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0058_small.jpeg' alt='Poccio Frühling 2023 0058 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/Poccio_Frühling_2023_0059_small.jpeg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/Poccio_Frühling_2023_0059_small.jpeg' alt='Poccio Frühling 2023 0059 Small' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/temp_image_for_default_share.jpg' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/temp_image_for_default_share.jpg' alt='Temp Image For Default Share' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+
+            <a href='images/temp_image_for_default_share.png' data-fslightbox='gallery' class='group block overflow-hidden rounded-3xl border border-amber-200/40 bg-white/70 shadow-lg shadow-amber-900/5 transition hover:-translate-y-2 hover:shadow-amber-700/20'>
+              <img src='images/temp_image_for_default_share.png' alt='Temp Image For Default Share' class='h-64 w-full object-cover transition duration-500 group-hover:scale-105' loading='lazy' />
+            </a>
+        
+            </div>
+          </div>
+        </section>
+    
+
+    <section class='py-16 sm:py-20 lg:py-24'>
+      <div class='mx-auto max-w-6xl rounded-[3rem] bg-white/90 px-6 py-12 shadow-glow backdrop-blur sm:px-10 lg:px-16 lg:py-20'>
+        <div class='grid gap-12 lg:grid-cols-2 lg:items-center'>
+          <div>
+            <p class='text-sm font-semibold uppercase tracking-[0.3em] text-terracotta'>Experiences</p>
+            <h2 class='mt-4 font-display text-3xl text-olive-900 sm:text-4xl'>Curated moments tailored to you</h2>
+            <p class='mt-6 text-lg leading-relaxed text-stone/80'>From private chefs preparing seasonal menus to sommelier-led wine tastings and guided excursions through medieval villages, every stay can be personalized. Our concierge team arranges yoga sessions overlooking the olive groves, e-bike adventures through the Val di Cornia, and sunset picnics amidst the vines.</p>
+            <p class='mt-4 text-lg leading-relaxed text-stone/80'>Let us craft an itinerary that balances exploration and relaxation, ensuring your time at Poggio Agliai feels effortlessly indulgent.</p>
+          </div>
+          <div class='overflow-hidden rounded-3xl bg-olive-900/90 p-8 text-sand shadow-inner shadow-olive-900/40'>
+            <h3 class='font-display text-2xl'>Seasonal Highlights</h3>
+            <ul class='mt-6 space-y-4 text-base leading-relaxed'>
+              <li><span class='font-semibold text-amber-200'>Spring:</span> Wildflower hikes and olive oil tastings</li>
+              <li><span class='font-semibold text-amber-200'>Summer:</span> Poolside aperitivo hours and beach excursions</li>
+              <li><span class='font-semibold text-amber-200'>Autumn:</span> Grape harvest celebrations and truffle hunts</li>
+              <li><span class='font-semibold text-amber-200'>Winter:</span> Firelit dinners and visits to thermal baths</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id='contact' class='bg-olive-900 py-16 sm:py-20 lg:py-24'>
+      <div class='mx-auto max-w-6xl px-6 lg:px-8'>
+        <div class='grid gap-12 lg:grid-cols-[1.1fr,0.9fr] lg:items-center'>
+          <div class='text-white'>
+            <p class='text-sm font-semibold uppercase tracking-[0.3em] text-amber-200'>Reserve Your Stay</p>
+            <h2 class='mt-4 font-display text-4xl sm:text-5xl'>We would love to host you in Tuscany</h2>
+            <p class='mt-5 text-lg text-amber-100/90'>Share your desired travel dates and any special requests. Our team will be in touch with availability, bespoke itineraries, and concierge services.</p>
+            <form class='mt-10 space-y-6'>
+              <div>
+                <label class='block text-sm font-semibold uppercase tracking-[0.2em] text-amber-200'>Name</label>
+                <input type='text' name='name' placeholder='Your full name' class='mt-2 w-full rounded-full border border-white/20 bg-white/10 px-5 py-3 text-base text-white placeholder:text-amber-100/50 focus:border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-200/60' />
+              </div>
+              <div>
+                <label class='block text-sm font-semibold uppercase tracking-[0.2em] text-amber-200'>Email</label>
+                <input type='email' name='email' placeholder='you@example.com' class='mt-2 w-full rounded-full border border-white/20 bg-white/10 px-5 py-3 text-base text-white placeholder:text-amber-100/50 focus:border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-200/60' />
+              </div>
+              <div>
+                <label class='block text-sm font-semibold uppercase tracking-[0.2em] text-amber-200'>Message</label>
+                <textarea name='message' rows='4' placeholder='Tell us about your ideal Tuscan getaway' class='mt-2 w-full rounded-3xl border border-white/20 bg-white/10 px-5 py-3 text-base text-white placeholder:text-amber-100/50 focus:border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-200/60'></textarea>
+              </div>
+              <button type='submit' class='w-full rounded-full bg-terracotta px-8 py-3 text-base font-semibold uppercase tracking-[0.3em] text-white shadow-lg shadow-amber-900/30 transition hover:bg-terracotta/90'>Send Inquiry</button>
+            </form>
+          </div>
+          <div class='space-y-6'>
+            <div class='overflow-hidden rounded-3xl shadow-glow'>
+              <iframe title='Poggio Agliai Map' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.854545454!2d10.727!3d43.073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a152bc9b7531f%3A0x4b9a8b3e4af9ef0!2sPrata%2C%2057018%20Suvereto%2C%20Province%20of%20Livorno%2C%20Italy!5e0!3m2!1sen!2sit!4v1700000000000!5m2!1sen!2sit' width='100%' height='380' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>
+            </div>
+            <div class='rounded-3xl bg-white/10 p-8 text-white shadow-inner shadow-black/20 backdrop-blur'>
+              <h3 class='font-display text-2xl'>Contact</h3>
+              <p class='mt-4 text-amber-100/90'>Via di Prata, Poggio Agliai<br/>Suvereto, Tuscany · Italy</p>
+              <p class='mt-3 text-amber-100/90'>Phone: <a href='tel:+390000000000' class='font-semibold text-white hover:text-amber-200'>+39 000 000 0000</a></p>
+              <p class='text-amber-100/90'>Email: <a href='mailto:stay@poggioagliai.com' class='font-semibold text-white hover:text-amber-200'>stay@poggioagliai.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class='bg-olive-900/95 py-8 text-sm text-amber-100/70'>
+    <div class='mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-center sm:flex-row sm:text-left'>
+      <p>&copy; 2025 Poggio Agliai. All rights reserved.</p>
+      <div class='flex items-center gap-4'>
+        <a href='#about' class='transition hover:text-white'>About</a>
+        <a href='#gallery' class='transition hover:text-white'>Gallery</a>
+        <a href='#contact' class='transition hover:text-white'>Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
