@@ -50,11 +50,14 @@
     <a href="#gallery" class="hover:text-brand-200 transition">Gallery</a>
     <a href="#contact" class="hover:text-brand-200 transition">Contact</a>
   </nav>
-  <header class="relative isolate overflow-hidden bg-slate-900 text-white">
+  <header class="relative isolate overflow-hidden bg-slate-900 text-white min-h-screen flex flex-col justify-between">
+    <!-- Background Image -->
     <img src="images/home-foto.jpg" alt="Tuscan farmhouse exterior"
-      class="absolute inset-0 -z-20 h-full w-full object-cover" />
+      class="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
     <div class="absolute inset-0 -z-10 bg-slate-950/20"></div>
-    <div class="mx-auto flex max-w-7xl flex-col gap-16 px-6 pb-24 pt-6 lg:px-8 lg:pb-32">
+
+    <!-- Navbar -->
+    <div class="mx-auto w-full max-w-7xl flex flex-col gap-16 px-6 pt-6 lg:px-8">
       <nav class="flex items-center justify-between gap-8" aria-label="Primary">
         <a href="#top" class="text-lg font-semibold tracking-wide text-white">Poggio Agliai</a>
         <div class="hidden items-center gap-8 text-sm font-medium lg:flex">
@@ -71,15 +74,9 @@
           <span aria-hidden="true">·</span>
           <a href="/it/" class="hover:text-brand-200">IT</a>
         </div>
-        <button type="button"
-          class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/40 text-white lg:hidden"
-          data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
-          <span class="sr-only">Toggle navigation</span>
-          <svg viewBox="0 0 24 24" class="h-6 w-6" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-          </svg>
-        </button>
       </nav>
+
+      <!-- Mobile Menu -->
       <div id="mobile-menu"
         class="flex flex-col gap-6 rounded-xl border border-white/20 bg-slate-900/80 p-6 text-sm font-medium text-white lg:hidden hidden"
         data-mobile-menu>
@@ -96,29 +93,34 @@
           <a href="/it/" class="hover:text-brand-200">IT</a>
         </div>
       </div>
-      <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-center lg:gap-16">
-        <div class="space-y-6">
-          <p class="text-sm uppercase tracking-[0.3em] text-brand-200">Tuscan Countryside Retreat</p>
-          <h1 class="max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-            Experience warm, unhurried living in the heart of Tuscany
-          </h1>
-          <p class="max-w-2xl text-lg text-white/80">
-            Cradled by olive groves and golden hills, Poggio Agliai is a lovingly restored stone farmhouse near
-            Suvereto. Each
-            suite, terrace, and garden corner is designed to celebrate the gentle rhythm of Tuscan life.
-          </p>
-          <div class="flex flex-wrap gap-4">
-            <a class="inline-flex items-center justify-center rounded-full bg-brand-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300"
-              href="#contact">Book Now</a>
-            <a class="inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-sm font-semibold text-white transition hover:border-white hover:text-white"
-              href="#about">Discover More</a>
-          </div>
-        </div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 flex flex-col items-start justify-center px-6 pb-24 lg:px-8 lg:pb-32 max-w-7xl mx-auto">
+      <p class="text-sm uppercase tracking-[0.3em] text-brand-200 mb-3">Tuscan Countryside Retreat</p>
+      <h1 class="max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+        Experience warm, unhurried living in the heart of Tuscany
+      </h1>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a class="inline-flex items-center justify-center rounded-full bg-brand-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300"
+          href="#contact">Book Now</a>
+        <a class="inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-sm font-semibold text-white transition hover:border-white hover:text-white"
+          href="#about">Discover More</a>
       </div>
+    </div>
+
+    <!-- Scroll Arrows -->
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white">
+      <span class="text-3xl mb-1">Scroll</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="w-6 h-6 animate-bounce">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+      </svg>
     </div>
   </header>
 
-  <main class="bg-white">
+
+  <main class="bg-brand-300">
     <section id="about" class="relative overflow-hidden py-24 sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
         <div class="space-y-6">
@@ -247,22 +249,37 @@
               <input type="text" name="name" required placeholder="Your full name"
                 class="w-full rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
             </label>
+
             <label class="space-y-2 text-sm font-medium text-white">
               <span>Email</span>
               <input type="email" name="email" required placeholder="you@example.com"
                 class="w-full rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
             </label>
+
+            <div class="space-y-2 text-sm font-medium text-white">
+              <span>Dates from -- To </span>
+              <div class="flex gap-4">
+                <input type="date" name="date_from" required
+                  class="w-1/2 rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
+                <input type="date" name="date_to" required
+                  class="w-1/2 rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
+              </div>
+            </div>
+
             <label class="space-y-2 text-sm font-medium text-white">
               <span>Message</span>
               <textarea name="message" rows="4" required placeholder="Tell us about your ideal Tuscan holiday"
                 class="w-full rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60"></textarea>
             </label>
+
             <button type="submit"
               class="inline-flex items-center justify-center rounded-full bg-brand-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300">
               Send Inquiry
             </button>
+
             <p id="form-feedback" class="text-sm font-medium"></p>
           </form>
+
         </div>
         <div class="space-y-8">
           <div class="overflow-hidden rounded-3xl shadow-lg shadow-black/40">

@@ -183,27 +183,8 @@ document.addEventListener('keydown', (event) => {
   }
 })
 
-const menuToggle = document.querySelector('[data-menu-toggle]')
-const mobileMenu = document.querySelector('[data-mobile-menu]')
 const menuLinks = document.querySelectorAll('[data-menu-link]')
 
-if (menuToggle && mobileMenu) {
-  menuToggle.addEventListener('click', () => {
-    const isHidden = mobileMenu.classList.toggle('hidden')
-    if (!isHidden) {
-      mobileMenu.classList.add('flex')
-    }
-    menuToggle.setAttribute('aria-expanded', String(!isHidden))
-  })
-}
-
-menuLinks.forEach((link) => {
-  link.addEventListener('click', () => {
-    if (!mobileMenu || !menuToggle) return
-    mobileMenu.classList.add('hidden')
-    menuToggle.setAttribute('aria-expanded', 'false')
-  })
-})
 
 const form = document.getElementById('contact-form')
 const feedback = document.getElementById('form-feedback')
