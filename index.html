@@ -10,273 +10,184 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              sand: '#F5EFE5',
-              terracotta: '#C77155',
-              olive: {
-                50: '#F6F4EE',
-                200: '#D4D2C4',
-                400: '#A7A287',
-                600: '#6F7255',
-                900: '#2F3523'
-              },
-              dusk: '#443024'
-            },
-            fontFamily: {
-              display: ['"Playfair Display"', 'serif'],
-              sans: ['"Source Sans 3"', 'sans-serif']
-            },
-            boxShadow: {
-              glow: '0 30px 80px -25px rgba(82, 52, 31, 0.45)'
-            }
-          }
-        }
-      }
-    </script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/index.js" defer></script>
   </head>
-  <body class="bg-gradient-to-b from-sand via-white to-sand/80 font-sans text-dusk antialiased">
-    <header class="relative overflow-hidden">
-      <div class="absolute inset-0">
-        <img
-          src="images/home-foto.jpg"
-          alt="Tuscan farmhouse exterior"
-          class="h-full w-full object-cover"
-        />
-        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-sand/70"></div>
+  <body>
+    <header class="hero">
+      <div class="hero__background" aria-hidden="true">
+        <img src="images/home-foto.jpg" alt="Tuscan farmhouse exterior" />
+        <div class="hero__overlay"></div>
       </div>
-      <div class="relative mx-auto flex max-w-6xl flex-col gap-20 px-6 py-8 sm:py-12 lg:px-10 lg:py-16">
-        <nav class="flex items-center justify-between text-sm font-medium text-white/80">
-          <a href="#" class="font-display text-2xl uppercase tracking-[0.35em] text-white">Poggio Agliai</a>
-          <button
-            type="button"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white sm:hidden"
-            aria-label="Open navigation"
-            data-menu-toggle
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+      <div class="container hero__inner">
+        <nav class="nav" aria-label="Primary">
+          <a href="#top" class="nav__brand">Poggio Agliai</a>
+          <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+            <span class="sr-only">Toggle menu</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <div class="hidden items-center gap-8 sm:flex">
-            <a href="#about" class="transition hover:text-white">About</a>
-            <a href="#gallery" class="transition hover:text-white">Gallery</a>
-            <a href="#contact" class="transition hover:text-white">Contact</a>
+          <div class="nav__links" role="menubar">
+            <a href="#about" role="menuitem">About</a>
+            <a href="#gallery" role="menuitem">Gallery</a>
+            <a href="#contact" role="menuitem">Contact</a>
           </div>
         </nav>
-        <div
-          data-mobile-menu
-          class="hidden rounded-3xl bg-white/10 p-6 text-white shadow-lg shadow-black/20 backdrop-blur-sm"
-        >
-          <div class="flex flex-col gap-4 text-base font-semibold uppercase tracking-[0.3em]">
-            <a href="#about" class="hover:text-terracotta" data-menu-link>About</a>
-            <a href="#gallery" class="hover:text-terracotta" data-menu-link>Gallery</a>
-            <a href="#contact" class="hover:text-terracotta" data-menu-link>Contact</a>
-          </div>
+        <div class="nav__mobile" id="mobile-menu" data-mobile-menu>
+          <a href="#about" data-menu-link>About</a>
+          <a href="#gallery" data-menu-link>Gallery</a>
+          <a href="#contact" data-menu-link>Contact</a>
         </div>
-        <div class="max-w-2xl text-white">
-          <p class="text-sm uppercase tracking-[0.6em] text-white/80">Tuscan Countryside Retreat</p>
-          <h1 class="mt-6 font-display text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">
-            Experience warm, unhurried living in the heart of Tuscany
-          </h1>
-          <p class="mt-6 text-lg text-white/85">
+        <div class="hero__content">
+          <p class="eyebrow">Tuscan Countryside Retreat</p>
+          <h1 class="hero__title">Experience warm, unhurried living in the heart of Tuscany</h1>
+          <p class="hero__description">
             Cradled by olive groves and golden hills, Poggio Agliai is a lovingly restored stone farmhouse near Suvereto. Each
             suite, terrace, and garden corner is designed to celebrate the gentle rhythm of Tuscan life.
           </p>
-          <div class="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              class="rounded-full bg-terracotta px-8 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white shadow-glow transition hover:bg-terracotta/90"
-            >
-              Book Now
-            </a>
-            <a
-              href="#about"
-              class="rounded-full border border-white/40 px-8 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white/90 transition hover:border-white hover:text-white"
-            >
-              Discover More
-            </a>
+          <div class="hero__actions">
+            <a class="button button--solid" href="#contact">Book Now</a>
+            <a class="button button--ghost" href="#about">Discover More</a>
           </div>
         </div>
       </div>
     </header>
 
-    <main class="relative z-10 space-y-20 pb-24 sm:space-y-24">
-      <section
-        id="about"
-        class="mx-auto -mt-16 max-w-6xl rounded-[3rem] bg-white/90 px-6 py-16 shadow-glow backdrop-blur sm:px-10 lg:-mt-24 lg:px-16"
-      >
-        <div class="grid gap-12 lg:grid-cols-[1.5fr,1fr] lg:items-start">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-terracotta">About the Residence</p>
-            <h2 class="mt-4 font-display text-3xl text-olive-900 sm:text-4xl">
-              A farmhouse of warmth, character, and effortless elegance
-            </h2>
-            <p class="mt-6 text-lg leading-relaxed text-dusk/80">
-              Poggio Agliai embraces traditional Tuscan craftsmanship with contemporary comfort. Four ensuite bedrooms welcome up
-              to eight guests, while sunlit living rooms, a chef's kitchen, and pergola-shaded terraces create space for slow
-              mornings and convivial evenings. Outside, fragrant herb gardens, a saltwater pool, and private olive groves open to
-              sweeping countryside views.
+    <main id="top">
+      <section id="about" class="section section--raised">
+        <div class="container grid grid--split">
+          <div class="stack">
+            <p class="eyebrow eyebrow--accent">About the Residence</p>
+            <h2 class="section__title">A farmhouse of warmth, character, and effortless elegance</h2>
+            <p>
+              Poggio Agliai embraces traditional Tuscan craftsmanship with contemporary comfort. Four ensuite bedrooms welcome
+              up to eight guests, while sunlit living rooms, a chef's kitchen, and pergola-shaded terraces create space for slow
+              mornings and convivial evenings. Outside, fragrant herb gardens, a saltwater pool, and private olive groves open
+              to sweeping countryside views.
             </p>
-            <p class="mt-4 text-lg leading-relaxed text-dusk/80">
+            <p>
               Spend your days exploring Suvereto, Bolgheri, and the Etruscan Coast, tasting celebrated wines, and returning to
               golden sunsets over the Val di Cornia. Every stay can be tailored with curated experiences that celebrate the
               flavours, history, and calm of Tuscany.
             </p>
           </div>
-          <div class="space-y-6 rounded-[2.5rem] bg-olive-50/80 p-8 shadow-inner shadow-olive-200/70">
-            <h3 class="font-display text-2xl text-olive-900">Home Highlights</h3>
-            <ul class="space-y-3 text-base text-dusk/80">
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-none rounded-full bg-terracotta"></span>Four ensuite suites with handmade linens</li>
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-none rounded-full bg-terracotta"></span>Chef's kitchen opening to al fresco dining pergola</li>
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-none rounded-full bg-terracotta"></span>Heated saltwater pool with panoramic views</li>
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-none rounded-full bg-terracotta"></span>Private olive grove, herb gardens, and sunset terraces</li>
-              <li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-none rounded-full bg-terracotta"></span>Concierge for wine tastings, cycling tours, and chef-at-home</li>
+          <div class="card card--soft">
+            <h3 class="card__title">Home Highlights</h3>
+            <ul class="card__list">
+              <li>Four ensuite suites with handmade linens</li>
+              <li>Chef's kitchen opening to al fresco dining pergola</li>
+              <li>Heated saltwater pool with panoramic views</li>
+              <li>Private olive grove, herb gardens, and sunset terraces</li>
+              <li>Concierge for wine tastings, cycling tours, and chef-at-home</li>
             </ul>
           </div>
         </div>
-        <div class="mt-12 grid gap-8 lg:grid-cols-2">
-          <div class="rounded-[2.5rem] bg-white/80 p-8 shadow-lg shadow-olive-200/50">
-            <h3 class="font-display text-2xl text-olive-900">At a glance</h3>
-            <dl class="mt-6 space-y-4 text-base text-dusk/80">
-              <div class="flex justify-between"><dt>Bedrooms</dt><dd class="font-semibold text-olive-600">4 ensuite suites</dd></div>
-              <div class="flex justify-between"><dt>Bathrooms</dt><dd class="font-semibold text-olive-600">4.5 refined baths</dd></div>
-              <div class="flex justify-between"><dt>Guests</dt><dd class="font-semibold text-olive-600">Up to 8 people</dd></div>
-              <div class="flex justify-between"><dt>Outdoor</dt><dd class="font-semibold text-olive-600">Saltwater pool & panoramic terraces</dd></div>
+        <div class="container grid grid--two">
+          <div class="card card--plain">
+            <h3 class="card__title">At a glance</h3>
+            <dl class="stats">
+              <div class="stats__row"><dt>Bedrooms</dt><dd>4 ensuite suites</dd></div>
+              <div class="stats__row"><dt>Bathrooms</dt><dd>4.5 refined baths</dd></div>
+              <div class="stats__row"><dt>Guests</dt><dd>Up to 8 people</dd></div>
+              <div class="stats__row"><dt>Outdoor</dt><dd>Saltwater pool &amp; panoramic terraces</dd></div>
             </dl>
           </div>
-          <div class="rounded-[2.5rem] bg-white/80 p-8 shadow-lg shadow-olive-200/50">
-            <h3 class="font-display text-2xl text-olive-900">Nearby inspirations</h3>
-            <ul class="mt-6 space-y-4 text-base text-dusk/80">
-              <li><span class="font-semibold text-olive-600">Suvereto:</span> medieval village 10 minutes away</li>
-              <li><span class="font-semibold text-olive-600">Bolgheri Wine Route:</span> celebrated Super Tuscan estates</li>
-              <li><span class="font-semibold text-olive-600">Gulf of Baratti:</span> Etruscan beaches and crystal waters</li>
-              <li><span class="font-semibold text-olive-600">Val di Cornia trails:</span> scenic cycling and walking routes</li>
+          <div class="card card--plain">
+            <h3 class="card__title">Nearby inspirations</h3>
+            <ul class="card__list card__list--spacious">
+              <li><span>Suvereto:</span> medieval village 10 minutes away</li>
+              <li><span>Bolgheri Wine Route:</span> celebrated Super Tuscan estates</li>
+              <li><span>Gulf of Baratti:</span> Etruscan beaches and crystal waters</li>
+              <li><span>Val di Cornia trails:</span> scenic cycling and walking routes</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section id="gallery" class="mx-auto max-w-6xl px-6 sm:px-10 lg:px-16">
-        <div class="mb-12 text-center">
-          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-terracotta">Gallery</p>
-          <h2 class="mt-4 font-display text-3xl text-olive-900 sm:text-4xl">Every room tells a Tuscan story</h2>
-          <p class="mx-auto mt-4 max-w-3xl text-lg text-dusk/80">
+      <section id="gallery" class="section">
+        <div class="container section__header">
+          <p class="eyebrow eyebrow--accent">Gallery</p>
+          <h2 class="section__title">Every room tells a Tuscan story</h2>
+          <p class="section__description">
             Explore the spaces of Poggio Agliai. Select any photograph for a closer look or immerse yourself in the interactive
             360° views of the suites.
           </p>
         </div>
-        <div id="gallery-wrapper" class="space-y-16"></div>
+        <div class="container" id="gallery-wrapper"></div>
       </section>
 
-      <section class="mx-auto max-w-6xl rounded-[3rem] bg-white/85 px-6 py-16 shadow-glow backdrop-blur sm:px-10 lg:px-16">
-        <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-terracotta">Experiences</p>
-            <h2 class="mt-4 font-display text-3xl text-olive-900 sm:text-4xl">Curated moments, tailored to you</h2>
-            <p class="mt-6 text-lg leading-relaxed text-dusk/80">
+      <section class="section section--gradient">
+        <div class="container grid grid--split">
+          <div class="stack stack--light">
+            <p class="eyebrow eyebrow--accent">Experiences</p>
+            <h2 class="section__title">Curated moments, tailored to you</h2>
+            <p>
               Let our concierge arrange sunrise yoga overlooking the olive groves, vineyard tastings with local sommeliers,
               truffle hunts in nearby woods, or chef-prepared dinners on the terrace. Each stay is a bespoke journey into Tuscan
               culture, crafted with care.
             </p>
-            <p class="mt-4 text-lg leading-relaxed text-dusk/80">
+            <p>
               Families, friends, and couples alike discover a rhythm of slow mornings, adventurous afternoons, and evenings that
               linger over candlelight and local wine.
             </p>
           </div>
-          <div class="rounded-[2.5rem] bg-gradient-to-br from-olive-900/90 via-olive-600/80 to-terracotta/80 p-8 text-sand shadow-inner shadow-black/30">
-            <h3 class="font-display text-2xl">Seasonal highlights</h3>
-            <ul class="mt-6 space-y-4 text-base leading-relaxed text-sand/90">
-              <li><span class="font-semibold text-white">Spring:</span> Wildflower walks, olive oil press visits, and cycling tours</li>
-              <li><span class="font-semibold text-white">Summer:</span> Poolside aperitivo hours and coastal escapes to Baratti</li>
-              <li><span class="font-semibold text-white">Autumn:</span> Harvest festivals, cellar tastings, and golden sunsets</li>
-              <li><span class="font-semibold text-white">Winter:</span> Firelit evenings, thermal spas, and festive markets</li>
+          <div class="card card--glow">
+            <h3 class="card__title">Seasonal highlights</h3>
+            <ul class="card__list card__list--spacious card__list--light">
+              <li><span>Spring:</span> Wildflower walks, olive oil press visits, and cycling tours</li>
+              <li><span>Summer:</span> Poolside aperitivo hours and coastal escapes to Baratti</li>
+              <li><span>Autumn:</span> Harvest festivals, cellar tastings, and golden sunsets</li>
+              <li><span>Winter:</span> Firelit evenings, thermal spas, and festive markets</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section
-        id="contact"
-        class="bg-gradient-to-br from-olive-900 via-olive-900 to-dusk py-20 text-white sm:py-24"
-      >
-        <div class="mx-auto grid max-w-6xl gap-12 px-6 sm:px-10 lg:grid-cols-[1.1fr,0.9fr] lg:px-16">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-terracotta">Reserve your stay</p>
-            <h2 class="mt-4 font-display text-3xl sm:text-4xl">
-              Share your plans—we will curate your Tuscan escape
-            </h2>
-            <p class="mt-5 text-lg text-white/80">
+      <section id="contact" class="section section--dark">
+        <div class="container grid grid--split">
+          <div class="stack stack--light">
+            <p class="eyebrow eyebrow--accent">Reserve your stay</p>
+            <h2 class="section__title">Share your plans—we will curate your Tuscan escape</h2>
+            <p>
               Let us know your travel dates and any special requests. Our team will respond with availability, bespoke itineraries,
               and concierge services to make your stay unforgettable.
             </p>
-            <form id="contact-form" class="mt-10 space-y-6">
-              <div>
-                <label class="block text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Your full name"
-                  class="mt-2 w-full rounded-full border border-white/30 bg-white/10 px-5 py-3 text-base text-white placeholder:text-white/60 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/60"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="you@example.com"
-                  class="mt-2 w-full rounded-full border border-white/30 bg-white/10 px-5 py-3 text-base text-white placeholder:text-white/60 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/60"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Message</label>
-                <textarea
-                  name="message"
-                  rows="4"
-                  required
-                  placeholder="Tell us about your ideal Tuscan holiday"
-                  class="mt-2 w-full rounded-3xl border border-white/30 bg-white/10 px-5 py-3 text-base text-white placeholder:text-white/60 focus:border-terracotta focus:outline-none focus:ring-2 focus:ring-terracotta/60"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                class="w-full rounded-full bg-terracotta px-8 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white shadow-lg shadow-black/30 transition hover:bg-terracotta/90"
-              >
-                Send Inquiry
-              </button>
-              <p id="form-feedback" class="hidden text-sm font-semibold"></p>
+            <form id="contact-form" class="form">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" required placeholder="Your full name" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" required placeholder="you@example.com" />
+              </label>
+              <label class="form__full">
+                <span>Message</span>
+                <textarea name="message" rows="4" required placeholder="Tell us about your ideal Tuscan holiday"></textarea>
+              </label>
+              <button type="submit" class="button button--solid button--wide">Send Inquiry</button>
+              <p id="form-feedback" class="form__feedback" role="status" aria-live="polite"></p>
             </form>
           </div>
-          <div class="space-y-6">
-            <div class="overflow-hidden rounded-[2.5rem] shadow-glow">
+          <div class="stack stack--light">
+            <div class="map-frame">
               <iframe
                 title="Poggio Agliai map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.854545454!2d10.727!3d43.073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a152bc9b7531f%3A0x4b9a8b3e4af9ef0!2sPrata%2C%2057018%20Suvereto%2C%20Province%20of%20Livorno%2C%20Italy!5e0!3m2!1sen!2sit!4v1700000000000!5m2!1sen!2sit"
                 width="100%"
                 height="380"
-                style="border: 0"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-            <div class="rounded-[2.5rem] bg-white/10 p-8 text-white shadow-inner shadow-black/30 backdrop-blur">
-              <h3 class="font-display text-2xl">Contact</h3>
-              <p class="mt-4 text-white/80">Via di Prata, Poggio Agliai<br />Suvereto, Tuscany · Italy</p>
-              <p class="mt-3 text-white/80">
-                Phone:
-                <a href="tel:+390000000000" class="font-semibold text-white transition hover:text-terracotta">+39 000 000 0000</a>
-              </p>
-              <p class="text-white/80">
-                Email:
-                <a href="mailto:stay@poggioagliai.com" class="font-semibold text-white transition hover:text-terracotta">stay@poggioagliai.com</a>
+            <div class="card card--outline card--overlay">
+              <h3 class="card__title">Contact</h3>
+              <p>Via di Prata, Poggio Agliai<br />Suvereto, Tuscany · Italy</p>
+              <p>
+                Phone: <a href="tel:+390000000000">+39 000 000 0000</a><br />
+                Email: <a href="mailto:stay@poggioagliai.com">stay@poggioagliai.com</a>
               </p>
             </div>
           </div>
@@ -284,416 +195,64 @@
       </section>
     </main>
 
-    <footer class="bg-olive-900/95 py-8 text-sm text-white/70">
-      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-center sm:flex-row sm:text-left">
+    <footer class="footer">
+      <div class="container footer__inner">
         <p>&copy; 2025 Poggio Agliai. All rights reserved.</p>
-        <div class="flex items-center gap-4">
-          <a href="#about" class="transition hover:text-white">About</a>
-          <a href="#gallery" class="transition hover:text-white">Gallery</a>
-          <a href="#contact" class="transition hover:text-white">Contact</a>
+        <div class="footer__links">
+          <a href="#about">About</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </footer>
 
-    <div
-      id="lightbox"
-      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 px-4 py-6 text-white backdrop-blur"
-      role="dialog"
-      aria-modal="true"
-    >
-      <button
-        type="button"
-        class="absolute right-4 top-4 rounded-full border border-white/30 p-2 text-white transition hover:border-white hover:text-white"
-        data-lightbox-close
-        aria-label="Close gallery"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close gallery">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-      <div class="relative flex w-full max-w-5xl flex-col items-center gap-4">
-        <div class="relative w-full overflow-hidden rounded-[2.5rem] bg-black/60 shadow-2xl">
-          <img id="lightbox-image" alt="Gallery detail" class="hidden h-full w-full max-h-[75vh] object-contain" />
-          <div
-            id="panorama-viewer"
-            class="hidden h-[65vh] w-full cursor-grab overflow-hidden"
-            role="application"
-            aria-label="360 degree viewer"
-          >
-            <div class="h-full w-full bg-cover bg-center transition-transform duration-300" data-panorama-surface></div>
-            <div class="pointer-events-none absolute right-6 top-6 flex items-center gap-2 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em]">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12a9 9 0 1018 0 9 9 0 10-18 0zm7.5 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
+      <div class="lightbox__content">
+        <div class="lightbox__media">
+          <img id="lightbox-image" alt="Gallery detail" class="lightbox__image" />
+          <div id="panorama-viewer" class="panorama" role="application" aria-label="360 degree viewer">
+            <div class="panorama__surface" data-panorama-surface></div>
+            <div class="panorama__badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3a9 9 0 100 18 9 9 0 100-18zm0 12a3 3 0 110-6 3 3 0 010 6z" />
               </svg>
               360°
             </div>
           </div>
         </div>
-        <p id="lightbox-caption" class="text-center text-sm text-white/80"></p>
-        <div class="flex items-center gap-4">
-          <button
-            type="button"
-            class="rounded-full border border-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white"
-            data-lightbox-prev
-          >
-            Previous
-          </button>
-          <button
-            type="button"
-            class="rounded-full border border-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white"
-            data-lightbox-next
-          >
-            Next
-          </button>
+        <p id="lightbox-caption" class="lightbox__caption"></p>
+        <div class="lightbox__controls">
+          <button type="button" class="button button--ghost" data-lightbox-prev>Previous</button>
+          <button type="button" class="button button--ghost" data-lightbox-next>Next</button>
         </div>
       </div>
     </div>
 
     <template id="gallery-section-template">
-      <section class="space-y-8">
-        <div class="text-left">
-          <h3 class="font-display text-2xl text-olive-900"></h3>
-          <p class="mt-2 text-base text-dusk/70"></p>
+      <section class="gallery-section">
+        <div class="gallery-section__header">
+          <h3></h3>
+          <p></p>
         </div>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-gallery-grid></div>
+        <div class="gallery-grid" data-gallery-grid></div>
       </section>
     </template>
 
     <template id="gallery-item-template">
-      <button
-        type="button"
-        class="group relative block overflow-hidden rounded-[2rem] bg-white/70 shadow-lg shadow-olive-200/50 transition hover:-translate-y-1 hover:shadow-2xl"
-      >
-        <img class="h-full w-full object-cover transition duration-500 group-hover:scale-105" alt="Gallery" loading="lazy" />
-        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/10 opacity-0 transition duration-500 group-hover:opacity-100"></div>
-        <span
-          class="pointer-events-none absolute left-4 top-4 hidden items-center gap-2 rounded-full bg-black/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.4em] text-white"
-          data-360-icon
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12a9 9 0 1018 0 9 9 0 10-18 0zm7.5 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
+      <button type="button" class="gallery-card">
+        <img alt="Gallery" loading="lazy" />
+        <span class="gallery-card__badge" data-360-icon>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 3a9 9 0 100 18 9 9 0 100-18zm0 12a3 3 0 110-6 3 3 0 010 6z" />
           </svg>
           360°
         </span>
       </button>
     </template>
-
-    <script>
-      const galleryData = [
-        {
-          title: 'Exterior & Grounds',
-          description: 'Stone facades, terracotta roofs, and fragrant gardens that frame every arrival and sunset.',
-          images: [
-            'home-foto.jpg',
-            'house-front-view-01.jpeg',
-            'house-side-view-01.jpeg',
-            'house-side-view-02.jpeg',
-            'house-side-view-03.jpeg',
-            'house-side-view-03-portrait.jpeg',
-            'house-side-view-04-portrait.jpeg',
-            'house-back-view-parking-01.jpeg',
-            'house-back-view-parking-02-portrait.jpeg',
-            'house-back-view-03-portrait.jpeg',
-            'house-outside-entrance-view-01-portrait.jpeg',
-            'entrance-01-portrait.jpeg'
-          ]
-        },
-        {
-          title: 'Living Spaces',
-          description: 'Layered textures, curated art, and generous seating for conversations that last late into the evening.',
-          images: [
-            'first-livingroom-01.jpeg',
-            'first-livingroom-02.jpeg',
-            'first-livingroom-03-portrait.jpeg',
-            'first-livingroom-04-portrait.jpeg',
-            'first-livingroom-05.jpeg',
-            'second-livingroom-03.jpeg',
-            'second-living-room-02-portrait.jpeg',
-            'second-living-room-03-portrait.jpeg',
-            'second-livingroom-01.jpeg',
-            'staircase-01.jpeg'
-          ]
-        },
-        {
-          title: 'Chef’s Kitchen & Dining',
-          description: 'Bright culinary spaces made for sharing local produce and unforgettable meals.',
-          images: ['kitchen-01.jpeg', 'kitchen-01-portrait.jpeg', 'kitchen-02-portrait.jpeg']
-        },
-        {
-          title: 'First Suite',
-          description: 'A serene ensuite with private outlooks and an immersive 360° view.',
-          images: [
-            'first-bedroom-01.jpeg',
-            'first-bedroom-02.jpeg',
-            'first-bedroom-03.jpeg',
-            'first-bedroom-04.jpeg',
-            'first-bedroom-05.jpeg',
-            'first-bedroom-06.jpeg',
-            'first-bedrom-360.jpg'
-          ]
-        },
-        {
-          title: 'Second Suite',
-          description: 'Soft hues, artisanal textiles, and a panoramic tour at your fingertips.',
-          images: [
-            'second-bedroom-01.jpeg',
-            'second-bedroom-01-portrait.jpeg',
-            'second-bedroom-02-portrait.jpeg',
-            'second-bedroom-03-portrait.jpeg',
-            'second-bedrom-360.jpg'
-          ]
-        },
-        {
-          title: 'Third Suite',
-          description: 'Crisp linens, natural light, and restful corners overlooking the countryside.',
-          images: [
-            'third-bedroom-01.jpeg',
-            'third-bedroom-01-portrait.jpeg',
-            'third-bedroom-02.jpeg',
-            'third-bedroom-03.jpeg',
-            'third-bedroom-04.jpeg'
-          ]
-        },
-        {
-          title: 'Fourth Suite',
-          description: 'Contemporary comfort enriched with bespoke details for a peaceful retreat.',
-          images: [
-            'fourth-bedroom-01.jpeg',
-            'fourth-bedroom-02.jpeg',
-            'fourth-bedroom-03-portrait.jpeg',
-            'fourth-bedroom-04-portrait.jpeg',
-            'fourth-bedroom-05-portrait.jpeg'
-          ]
-        },
-        {
-          title: 'Spa Baths',
-          description: 'Stone, light, and warm finishes create tranquil sanctuaries for relaxation.',
-          images: [
-            'first-bathroom-01-portrait.jpeg',
-            'first-bathroom-02-portrait.jpeg',
-            'first-bathroom-03-portrait.jpeg',
-            'first-bathroom-04-portrait.jpeg'
-          ]
-        }
-      ]
-
-      const panoramaImages = new Set(['first-bedrom-360.jpg', 'second-bedrom-360.jpg'])
-
-      const galleryWrapper = document.getElementById('gallery-wrapper')
-      const sectionTemplate = document.getElementById('gallery-section-template')
-      const itemTemplate = document.getElementById('gallery-item-template')
-
-      const galleryItemsFlat = []
-
-      galleryData.forEach((group) => {
-        const sectionClone = sectionTemplate.content.cloneNode(true)
-        const heading = sectionClone.querySelector('h3')
-        const description = sectionClone.querySelector('p')
-        const grid = sectionClone.querySelector('[data-gallery-grid]')
-
-        heading.textContent = group.title
-        description.textContent = group.description
-
-        group.images.forEach((image) => {
-          const itemClone = itemTemplate.content.cloneNode(true)
-          const button = itemClone.querySelector('button')
-          const img = itemClone.querySelector('img')
-          const icon = itemClone.querySelector('[data-360-icon]')
-
-          const isPortrait = image.includes('-portrait')
-          const isPanorama = panoramaImages.has(image)
-
-          button.dataset.src = image
-          button.dataset.title = group.title
-          button.dataset.caption = createCaption(image)
-          button.dataset.type = isPanorama ? 'panorama' : 'image'
-          button.dataset.index = galleryItemsFlat.length
-
-          button.classList.add(isPortrait ? 'aspect-[3/4]' : 'aspect-[4/3]')
-
-          img.src = `images/${image}`
-          img.alt = createCaption(image)
-
-          if (isPanorama) {
-            icon.classList.remove('hidden')
-          }
-
-          grid.appendChild(itemClone)
-
-          galleryItemsFlat.push({
-            src: `images/${image}`,
-            caption: createCaption(image),
-            type: isPanorama ? 'panorama' : 'image'
-          })
-        })
-
-        galleryWrapper.appendChild(sectionClone)
-      })
-
-      function createCaption(filename) {
-        return filename
-          .replace(/[-_]+/g, ' ')
-          .replace(/\.[^.]+$/, '')
-          .replace(/\b(\w)/g, (match) => match.toUpperCase())
-      }
-
-      const lightbox = document.getElementById('lightbox')
-      const lightboxImage = document.getElementById('lightbox-image')
-      const panoramaViewer = document.getElementById('panorama-viewer')
-      const panoramaSurface = panoramaViewer.querySelector('[data-panorama-surface]')
-      const captionEl = document.getElementById('lightbox-caption')
-      const prevBtn = document.querySelector('[data-lightbox-prev]')
-      const nextBtn = document.querySelector('[data-lightbox-next]')
-
-      let currentIndex = 0
-      let panoramaState = { x: 50, y: 50, zoom: 100, isDragging: false, startX: 0, startY: 0 }
-
-      document.querySelectorAll('#gallery-wrapper button').forEach((button) => {
-        button.addEventListener('click', () => {
-          currentIndex = Number(button.dataset.index)
-          openLightbox(galleryItemsFlat[currentIndex])
-        })
-      })
-
-      function openLightbox(item) {
-        lightbox.classList.remove('hidden')
-        lightbox.classList.add('flex')
-        updateLightbox(item)
-      }
-
-      function updateLightbox(item) {
-        captionEl.textContent = item.caption
-
-        if (item.type === 'panorama') {
-          lightboxImage.classList.add('hidden')
-          panoramaViewer.classList.remove('hidden')
-          panoramaSurface.style.backgroundImage = `url(${item.src})`
-          panoramaState = { x: 50, y: 50, zoom: 100, isDragging: false, startX: 0, startY: 0 }
-          updatePanoramaTransform()
-        } else {
-          panoramaViewer.classList.add('hidden')
-          lightboxImage.classList.remove('hidden')
-          lightboxImage.src = item.src
-          lightboxImage.alt = item.caption
-        }
-      }
-
-      function closeLightbox() {
-        lightbox.classList.add('hidden')
-        lightbox.classList.remove('flex')
-      }
-
-      document.querySelector('[data-lightbox-close]').addEventListener('click', closeLightbox)
-      lightbox.addEventListener('click', (event) => {
-        if (event.target === lightbox) {
-          closeLightbox()
-        }
-      })
-
-      prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + galleryItemsFlat.length) % galleryItemsFlat.length
-        updateLightbox(galleryItemsFlat[currentIndex])
-      })
-
-      nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % galleryItemsFlat.length
-        updateLightbox(galleryItemsFlat[currentIndex])
-      })
-
-      document.addEventListener('keydown', (event) => {
-        if (lightbox.classList.contains('hidden')) return
-        if (event.key === 'Escape') closeLightbox()
-        if (event.key === 'ArrowRight') nextBtn.click()
-        if (event.key === 'ArrowLeft') prevBtn.click()
-      })
-
-      function updatePanoramaTransform() {
-        panoramaSurface.style.backgroundPosition = `${panoramaState.x}% ${panoramaState.y}%`
-        panoramaSurface.style.backgroundSize = `${panoramaState.zoom}% auto`
-      }
-
-      panoramaViewer.addEventListener('pointerdown', (event) => {
-        panoramaState.isDragging = true
-        panoramaState.startX = event.clientX
-        panoramaState.startY = event.clientY
-        panoramaViewer.setPointerCapture(event.pointerId)
-        panoramaViewer.classList.remove('cursor-grab')
-        panoramaViewer.classList.add('cursor-grabbing')
-      })
-
-      panoramaViewer.addEventListener('pointermove', (event) => {
-        if (!panoramaState.isDragging) return
-        const deltaX = event.clientX - panoramaState.startX
-        const deltaY = event.clientY - panoramaState.startY
-
-        panoramaState.startX = event.clientX
-        panoramaState.startY = event.clientY
-
-        panoramaState.x = (panoramaState.x - deltaX * 0.2 + 100) % 100
-        panoramaState.y = Math.min(80, Math.max(20, panoramaState.y - deltaY * 0.2))
-        updatePanoramaTransform()
-      })
-
-      panoramaViewer.addEventListener('pointerup', (event) => {
-        panoramaState.isDragging = false
-        panoramaViewer.releasePointerCapture(event.pointerId)
-        panoramaViewer.classList.remove('cursor-grabbing')
-        panoramaViewer.classList.add('cursor-grab')
-      })
-
-      panoramaViewer.addEventListener('wheel', (event) => {
-        event.preventDefault()
-        const delta = Math.sign(event.deltaY)
-        panoramaState.zoom = Math.min(180, Math.max(80, panoramaState.zoom - delta * 5))
-        updatePanoramaTransform()
-      })
-
-      const menuToggle = document.querySelector('[data-menu-toggle]')
-      const mobileMenu = document.querySelector('[data-mobile-menu]')
-      const menuLinks = document.querySelectorAll('[data-menu-link]')
-
-      if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden')
-        })
-      }
-
-      menuLinks.forEach((link) =>
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden')
-        })
-      )
-
-      const form = document.getElementById('contact-form')
-      const feedback = document.getElementById('form-feedback')
-
-      form.addEventListener('submit', (event) => {
-        event.preventDefault()
-        const formData = new FormData(form)
-        const name = formData.get('name').trim()
-        const email = formData.get('email').trim()
-        const message = formData.get('message').trim()
-
-        if (!name || !email || !message) {
-          setFeedback('Please complete all fields before submitting.', false)
-          return
-        }
-
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          setFeedback('Please enter a valid email address.', false)
-          return
-        }
-
-        form.reset()
-        setFeedback('Thank you! Your message has been sent. We will be in touch shortly.', true)
-      })
-
-      function setFeedback(message, success) {
-        feedback.textContent = message
-        feedback.classList.remove('hidden')
-        feedback.classList.toggle('text-emerald-300', success)
-        feedback.classList.toggle('text-terracotta', !success)
-      }
-    </script>
   </body>
 </html>
