@@ -37,6 +37,75 @@
       }
     }
   </script>
+  <style>
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    [data-animate].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [data-gallery-grid] {
+      grid-auto-rows: 14rem;
+    }
+
+    @media (min-width: 768px) {
+      [data-gallery-grid] {
+        grid-auto-rows: 18rem;
+      }
+    }
+
+    .gallery-card[data-orientation='portrait'] {
+      grid-row: span 2;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .gallery-card[data-orientation='landscape'] {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .gallery-card img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes lightboxIn {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes lightboxOut {
+      from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      to {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+      }
+    }
+
+    [data-lightbox-panel].animate-in {
+      animation: lightboxIn 0.45s ease forwards;
+    }
+
+    [data-lightbox-panel].animate-out {
+      animation: lightboxOut 0.3s ease forwards;
+    }
+  </style>
   <script defer src="js/index.js"></script>
 </head>
 
@@ -96,7 +165,7 @@
     </div>
 
     <!-- Hero Content -->
-    <div class="relative z-10 flex flex-col items-start justify-center px-6 pb-24 lg:px-8 lg:pb-32 max-w-7xl mx-auto">
+    <div data-animate class="relative z-10 flex flex-col items-start justify-center px-6 pb-24 lg:px-8 lg:pb-32 max-w-7xl mx-auto">
       <p class="text-sm uppercase tracking-[0.3em] text-brand-200 mb-3">Tuscan Countryside Retreat</p>
       <h1 class="max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
         Experience warm, unhurried living in the heart of Tuscany
@@ -121,7 +190,7 @@
 
 
   <main class="bg-brand-300">
-    <section id="about" class="relative overflow-hidden py-24 sm:py-32">
+    <section id="about" data-animate class="relative overflow-hidden py-24 sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
         <div class="space-y-6">
           <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">About the Residence</p>
@@ -183,7 +252,7 @@
       </div>
     </section>
 
-    <section id="gallery" class="bg-brand-900 py-24 text-brand-50 sm:py-32">
+    <section id="gallery" data-animate class="bg-brand-900 py-24 text-brand-50 sm:py-32">
       <div class="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:px-8">
         <div class="max-w-3xl space-y-4">
           <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300">Gallery</p>
@@ -197,7 +266,7 @@
       </div>
     </section>
 
-    <section class="relative overflow-hidden bg-brand-50 py-24 sm:py-32">
+    <section data-animate class="relative overflow-hidden bg-brand-50 py-24 sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:px-8">
         <div class="space-y-6">
           <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">Experiences</p>
@@ -232,7 +301,7 @@
       </div>
     </section>
 
-    <section id="contact" class="bg-slate-950 py-24 text-white sm:py-32">
+    <section id="contact" data-animate class="bg-slate-950 py-24 text-white sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
         <div class="space-y-6">
           <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300">Reserve your stay</p>
@@ -326,28 +395,32 @@
     </div>
   </footer>
 
-  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-6" role="dialog"
-    aria-modal="true" aria-hidden="true">
-    <div class="relative flex w-full max-w-4xl flex-col gap-6 rounded-3xl bg-white p-6 shadow-2xl">
+  <div id="lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/95 p-6 opacity-0 transition-opacity duration-500"
+    role="dialog" aria-modal="true" aria-hidden="true">
+    <div data-lightbox-panel class="relative flex w-full max-w-6xl flex-col items-center gap-6">
       <button type="button"
-        class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
+        class="self-end inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
         data-lightbox-close aria-label="Close gallery">
         <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
           <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
         </svg>
       </button>
-      <div class="flex flex-col gap-4">
-        <img id="lightbox-image" alt="Gallery detail" class="max-h-[60vh] w-full rounded-2xl object-contain" />
-        <p id="lightbox-caption" class="text-center text-sm text-slate-600"></p>
+      <img id="lightbox-image" alt="Gallery detail"
+        class="max-h-[85vh] w-full max-w-[90vw] rounded-3xl object-cover shadow-2xl shadow-black/40" />
+      <div class="flex flex-col items-center gap-2 text-center text-brand-50">
+        <span id="lightbox-orientation" class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-200/80"></span>
+        <p id="lightbox-caption" class="text-lg font-semibold"></p>
+        <p id="lightbox-description" class="max-w-3xl text-sm text-brand-100/80"></p>
       </div>
-      <div class="flex justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
         <button type="button"
-          class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-600"
+          class="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-2 text-brand-100 transition hover:border-brand-200 hover:text-brand-50"
           data-lightbox-prev>
           Previous
         </button>
         <button type="button"
-          class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-600"
+          class="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-2 text-brand-100 transition hover:border-brand-200 hover:text-brand-50"
           data-lightbox-next>
           Next
         </button>
@@ -367,13 +440,17 @@
 
   <template id="gallery-item-template">
     <button type="button"
-      class="group relative overflow-hidden rounded-3xl border border-brand-700/40 bg-brand-800/40 text-left shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:border-brand-500">
+      class="gallery-card group relative block h-full w-full overflow-hidden rounded-4xl border border-brand-700/40 bg-brand-800/30 text-left shadow-xl shadow-black/40 transition hover:-translate-y-1 hover:border-brand-400">
       <img alt="Gallery" loading="lazy"
-        class="h-64 w-full object-cover transition duration-300 group-hover:scale-105" />
-      <span
-        class="absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-brand-100/90">
-        View
+        class="transition duration-500 group-hover:scale-105" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 transition duration-500 group-hover:opacity-80"></div>
+      <span data-orientation-label
+        class="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.4em] text-brand-100/80">
       </span>
+      <div class="absolute inset-x-4 bottom-4 flex flex-col gap-1 text-brand-50">
+        <p data-caption class="text-sm font-semibold leading-tight"></p>
+        <p data-description class="text-xs text-brand-100/90"></p>
+      </div>
     </button>
   </template>
 </body>
