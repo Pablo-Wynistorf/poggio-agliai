@@ -1,388 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Poggio Agliai · Tuscan Vacation Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ['"Playfair Display"', 'serif'],
-              sans: ['"Source Sans 3"', 'sans-serif']
-            },
-            colors: {
-              brand: {
-                50: '#f6f5f2',
-                100: '#ede9df',
-                200: '#d8cfb6',
-                300: '#c2b38d',
-                400: '#ac9663',
-                500: '#967b3d',
-                600: '#7a6130',
-                700: '#5d4824',
-                800: '#413018',
-                900: '#241a0c'
-              }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poggio Agliai · Tuscan Vacation Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            sans: ['"Source Sans 3"', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              50: '#f6f5f2',
+              100: '#ede9df',
+              200: '#d8cfb6',
+              300: '#c2b38d',
+              400: '#ac9663',
+              500: '#967b3d',
+              600: '#7a6130',
+              700: '#5d4824',
+              800: '#413018',
+              900: '#241a0c'
             }
           }
         }
       }
-    </script>
-    <script defer src="js/index.js"></script>
-  </head>
-  <body data-asset-prefix="." id="top" class="bg-white font-sans text-slate-800">
-    <header class="relative isolate overflow-hidden bg-slate-900 text-white">
-      <img
-        src="images/home-foto.jpg"
-        alt="Tuscan farmhouse exterior"
-        class="absolute inset-0 -z-20 h-full w-full object-cover"
-      />
-      <div class="absolute inset-0 -z-10 bg-slate-950/70"></div>
-      <div class="mx-auto flex max-w-7xl flex-col gap-16 px-6 pb-24 pt-6 lg:px-8 lg:pb-32">
-        <nav class="flex items-center justify-between gap-8" aria-label="Primary">
-          <a href="#top" class="text-lg font-semibold tracking-wide text-white">Poggio Agliai</a>
-          <div class="hidden items-center gap-8 text-sm font-medium lg:flex">
-            <a href="#about" class="transition hover:text-brand-200">About</a>
-            <a href="#gallery" class="transition hover:text-brand-200">Gallery</a>
-            <a href="#contact" class="transition hover:text-brand-200">Contact</a>
-          </div>
-          <div class="hidden items-center gap-3 text-sm lg:flex">
-            <a href="/" class="font-semibold">EN</a>
-            <span aria-hidden="true">·</span>
-            <a href="/de/" class="hover:text-brand-200">DE</a>
-            <span aria-hidden="true">·</span>
-            <a href="/fr/" class="hover:text-brand-200">FR</a>
-            <span aria-hidden="true">·</span>
-            <a href="/it/" class="hover:text-brand-200">IT</a>
-          </div>
-          <button
-            type="button"
-            class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/40 text-white lg:hidden"
-            data-menu-toggle
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-          >
-            <span class="sr-only">Toggle navigation</span>
-            <svg viewBox="0 0 24 24" class="h-6 w-6" aria-hidden="true">
-              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-          </button>
-        </nav>
-        <div id="mobile-menu" class="flex flex-col gap-6 rounded-xl border border-white/20 bg-slate-900/80 p-6 text-sm font-medium text-white lg:hidden hidden" data-mobile-menu>
-          <a href="#about" data-menu-link>About</a>
-          <a href="#gallery" data-menu-link>Gallery</a>
-          <a href="#contact" data-menu-link>Contact</a>
-          <div class="flex gap-3 pt-2 text-xs">
-            <a href="/" class="font-semibold">EN</a>
-            <span aria-hidden="true">·</span>
-            <a href="/de/" class="hover:text-brand-200">DE</a>
-            <span aria-hidden="true">·</span>
-            <a href="/fr/" class="hover:text-brand-200">FR</a>
-            <span aria-hidden="true">·</span>
-            <a href="/it/" class="hover:text-brand-200">IT</a>
-          </div>
-        </div>
-        <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-center lg:gap-16">
-          <div class="space-y-6">
-            <p class="text-sm uppercase tracking-[0.3em] text-brand-200">Tuscan Countryside Retreat</p>
-            <h1 class="max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Experience warm, unhurried living in the heart of Tuscany
-            </h1>
-            <p class="max-w-2xl text-lg text-white/80">
-              Cradled by olive groves and golden hills, Poggio Agliai is a lovingly restored stone farmhouse near Suvereto. Each
-              suite, terrace, and garden corner is designed to celebrate the gentle rhythm of Tuscan life.
-            </p>
-            <div class="flex flex-wrap gap-4">
-              <a
-                class="inline-flex items-center justify-center rounded-full bg-brand-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300"
-                href="#contact"
-                >Book Now</a
-              >
-              <a
-                class="inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-sm font-semibold text-white transition hover:border-white hover:text-white"
-                href="#about"
-                >Discover More</a
-              >
-            </div>
-          </div>
-          <div class="rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur">
-            <h2 class="font-display text-2xl font-semibold text-brand-100">Home Highlights</h2>
-            <ul class="mt-6 space-y-3 text-sm text-white/80">
-              <li>Four ensuite suites with handmade linens</li>
-              <li>Chef's kitchen opening to al fresco dining pergola</li>
-              <li>Heated saltwater pool with panoramic views</li>
-              <li>Private olive grove, herb gardens, and sunset terraces</li>
-              <li>Concierge for wine tastings, cycling tours, and chef-at-home</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </header>
+    }
+  </script>
+  <script defer src="js/index.js"></script>
+</head>
 
-    <main class="bg-white">
-      <section id="about" class="relative overflow-hidden py-24 sm:py-32">
-        <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
-          <div class="space-y-6">
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">About the Residence</p>
-            <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl">
-              A farmhouse of warmth, character, and effortless elegance
-            </h2>
-            <p class="text-lg text-slate-700">
-              Poggio Agliai embraces traditional Tuscan craftsmanship with contemporary comfort. Four ensuite bedrooms welcome up
-              to eight guests, while sunlit living rooms, a chef's kitchen, and pergola-shaded terraces create space for slow
-              mornings and convivial evenings. Outside, fragrant herb gardens, a saltwater pool, and private olive groves open to
-              sweeping countryside views.
-            </p>
-            <p class="text-lg text-slate-700">
-              Spend your days exploring Suvereto, Bolgheri, and the Etruscan Coast, tasting celebrated wines, and returning to
-              golden sunsets over the Val di Cornia. Every stay can be tailored with curated experiences that celebrate the
-              flavours, history, and calm of Tuscany.
-            </p>
-          </div>
-          <div class="grid gap-8 sm:grid-cols-2">
-            <div class="rounded-3xl border border-brand-100 bg-brand-50 p-8 shadow-sm">
-              <h3 class="font-display text-xl text-brand-800">At a glance</h3>
-              <dl class="mt-6 space-y-3 text-sm text-slate-700">
-                <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
-                  <dt class="font-semibold text-brand-700">Bedrooms</dt>
-                  <dd>4 ensuite suites</dd>
-                </div>
-                <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
-                  <dt class="font-semibold text-brand-700">Bathrooms</dt>
-                  <dd>4.5 refined baths</dd>
-                </div>
-                <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
-                  <dt class="font-semibold text-brand-700">Guests</dt>
-                  <dd>Up to 8 people</dd>
-                </div>
-                <div class="flex justify-between gap-3">
-                  <dt class="font-semibold text-brand-700">Outdoor</dt>
-                  <dd>Saltwater pool &amp; panoramic terraces</dd>
-                </div>
-              </dl>
-            </div>
-            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <h3 class="font-display text-xl text-brand-800">Nearby inspirations</h3>
-              <ul class="mt-6 space-y-4 text-sm text-slate-700">
-                <li><span class="font-semibold text-brand-700">Suvereto:</span> medieval village 10 minutes away</li>
-                <li><span class="font-semibold text-brand-700">Bolgheri Wine Route:</span> celebrated Super Tuscan estates</li>
-                <li><span class="font-semibold text-brand-700">Gulf of Baratti:</span> Etruscan beaches and crystal waters</li>
-                <li><span class="font-semibold text-brand-700">Val di Cornia trails:</span> scenic cycling and walking routes</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+<body id="home" class="bg-white font-sans text-slate-800">
+  <nav
+    class="fixed top-4 left-1/2 z-50 -translate-x-1/2 rounded-3xl bg-lime-900/50 px-8 py-3 backdrop-blur-md shadow-lg flex items-center justify-center gap-6 text-white text-sm font-medium">
+    <a href="#home" class="hover:text-brand-200 transition">Home</a>
 
-      <section id="gallery" class="bg-brand-900 py-24 text-brand-50 sm:py-32">
-        <div class="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:px-8">
-          <div class="max-w-3xl space-y-4">
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300">Gallery</p>
-            <h2 class="font-display text-3xl font-semibold sm:text-4xl">Every room tells a Tuscan story</h2>
-            <p class="text-base text-brand-100/80">
-              Explore the spaces of Poggio Agliai. Select any photograph for a closer look, from sunlit suites to tranquil
-              gardens.
-            </p>
-          </div>
-          <div id="gallery-wrapper" class="space-y-16"></div>
+    <a href="#about" class="hover:text-brand-200 transition">About</a>
+    <a href="#contact" class="rounded-full border border-white/40 px-4 py-1.5 hover:bg-white/10 transition">Book Now</a>
+    <a href="#gallery" class="hover:text-brand-200 transition">Gallery</a>
+    <a href="#contact" class="hover:text-brand-200 transition">Contact</a>
+  </nav>
+  <header class="relative isolate overflow-hidden bg-slate-900 text-white">
+    <img src="images/home-foto.jpg" alt="Tuscan farmhouse exterior"
+      class="absolute inset-0 -z-20 h-full w-full object-cover" />
+    <div class="absolute inset-0 -z-10 bg-slate-950/20"></div>
+    <div class="mx-auto flex max-w-7xl flex-col gap-16 px-6 pb-24 pt-6 lg:px-8 lg:pb-32">
+      <nav class="flex items-center justify-between gap-8" aria-label="Primary">
+        <a href="#top" class="text-lg font-semibold tracking-wide text-white">Poggio Agliai</a>
+        <div class="hidden items-center gap-8 text-sm font-medium lg:flex">
+          <a href="#about" class="transition hover:text-brand-200">About</a>
+          <a href="#gallery" class="transition hover:text-brand-200">Gallery</a>
+          <a href="#contact" class="transition hover:text-brand-200">Contact</a>
         </div>
-      </section>
-
-      <section class="relative overflow-hidden bg-brand-50 py-24 sm:py-32">
-        <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:px-8">
-          <div class="space-y-6">
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">Experiences</p>
-            <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl">Curated moments, tailored to you</h2>
-            <p class="text-lg text-slate-700">
-              Let our concierge arrange sunrise yoga overlooking the olive groves, vineyard tastings with local sommeliers, truffle
-              hunts in nearby woods, or chef-prepared dinners on the terrace. Each stay is a bespoke journey into Tuscan culture,
-              crafted with care.
-            </p>
-            <p class="text-lg text-slate-700">
-              Families, friends, and couples alike discover a rhythm of slow mornings, adventurous afternoons, and evenings that
-              linger over candlelight and local wine.
-            </p>
-          </div>
-          <div class="rounded-3xl border border-brand-100 bg-white p-8 shadow-lg shadow-brand-900/5">
-            <h3 class="font-display text-xl text-brand-800">Seasonal highlights</h3>
-            <ul class="mt-6 space-y-4 text-sm text-slate-700">
-              <li><span class="font-semibold text-brand-700">Spring:</span> Wildflower walks, olive oil press visits, and cycling tours</li>
-              <li><span class="font-semibold text-brand-700">Summer:</span> Poolside aperitivo hours and coastal escapes to Baratti</li>
-              <li><span class="font-semibold text-brand-700">Autumn:</span> Harvest festivals, cellar tastings, and golden sunsets</li>
-              <li><span class="font-semibold text-brand-700">Winter:</span> Firelit evenings, thermal spas, and festive markets</li>
-            </ul>
-          </div>
+        <div class="hidden items-center gap-3 text-sm lg:flex">
+          <a href="/" class="font-semibold">EN</a>
+          <span aria-hidden="true">·</span>
+          <a href="/de/" class="hover:text-brand-200">DE</a>
+          <span aria-hidden="true">·</span>
+          <a href="/fr/" class="hover:text-brand-200">FR</a>
+          <span aria-hidden="true">·</span>
+          <a href="/it/" class="hover:text-brand-200">IT</a>
         </div>
-      </section>
-
-      <section id="contact" class="bg-slate-950 py-24 text-white sm:py-32">
-        <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
-          <div class="space-y-6">
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300">Reserve your stay</p>
-            <h2 class="font-display text-3xl font-semibold sm:text-4xl">Share your plans—we will curate your Tuscan escape</h2>
-            <p class="text-lg text-white/80">
-              Let us know your travel dates and any special requests. Our team will respond with availability, bespoke itineraries,
-              and concierge services to make your stay unforgettable.
-            </p>
-            <form id="contact-form" class="grid gap-6 text-slate-900">
-              <label class="space-y-2 text-sm font-medium text-white">
-                <span>Name</span>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Your full name"
-                  class="w-full rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60"
-                />
-              </label>
-              <label class="space-y-2 text-sm font-medium text-white">
-                <span>Email</span>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="you@example.com"
-                  class="w-full rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60"
-                />
-              </label>
-              <label class="space-y-2 text-sm font-medium text-white">
-                <span>Message</span>
-                <textarea
-                  name="message"
-                  rows="4"
-                  required
-                  placeholder="Tell us about your ideal Tuscan holiday"
-                  class="w-full rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60"
-                ></textarea>
-              </label>
-              <button
-                type="submit"
-                class="inline-flex items-center justify-center rounded-full bg-brand-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300"
-              >
-                Send Inquiry
-              </button>
-              <p id="form-feedback" class="text-sm font-medium"></p>
-            </form>
-          </div>
-          <div class="space-y-8">
-            <div class="overflow-hidden rounded-3xl shadow-lg shadow-black/40">
-              <iframe
-                title="Poggio Agliai map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.854545454!2d10.727!3d43.073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a152bc9b7531f%3A0x4b9a8b3e4af9ef0!2sPrata%2C%2057018%20Suvereto%2C%20Province%20of%20Livorno%2C%20Italy!5e0!3m2!1sen!2sit!4v1700000000000!5m2!1sen!2sit"
-                width="100%"
-                height="380"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                class="h-[22rem] w-full border-0"
-              ></iframe>
-            </div>
-            <div class="rounded-3xl border border-white/20 bg-white/5 p-8 backdrop-blur">
-              <h3 class="font-display text-2xl text-brand-100">Contact</h3>
-              <p class="mt-4 text-sm text-white/80">
-                Via di Prata, Poggio Agliai<br />Suvereto, Tuscany · Italy
-              </p>
-              <p class="mt-4 text-sm text-white/80">
-                Phone: <a href="tel:+390000000000" class="underline decoration-brand-200/50 hover:text-brand-200">+39 000 000 0000</a><br />
-                Email: <a href="mailto:stay@poggioagliai.com" class="underline decoration-brand-200/50 hover:text-brand-200">stay@poggioagliai.com</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-slate-200 bg-white py-10">
-      <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 text-sm text-slate-600 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-        <p>&copy; 2025 Poggio Agliai. All rights reserved.</p>
-        <div class="flex flex-wrap items-center gap-4">
-          <a href="#about" class="transition hover:text-brand-600">About</a>
-          <a href="#gallery" class="transition hover:text-brand-600">Gallery</a>
-          <a href="#contact" class="transition hover:text-brand-600">Contact</a>
-          <span class="hidden h-5 w-px bg-slate-300 lg:inline-block"></span>
-          <div class="flex items-center gap-3 text-xs">
-            <a href="/" class="font-semibold text-brand-700 hover:text-brand-600">EN</a>
-            <span aria-hidden="true">·</span>
-            <a href="/de/" class="hover:text-brand-600">DE</a>
-            <span aria-hidden="true">·</span>
-            <a href="/fr/" class="hover:text-brand-600">FR</a>
-            <span aria-hidden="true">·</span>
-            <a href="/it/" class="hover:text-brand-600">IT</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <div
-      id="lightbox"
-      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-6"
-      role="dialog"
-      aria-modal="true"
-      aria-hidden="true"
-    >
-      <div class="relative flex w-full max-w-4xl flex-col gap-6 rounded-3xl bg-white p-6 shadow-2xl">
-        <button
-          type="button"
-          class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
-          data-lightbox-close
-          aria-label="Close gallery"
-        >
-          <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-            <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        <button type="button"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/40 text-white lg:hidden"
+          data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
+          <span class="sr-only">Toggle navigation</span>
+          <svg viewBox="0 0 24 24" class="h-6 w-6" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
           </svg>
         </button>
-        <div class="flex flex-col gap-4">
-          <img id="lightbox-image" alt="Gallery detail" class="max-h-[60vh] w-full rounded-2xl object-contain" />
-          <p id="lightbox-caption" class="text-center text-sm text-slate-600"></p>
+      </nav>
+      <div id="mobile-menu"
+        class="flex flex-col gap-6 rounded-xl border border-white/20 bg-slate-900/80 p-6 text-sm font-medium text-white lg:hidden hidden"
+        data-mobile-menu>
+        <a href="#about" data-menu-link>About</a>
+        <a href="#gallery" data-menu-link>Gallery</a>
+        <a href="#contact" data-menu-link>Contact</a>
+        <div class="flex gap-3 pt-2 text-xs">
+          <a href="/" class="font-semibold">EN</a>
+          <span aria-hidden="true">·</span>
+          <a href="/de/" class="hover:text-brand-200">DE</a>
+          <span aria-hidden="true">·</span>
+          <a href="/fr/" class="hover:text-brand-200">FR</a>
+          <span aria-hidden="true">·</span>
+          <a href="/it/" class="hover:text-brand-200">IT</a>
         </div>
-        <div class="flex justify-center gap-4">
-          <button
-            type="button"
-            class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-600"
-            data-lightbox-prev
-          >
-            Previous
-          </button>
-          <button
-            type="button"
-            class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-600"
-            data-lightbox-next
-          >
-            Next
-          </button>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-center lg:gap-16">
+        <div class="space-y-6">
+          <p class="text-sm uppercase tracking-[0.3em] text-brand-200">Tuscan Countryside Retreat</p>
+          <h1 class="max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+            Experience warm, unhurried living in the heart of Tuscany
+          </h1>
+          <p class="max-w-2xl text-lg text-white/80">
+            Cradled by olive groves and golden hills, Poggio Agliai is a lovingly restored stone farmhouse near
+            Suvereto. Each
+            suite, terrace, and garden corner is designed to celebrate the gentle rhythm of Tuscan life.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a class="inline-flex items-center justify-center rounded-full bg-brand-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300"
+              href="#contact">Book Now</a>
+            <a class="inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-sm font-semibold text-white transition hover:border-white hover:text-white"
+              href="#about">Discover More</a>
+          </div>
         </div>
       </div>
     </div>
+  </header>
 
-    <template id="gallery-section-template">
-      <section class="space-y-6">
-        <div class="space-y-2">
-          <h3 class="font-display text-2xl text-brand-50"></h3>
-          <p class="text-sm text-brand-100/80"></p>
+  <main class="bg-white">
+    <section id="about" class="relative overflow-hidden py-24 sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
+        <div class="space-y-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">About the Residence</p>
+          <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl">
+            A farmhouse of warmth, character, and effortless elegance
+          </h2>
+          <p class="text-lg text-slate-700">
+            Poggio Agliai embraces traditional Tuscan craftsmanship with contemporary comfort. Four ensuite bedrooms
+            welcome up
+            to eight guests, while sunlit living rooms, a chef's kitchen, and pergola-shaded terraces create space for
+            slow
+            mornings and convivial evenings. Outside, fragrant herb gardens, a saltwater pool, and private olive groves
+            open to
+            sweeping countryside views.
+          </p>
+          <p class="text-lg text-slate-700">
+            Spend your days exploring Suvereto, Bolgheri, and the Etruscan Coast, tasting celebrated wines, and
+            returning to
+            golden sunsets over the Val di Cornia. Every stay can be tailored with curated experiences that celebrate
+            the
+            flavours, history, and calm of Tuscany.
+          </p>
         </div>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-gallery-grid></div>
-      </section>
-    </template>
+        <div class="grid gap-8 sm:grid-cols-2">
+          <div class="rounded-3xl border border-brand-100 bg-brand-50 p-8 shadow-sm">
+            <h3 class="font-display text-xl text-brand-800">At a glance</h3>
+            <dl class="mt-6 space-y-3 text-sm text-slate-700">
+              <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
+                <dt class="font-semibold text-brand-700">Bedrooms</dt>
+                <dd>4 ensuite suites</dd>
+              </div>
+              <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
+                <dt class="font-semibold text-brand-700">Bathrooms</dt>
+                <dd>4.5 refined baths</dd>
+              </div>
+              <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
+                <dt class="font-semibold text-brand-700">Guests</dt>
+                <dd>Up to 8 people</dd>
+              </div>
+              <div class="flex justify-between gap-3">
+                <dt class="font-semibold text-brand-700">Outdoor</dt>
+                <dd>Saltwater pool &amp; panoramic terraces</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <h3 class="font-display text-xl text-brand-800">Nearby inspirations</h3>
+            <ul class="mt-6 space-y-4 text-sm text-slate-700">
+              <li><span class="font-semibold text-brand-700">Suvereto:</span> medieval village 10 minutes away</li>
+              <li><span class="font-semibold text-brand-700">Bolgheri Wine Route:</span> celebrated Super Tuscan estates
+              </li>
+              <li><span class="font-semibold text-brand-700">Gulf of Baratti:</span> Etruscan beaches and crystal waters
+              </li>
+              <li><span class="font-semibold text-brand-700">Val di Cornia trails:</span> scenic cycling and walking
+                routes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <template id="gallery-item-template">
-      <button
-        type="button"
-        class="group relative overflow-hidden rounded-3xl border border-brand-700/40 bg-brand-800/40 text-left shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:border-brand-500"
-      >
-        <img alt="Gallery" loading="lazy" class="h-64 w-full object-cover transition duration-300 group-hover:scale-105" />
-        <span class="absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-brand-100/90">
-          View
-        </span>
+    <section id="gallery" class="bg-brand-900 py-24 text-brand-50 sm:py-32">
+      <div class="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:px-8">
+        <div class="max-w-3xl space-y-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300">Gallery</p>
+          <h2 class="font-display text-3xl font-semibold sm:text-4xl">Every room tells a Tuscan story</h2>
+          <p class="text-base text-brand-100/80">
+            Explore the spaces of Poggio Agliai. Select any photograph for a closer look, from sunlit suites to tranquil
+            gardens.
+          </p>
+        </div>
+        <div id="gallery-wrapper" class="space-y-16"></div>
+      </div>
+    </section>
+
+    <section class="relative overflow-hidden bg-brand-50 py-24 sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:px-8">
+        <div class="space-y-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">Experiences</p>
+          <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl">Curated moments, tailored to you
+          </h2>
+          <p class="text-lg text-slate-700">
+            Let our concierge arrange sunrise yoga overlooking the olive groves, vineyard tastings with local
+            sommeliers, truffle
+            hunts in nearby woods, or chef-prepared dinners on the terrace. Each stay is a bespoke journey into Tuscan
+            culture,
+            crafted with care.
+          </p>
+          <p class="text-lg text-slate-700">
+            Families, friends, and couples alike discover a rhythm of slow mornings, adventurous afternoons, and
+            evenings that
+            linger over candlelight and local wine.
+          </p>
+        </div>
+        <div class="rounded-3xl border border-brand-100 bg-white p-8 shadow-lg shadow-brand-900/5">
+          <h3 class="font-display text-xl text-brand-800">Seasonal highlights</h3>
+          <ul class="mt-6 space-y-4 text-sm text-slate-700">
+            <li><span class="font-semibold text-brand-700">Spring:</span> Wildflower walks, olive oil press visits, and
+              cycling tours</li>
+            <li><span class="font-semibold text-brand-700">Summer:</span> Poolside aperitivo hours and coastal escapes
+              to Baratti</li>
+            <li><span class="font-semibold text-brand-700">Autumn:</span> Harvest festivals, cellar tastings, and golden
+              sunsets</li>
+            <li><span class="font-semibold text-brand-700">Winter:</span> Firelit evenings, thermal spas, and festive
+              markets</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-slate-950 py-24 text-white sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
+        <div class="space-y-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300">Reserve your stay</p>
+          <h2 class="font-display text-3xl font-semibold sm:text-4xl">Share your plans—we will curate your Tuscan escape
+          </h2>
+          <p class="text-lg text-white/80">
+            Let us know your travel dates and any special requests. Our team will respond with availability, bespoke
+            itineraries,
+            and concierge services to make your stay unforgettable.
+          </p>
+          <form id="contact-form" class="grid gap-6 text-slate-900">
+            <label class="space-y-2 text-sm font-medium text-white">
+              <span>Name</span>
+              <input type="text" name="name" required placeholder="Your full name"
+                class="w-full rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
+            </label>
+            <label class="space-y-2 text-sm font-medium text-white">
+              <span>Email</span>
+              <input type="email" name="email" required placeholder="you@example.com"
+                class="w-full rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
+            </label>
+            <label class="space-y-2 text-sm font-medium text-white">
+              <span>Message</span>
+              <textarea name="message" rows="4" required placeholder="Tell us about your ideal Tuscan holiday"
+                class="w-full rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-sm text-slate-900 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60"></textarea>
+            </label>
+            <button type="submit"
+              class="inline-flex items-center justify-center rounded-full bg-brand-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300">
+              Send Inquiry
+            </button>
+            <p id="form-feedback" class="text-sm font-medium"></p>
+          </form>
+        </div>
+        <div class="space-y-8">
+          <div class="overflow-hidden rounded-3xl shadow-lg shadow-black/40">
+            <iframe width="100%" height="650px" frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=43.10459171089201%2C%2010.682569205894895&maptype=roadmap"
+              allowfullscreen></iframe>
+          </div>
+          <div class="rounded-3xl border border-white/20 bg-white/5 p-8 backdrop-blur">
+            <h3 class="font-display text-2xl text-brand-100">Contact</h3>
+            <p class="mt-4 text-sm text-white/80">
+              Via di Prata, Poggio Agliai<br />Suvereto, Tuscany · Italy
+            </p>
+            <p class="mt-4 text-sm text-white/80">
+              Phone: <a href="tel:+390000000000" class="underline decoration-brand-200/50 hover:text-brand-200">+39 000
+                000 0000</a><br />
+              Email: <a href="mailto:stay@poggioagliai.com"
+                class="underline decoration-brand-200/50 hover:text-brand-200">stay@poggioagliai.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white py-10">
+    <div
+      class="mx-auto flex max-w-7xl flex-col gap-6 px-6 text-sm text-slate-600 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <p>&copy; 2025 Poggio Agliai. All rights reserved.</p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="#about" class="transition hover:text-brand-600">About</a>
+        <a href="#gallery" class="transition hover:text-brand-600">Gallery</a>
+        <a href="#contact" class="transition hover:text-brand-600">Contact</a>
+        <span class="hidden h-5 w-px bg-slate-300 lg:inline-block"></span>
+        <div class="flex items-center gap-3 text-xs">
+          <a href="/" class="font-semibold text-brand-700 hover:text-brand-600">EN</a>
+          <span aria-hidden="true">·</span>
+          <a href="/de/" class="hover:text-brand-600">DE</a>
+          <span aria-hidden="true">·</span>
+          <a href="/fr/" class="hover:text-brand-600">FR</a>
+          <span aria-hidden="true">·</span>
+          <a href="/it/" class="hover:text-brand-600">IT</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-6" role="dialog"
+    aria-modal="true" aria-hidden="true">
+    <div class="relative flex w-full max-w-4xl flex-col gap-6 rounded-3xl bg-white p-6 shadow-2xl">
+      <button type="button"
+        class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
+        data-lightbox-close aria-label="Close gallery">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
+          <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
       </button>
-    </template>
-  </body>
+      <div class="flex flex-col gap-4">
+        <img id="lightbox-image" alt="Gallery detail" class="max-h-[60vh] w-full rounded-2xl object-contain" />
+        <p id="lightbox-caption" class="text-center text-sm text-slate-600"></p>
+      </div>
+      <div class="flex justify-center gap-4">
+        <button type="button"
+          class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-600"
+          data-lightbox-prev>
+          Previous
+        </button>
+        <button type="button"
+          class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-600"
+          data-lightbox-next>
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <template id="gallery-section-template">
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <h3 class="font-display text-2xl text-brand-50"></h3>
+        <p class="text-sm text-brand-100/80"></p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-gallery-grid></div>
+    </section>
+  </template>
+
+  <template id="gallery-item-template">
+    <button type="button"
+      class="group relative overflow-hidden rounded-3xl border border-brand-700/40 bg-brand-800/40 text-left shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:border-brand-500">
+      <img alt="Gallery" loading="lazy"
+        class="h-64 w-full object-cover transition duration-300 group-hover:scale-105" />
+      <span
+        class="absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-brand-100/90">
+        View
+      </span>
+    </button>
+  </template>
+</body>
+
 </html>
