@@ -80,7 +80,10 @@ const imageDescriptions = {
   'first-bathroom-02-portrait.jpeg': 'Marble finishes and a rainfall shower await in the ensuite.'
 }
 
-const assetPrefix = document.body?.dataset.assetPrefix ?? '.'
+let assetPrefix = '.'
+if (document.body && document.body.dataset && document.body.dataset.assetPrefix) {
+  assetPrefix = document.body.dataset.assetPrefix
+}
 
 const galleryWrapper = document.getElementById('gallery-wrapper')
 const sectionTemplate = document.getElementById('gallery-section-template')
@@ -88,27 +91,40 @@ const itemTemplate = document.getElementById('gallery-item-template')
 
 const galleryItemsFlat = []
 
-const animationObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible')
-        animationObserver.unobserve(entry.target)
-      }
-    })
-  },
-  { threshold: 0.2 }
-)
+let animationObserver = null
+if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+  animationObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          if (animationObserver) {
+            animationObserver.unobserve(entry.target)
+          }
+        }
+      })
+    },
+    { threshold: 0.2 }
+  )
+}
 
 function registerAnimation(element) {
   if (!element) return
   if (!element.dataset.animate) {
     element.setAttribute('data-animate', '')
   }
-  animationObserver.observe(element)
+  if (animationObserver) {
+    animationObserver.observe(element)
+  } else {
+    element.classList.add('is-visible')
+  }
 }
 
 if (galleryWrapper && sectionTemplate && itemTemplate) {
+  const fallback = galleryWrapper.querySelector('[data-gallery-fallback]')
+  if (fallback) {
+    fallback.parentNode.removeChild(fallback)
+  }
   galleryData.forEach((group) => {
     const sectionClone = sectionTemplate.content.cloneNode(true)
     const sectionRoot = sectionClone.querySelector('section')
@@ -177,7 +193,7 @@ function createCaption(filename) {
 }
 
 document.querySelectorAll('[data-animate]').forEach((element) => {
-  animationObserver.observe(element)
+  registerAnimation(element)
 })
 
 const lightbox = document.getElementById('lightbox')
@@ -193,7 +209,7 @@ const closeBtn = document.querySelector('[data-lightbox-close]')
 let currentIndex = 0
 
 function openLightbox(index) {
-  if (!lightbox) return
+  if (!lightbox || !galleryItemsFlat.length) return
   currentIndex = index
   updateLightbox(galleryItemsFlat[currentIndex])
   lightbox.classList.remove('hidden')
@@ -251,23 +267,33 @@ function closeLightbox() {
   document.body.classList.remove('overflow-hidden')
 }
 
-closeBtn?.addEventListener('click', closeLightbox)
+if (closeBtn) {
+  closeBtn.addEventListener('click', closeLightbox)
+}
 
-lightbox?.addEventListener('click', (event) => {
-  if (event.target === lightbox) {
-    closeLightbox()
-  }
-})
+if (lightbox) {
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) {
+      closeLightbox()
+    }
+  })
+}
 
-prevBtn?.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + galleryItemsFlat.length) % galleryItemsFlat.length
-  updateLightbox(galleryItemsFlat[currentIndex])
-})
+if (prevBtn) {
+  prevBtn.addEventListener('click', () => {
+    if (!galleryItemsFlat.length) return
+    currentIndex = (currentIndex - 1 + galleryItemsFlat.length) % galleryItemsFlat.length
+    updateLightbox(galleryItemsFlat[currentIndex])
+  })
+}
 
-nextBtn?.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % galleryItemsFlat.length
-  updateLightbox(galleryItemsFlat[currentIndex])
-})
+if (nextBtn) {
+  nextBtn.addEventListener('click', () => {
+    if (!galleryItemsFlat.length) return
+    currentIndex = (currentIndex + 1) % galleryItemsFlat.length
+    updateLightbox(galleryItemsFlat[currentIndex])
+  })
+}
 
 document.addEventListener('keydown', (event) => {
   if (!lightbox || lightbox.classList.contains('hidden')) return
@@ -275,40 +301,49 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     closeLightbox()
   } else if (event.key === 'ArrowRight') {
-    nextBtn?.click()
+    if (nextBtn) {
+      nextBtn.click()
+    }
   } else if (event.key === 'ArrowLeft') {
-    prevBtn?.click()
+    if (prevBtn) {
+      prevBtn.click()
+    }
   }
 })
-
-const menuLinks = document.querySelectorAll('[data-menu-link]')
-
 
 const form = document.getElementById('contact-form')
 const feedback = document.getElementById('form-feedback')
 
-form?.addEventListener('submit', (event) => {
-  event.preventDefault()
+if (form) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault()
 
-  const formData = new FormData(form)
-  const name = formData.get('name')?.toString().trim()
-  const email = formData.get('email')?.toString().trim()
-  const message = formData.get('message')?.toString().trim()
+    const formData = new FormData(form)
 
-  if (!name || !email || !message) {
-    setFeedback('Please complete all fields before submitting.', 'error')
-    return
-  }
+    const rawName = formData.get('name')
+    const name = typeof rawName === 'string' ? rawName.trim() : ''
 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (!emailPattern.test(email)) {
-    setFeedback('Please enter a valid email address.', 'error')
-    return
-  }
+    const rawEmail = formData.get('email')
+    const email = typeof rawEmail === 'string' ? rawEmail.trim() : ''
 
-  form.reset()
-  setFeedback('Thank you! Your message has been sent. We will be in touch shortly.', 'success')
-})
+    const rawMessage = formData.get('message')
+    const message = typeof rawMessage === 'string' ? rawMessage.trim() : ''
+
+    if (!name || !email || !message) {
+      setFeedback('Please complete all fields before submitting.', 'error')
+      return
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailPattern.test(email)) {
+      setFeedback('Please enter a valid email address.', 'error')
+      return
+    }
+
+    form.reset()
+    setFeedback('Thank you! Your message has been sent. We will be in touch shortly.', 'success')
+  })
+}
 
 function setFeedback(message, status) {
   if (!feedback) return
