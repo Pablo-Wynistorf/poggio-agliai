@@ -326,32 +326,60 @@
     </div>
   </footer>
 
-  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-6" role="dialog"
+  <div id="lightbox" class="fixed inset-0 z-50 hidden flex-col bg-slate-950/95 text-brand-100" role="dialog"
     aria-modal="true" aria-hidden="true">
-    <div class="relative flex w-full max-w-4xl flex-col gap-6 rounded-3xl bg-white p-6 shadow-2xl">
+    <div class="flex items-center justify-between px-6 py-5 sm:px-10">
+      <div class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-300">Gallery Preview</div>
       <button type="button"
-        class="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
         data-lightbox-close aria-label="Close gallery">
         <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
           <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
         </svg>
       </button>
-      <div class="flex flex-col gap-4">
-        <img id="lightbox-image" alt="Gallery detail" class="max-h-[60vh] w-full rounded-2xl object-contain" />
-        <p id="lightbox-caption" class="text-center text-sm text-slate-600"></p>
+    </div>
+    <div class="relative flex flex-1 items-center justify-center px-4 pb-16 sm:px-10">
+      <button type="button"
+        class="group absolute left-4 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:bg-white/20 sm:flex"
+        data-lightbox-prev aria-label="View previous image">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
+          <path d="M15.75 19.5L8.25 12l7.5-7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+      <div class="flex max-w-5xl flex-1 flex-col items-center gap-6 text-center" data-lightbox-viewer>
+        <div class="relative flex w-full items-center justify-center">
+          <img id="lightbox-image" alt="Gallery detail"
+            class="max-h-[72vh] w-full rounded-3xl object-contain shadow-2xl shadow-black/60" />
+        </div>
+        <div class="space-y-2 px-4">
+          <h3 id="lightbox-title" class="font-display text-2xl font-semibold text-white sm:text-3xl"></h3>
+          <p id="lightbox-description" class="text-sm text-brand-100/80"></p>
+        </div>
       </div>
-      <div class="flex justify-center gap-4">
+      <button type="button"
+        class="group absolute right-4 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:bg-white/20 sm:flex"
+        data-lightbox-next aria-label="View next image">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
+          <path d="M8.25 4.5L15.75 12l-7.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col items-center justify-center gap-4 pb-8 text-brand-200 sm:flex-row">
+      <div class="flex items-center gap-3 sm:hidden">
         <button type="button"
-          class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-600"
-          data-lightbox-prev>
-          Previous
+          class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-white/20"
+          data-lightbox-prev-mobile>
+          Prev
         </button>
         <button type="button"
-          class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-600"
-          data-lightbox-next>
+          class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-white/20"
+          data-lightbox-next-mobile>
           Next
         </button>
       </div>
+      <div class="text-xs uppercase tracking-[0.35em]" id="lightbox-counter"></div>
     </div>
   </div>
 
@@ -367,13 +395,17 @@
 
   <template id="gallery-item-template">
     <button type="button"
-      class="group relative overflow-hidden rounded-3xl border border-brand-700/40 bg-brand-800/40 text-left shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:border-brand-500">
-      <img alt="Gallery" loading="lazy"
-        class="h-64 w-full object-cover transition duration-300 group-hover:scale-105" />
-      <span
-        class="absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-brand-100/90">
-        View
-      </span>
+      class="group relative block overflow-hidden rounded-3xl border border-brand-700/40 bg-brand-800/40 text-left shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:border-brand-400"
+      data-gallery-item>
+      <div class="relative overflow-hidden" data-image-wrapper>
+        <img alt="Gallery" loading="lazy"
+          class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+      </div>
+      <div
+        class="pointer-events-none absolute inset-x-4 bottom-4 rounded-2xl bg-black/45 p-4 text-white backdrop-blur-sm transition group-hover:bg-black/55">
+        <p class="text-sm font-semibold" data-item-title></p>
+        <p class="mt-1 text-xs text-brand-100/80" data-item-description></p>
+      </div>
     </button>
   </template>
 </body>
