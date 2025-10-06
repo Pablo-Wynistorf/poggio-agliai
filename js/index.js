@@ -26,7 +26,7 @@ const galleryData = [
       'first-livingroom-03-portrait.jpeg',
       'first-livingroom-04-portrait.jpeg',
       'first-livingroom-05.jpeg',
-      'second-livingroom-03.jpeg',
+      'second-living-room-03.jpeg',
       'second-living-room-02-portrait.jpeg',
       'second-living-room-03-portrait.jpeg',
       'second-livingroom-01.jpeg',
@@ -40,63 +40,32 @@ const galleryData = [
   },
   {
     title: 'First Suite',
-    description: 'A serene ensuite with private outlooks and an immersive 360° view.',
-    images: [
-      'first-bedroom-01.jpeg',
-      'first-bedroom-02.jpeg',
-      'first-bedroom-03.jpeg',
-      'first-bedroom-04.jpeg',
-      'first-bedroom-05.jpeg',
-      'first-bedroom-06.jpeg',
-      'first-bedrom-360.jpg'
-    ]
+    description: 'A serene ensuite with private outlooks for slow mornings and quiet nights.',
+    images: ['first-bedroom-01.jpeg', 'first-bedroom-02.jpeg', 'first-bedroom-03.jpeg', 'first-bedroom-04.jpeg', 'first-bedroom-05.jpeg', 'first-bedroom-06.jpeg']
   },
   {
     title: 'Second Suite',
-    description: 'Soft hues, artisanal textiles, and a panoramic tour at your fingertips.',
-    images: [
-      'second-bedroom-01.jpeg',
-      'second-bedroom-01-portrait.jpeg',
-      'second-bedroom-02-portrait.jpeg',
-      'second-bedroom-03-portrait.jpeg',
-      'second-bedrom-360.jpg'
-    ]
+    description: 'Soft hues and artisanal textiles set the tone for restorative rest.',
+    images: ['second-bedroom-01.jpeg', 'second-bedroom-01-portrait.jpeg', 'second-bedroom-02-portrait.jpeg', 'second-bedroom-03-portrait.jpeg']
   },
   {
     title: 'Third Suite',
     description: 'Crisp linens, natural light, and restful corners overlooking the countryside.',
-    images: [
-      'third-bedroom-01.jpeg',
-      'third-bedroom-01-portrait.jpeg',
-      'third-bedroom-02.jpeg',
-      'third-bedroom-03.jpeg',
-      'third-bedroom-04.jpeg'
-    ]
+    images: ['third-bedroom-01.jpeg', 'third-bedroom-01-portrait.jpeg', 'third-bedroom-02.jpeg', 'third-bedroom-03.jpeg', 'third-bedroom-04.jpeg']
   },
   {
     title: 'Fourth Suite',
     description: 'Contemporary comfort enriched with bespoke details for a peaceful retreat.',
-    images: [
-      'fourth-bedroom-01.jpeg',
-      'fourth-bedroom-02.jpeg',
-      'fourth-bedroom-03-portrait.jpeg',
-      'fourth-bedroom-04-portrait.jpeg',
-      'fourth-bedroom-05-portrait.jpeg'
-    ]
+    images: ['fourth-bedroom-01.jpeg', 'fourth-bedroom-02.jpeg', 'fourth-bedroom-03-portrait.jpeg', 'fourth-bedroom-04-portrait.jpeg', 'fourth-bedroom-05-portrait.jpeg']
   },
   {
     title: 'Spa Baths',
     description: 'Stone, light, and warm finishes create tranquil sanctuaries for relaxation.',
-    images: [
-      'first-bathroom-01-portrait.jpeg',
-      'first-bathroom-02-portrait.jpeg',
-      'first-bathroom-03-portrait.jpeg',
-      'first-bathroom-04-portrait.jpeg'
-    ]
+    images: ['first-bathroom-01-portrait.jpeg', 'first-bathroom-02-portrait.jpeg', 'first-bathroom-03-portrait.jpeg', 'first-bathroom-04-portrait.jpeg']
   }
 ]
 
-const panoramaImages = new Set(['first-bedrom-360.jpg', 'second-bedrom-360.jpg'])
+const assetPrefix = document.body?.dataset.assetPrefix ?? '.'
 
 const galleryWrapper = document.getElementById('gallery-wrapper')
 const sectionTemplate = document.getElementById('gallery-section-template')
@@ -111,42 +80,29 @@ if (galleryWrapper && sectionTemplate && itemTemplate) {
     const description = sectionClone.querySelector('p')
     const grid = sectionClone.querySelector('[data-gallery-grid]')
 
-    heading.textContent = group.title
-    description.textContent = group.description
+    if (heading) heading.textContent = group.title
+    if (description) description.textContent = group.description
 
     group.images.forEach((image) => {
       const itemClone = itemTemplate.content.cloneNode(true)
       const button = itemClone.querySelector('button')
       const img = itemClone.querySelector('img')
-      const icon = itemClone.querySelector('[data-360-icon]')
 
-      const isPortrait = image.includes('-portrait')
-      const isPanorama = panoramaImages.has(image)
+      if (!button || !img || !grid) return
+
       const itemIndex = galleryItemsFlat.length
+      const src = `${assetPrefix}/images/${image}`
 
-      if (isPortrait) {
-        button.classList.add('is-portrait')
-      } else {
-        button.classList.add('is-landscape')
-      }
-
-      img.src = `images/${image}`
+      img.src = src
       img.alt = createCaption(image)
-
-      if (isPanorama) {
-        icon.removeAttribute('hidden')
-      } else {
-        icon.setAttribute('hidden', '')
-      }
-
-      const itemData = {
-        src: `images/${image}`,
-        caption: createCaption(image),
-        type: isPanorama ? 'panorama' : 'image'
-      }
 
       button.dataset.index = String(itemIndex)
       button.addEventListener('click', () => openLightbox(itemIndex))
+
+      const itemData = {
+        src,
+        caption: createCaption(image)
+      }
 
       galleryItemsFlat.push(itemData)
       grid.appendChild(itemClone)
@@ -165,49 +121,36 @@ function createCaption(filename) {
 
 const lightbox = document.getElementById('lightbox')
 const lightboxImage = document.getElementById('lightbox-image')
-const panoramaViewer = document.getElementById('panorama-viewer')
-const panoramaSurface = panoramaViewer?.querySelector('[data-panorama-surface]')
 const captionEl = document.getElementById('lightbox-caption')
 const prevBtn = document.querySelector('[data-lightbox-prev]')
 const nextBtn = document.querySelector('[data-lightbox-next]')
 const closeBtn = document.querySelector('[data-lightbox-close]')
 
 let currentIndex = 0
-let panoramaState = { x: 50, y: 50, zoom: 100, isDragging: false, startX: 0, startY: 0 }
 
 function openLightbox(index) {
   if (!lightbox) return
   currentIndex = index
   updateLightbox(galleryItemsFlat[currentIndex])
-  lightbox.classList.add('is-active')
+  lightbox.classList.remove('hidden')
+  lightbox.classList.add('flex')
   lightbox.setAttribute('aria-hidden', 'false')
-  document.body.classList.add('is-locked')
+  document.body.classList.add('overflow-hidden')
 }
 
 function updateLightbox(item) {
-  if (!lightbox || !captionEl) return
-
+  if (!lightboxImage || !captionEl) return
+  lightboxImage.src = item.src
+  lightboxImage.alt = item.caption
   captionEl.textContent = item.caption
-
-  if (item.type === 'panorama' && panoramaViewer && panoramaSurface) {
-    lightboxImage?.classList.remove('is-visible')
-    panoramaViewer.classList.add('is-visible')
-    panoramaSurface.style.backgroundImage = `url(${item.src})`
-    panoramaState = { x: 50, y: 50, zoom: 110, isDragging: false, startX: 0, startY: 0 }
-    updatePanoramaTransform()
-  } else if (lightboxImage) {
-    panoramaViewer?.classList.remove('is-visible')
-    lightboxImage.classList.add('is-visible')
-    lightboxImage.src = item.src
-    lightboxImage.alt = item.caption
-  }
 }
 
 function closeLightbox() {
   if (!lightbox) return
-  lightbox.classList.remove('is-active')
+  lightbox.classList.add('hidden')
+  lightbox.classList.remove('flex')
   lightbox.setAttribute('aria-hidden', 'true')
-  document.body.classList.remove('is-locked')
+  document.body.classList.remove('overflow-hidden')
 }
 
 closeBtn?.addEventListener('click', closeLightbox)
@@ -229,7 +172,7 @@ nextBtn?.addEventListener('click', () => {
 })
 
 document.addEventListener('keydown', (event) => {
-  if (!lightbox?.classList.contains('is-active')) return
+  if (!lightbox || lightbox.classList.contains('hidden')) return
 
   if (event.key === 'Escape') {
     closeLightbox()
@@ -240,65 +183,24 @@ document.addEventListener('keydown', (event) => {
   }
 })
 
-function updatePanoramaTransform() {
-  if (!panoramaSurface) return
-  panoramaSurface.style.backgroundPosition = `${panoramaState.x}% ${panoramaState.y}%`
-  panoramaSurface.style.backgroundSize = `${panoramaState.zoom}% auto`
-}
-
-panoramaViewer?.addEventListener('pointerdown', (event) => {
-  panoramaState.isDragging = true
-  panoramaState.startX = event.clientX
-  panoramaState.startY = event.clientY
-  panoramaViewer.setPointerCapture(event.pointerId)
-  panoramaViewer.classList.add('panorama--dragging')
-})
-
-panoramaViewer?.addEventListener('pointermove', (event) => {
-  if (!panoramaState.isDragging) return
-
-  const deltaX = event.clientX - panoramaState.startX
-  const deltaY = event.clientY - panoramaState.startY
-
-  panoramaState.startX = event.clientX
-  panoramaState.startY = event.clientY
-
-  panoramaState.x = (panoramaState.x - deltaX * 0.2 + 100) % 100
-  panoramaState.y = Math.min(80, Math.max(20, panoramaState.y - deltaY * 0.2))
-  updatePanoramaTransform()
-})
-
-function endPanoramaDrag(event) {
-  panoramaState.isDragging = false
-  panoramaViewer?.releasePointerCapture(event.pointerId)
-  panoramaViewer?.classList.remove('panorama--dragging')
-}
-
-panoramaViewer?.addEventListener('pointerup', endPanoramaDrag)
-panoramaViewer?.addEventListener('pointercancel', endPanoramaDrag)
-
-panoramaViewer?.addEventListener('wheel', (event) => {
-  event.preventDefault()
-  const delta = Math.sign(event.deltaY)
-  panoramaState.zoom = Math.min(180, Math.max(80, panoramaState.zoom - delta * 5))
-  updatePanoramaTransform()
-})
-
 const menuToggle = document.querySelector('[data-menu-toggle]')
 const mobileMenu = document.querySelector('[data-mobile-menu]')
 const menuLinks = document.querySelectorAll('[data-menu-link]')
 
 if (menuToggle && mobileMenu) {
   menuToggle.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('is-open')
-    menuToggle.setAttribute('aria-expanded', String(isOpen))
+    const isHidden = mobileMenu.classList.toggle('hidden')
+    if (!isHidden) {
+      mobileMenu.classList.add('flex')
+    }
+    menuToggle.setAttribute('aria-expanded', String(!isHidden))
   })
 }
 
 menuLinks.forEach((link) => {
   link.addEventListener('click', () => {
     if (!mobileMenu || !menuToggle) return
-    mobileMenu.classList.remove('is-open')
+    mobileMenu.classList.add('hidden')
     menuToggle.setAttribute('aria-expanded', 'false')
   })
 })
@@ -331,12 +233,13 @@ form?.addEventListener('submit', (event) => {
 
 function setFeedback(message, status) {
   if (!feedback) return
+
   feedback.textContent = message
-  feedback.classList.remove('form__feedback--success', 'form__feedback--error')
+  feedback.className = 'text-sm font-medium'
 
   if (status === 'success') {
-    feedback.classList.add('form__feedback--success')
+    feedback.classList.add('text-brand-200')
   } else if (status === 'error') {
-    feedback.classList.add('form__feedback--error')
+    feedback.classList.add('text-rose-300')
   }
 }
