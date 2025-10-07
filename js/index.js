@@ -17,33 +17,23 @@ fetch(`${assetPrefix}/gallery-data.json`)
   .catch(err => console.error('Error loading gallery data:', err))
 
 function renderGallery(galleryData) {
-  if (!galleryWrapper || !sectionTemplate || !itemTemplate) return
+  if (!galleryWrapper || !sectionTemplate || !itemTemplate) return;
 
   galleryData.forEach(group => {
-    const sectionClone = sectionTemplate.content.cloneNode(true)
-    const heading = sectionClone.querySelector('h3')
-    const description = sectionClone.querySelector('p')
-    const grid = sectionClone.querySelector('[data-gallery-grid]')
+    const sectionClone = sectionTemplate.content.cloneNode(true);
+    const heading = sectionClone.querySelector('h3');
+    const description = sectionClone.querySelector('p');
+    const grid = sectionClone.querySelector('[data-gallery-grid]');
 
-    if (heading) heading.textContent = group.title
-    if (description) description.textContent = group.description
+    if (heading) heading.textContent = group.title;
+    if (description) description.textContent = group.description;
 
     group.images.forEach(image => {
-      const itemClone = itemTemplate.content.cloneNode(true)
-      const button = itemClone.querySelector('[data-gallery-item]')
-      const img = itemClone.querySelector('img')
-      const wrapper = itemClone.querySelector('[data-image-wrapper]')
-      const titleEl = itemClone.querySelector('[data-item-title]')
-      const descriptionEl = itemClone.querySelector('[data-item-description]')
-
-      if (!button || !img || !grid) return
-
-      const itemIndex = galleryItemsFlat.length
-      const normalized = normalizeImage(image)
-      const src = `${assetPrefix}/images/${normalized.file}`
-
-      const format = normalized.format || inferOrientation(normalized.file)
-      const fullscreen = normalized.fullscreen === true
+      const normalized = normalizeImage(image);
+      const itemIndex = galleryItemsFlat.length;
+      const src = `${assetPrefix}/images/${normalized.file}`;
+      const format = normalized.format || inferOrientation(normalized.file);
+      const fullscreen = normalized.fullscreen === true;
 
       const itemData = {
         src,
@@ -51,35 +41,71 @@ function renderGallery(galleryData) {
         description: normalized.description ?? '',
         format,
         fullscreen
-      }
+      };
 
-      img.src = src
-      img.alt = itemData.title
+      galleryItemsFlat.push(itemData);
 
-      wrapper.classList.add('w-full', 'relative')
-      if (itemData.format === 'portrait') wrapper.classList.add('aspect-[3/4]')
-      else wrapper.classList.add('aspect-[4/3]')
-      if (itemData.format === 'landscape') button.classList.add('sm:col-span-2')
+      // Create the gallery item button
+      const itemClone = itemTemplate.content.cloneNode(true);
+      const button = itemClone.querySelector('[data-gallery-item]');
+      const img = itemClone.querySelector('img');
+      const wrapper = itemClone.querySelector('[data-image-wrapper]');
+      const titleEl = itemClone.querySelector('[data-item-title]');
+      const descriptionEl = itemClone.querySelector('[data-item-description]');
+
+      img.src = src;
+      img.alt = itemData.title;
+      wrapper.classList.add('w-full', 'relative');
+      if (itemData.format === 'portrait') wrapper.classList.add('aspect-[3/4]');
+      else wrapper.classList.add('aspect-[4/3]');
+      if (itemData.format === 'landscape') button.classList.add('sm:col-span-2');
       if (itemData.fullscreen) {
-        button.classList.add('col-span-full', 'w-full')
-        button.style.gridColumn = '1 / -1'
+        button.classList.add('col-span-full', 'w-full');
+        button.style.gridColumn = '1 / -1';
       }
 
-      if (titleEl) titleEl.textContent = itemData.title
+      if (titleEl) titleEl.textContent = itemData.title;
       if (descriptionEl) {
-        if (itemData.description) descriptionEl.textContent = itemData.description
-        else descriptionEl.classList.add('hidden')
+        if (itemData.description) descriptionEl.textContent = itemData.description;
+        else descriptionEl.classList.add('hidden');
       }
 
-      button.dataset.index = String(itemIndex)
-      button.addEventListener('click', () => openLightbox(itemIndex))
+      button.dataset.index = String(itemIndex);
+      button.addEventListener('click', () => openLightbox(itemIndex));
 
-      galleryItemsFlat.push(itemData)
-      grid.appendChild(itemClone)
-    })
+      // ✅ Handle optional sidebox
+      if (normalized.sidebox) {
+        const side = normalized.sidebox.side === 'left' ? 'left' : 'right';
+        const sideBox = document.createElement('div');
+        sideBox.className = `
+          flex items-center justify-center p-6 rounded-3xl border border-brand-700/40 bg-brand-800/40 
+          text-brand-50 shadow-lg shadow-black/20 sm:col-span-1 aspect-[3/4]
+        `;
+        sideBox.innerHTML = `
+          <div class="text-center sm:text-${side === 'left' ? 'right' : 'left'} space-y-3">
+            <h4 class="font-display text-xl font-semibold">${itemData.title}</h4>
+            <p class="text-sm text-brand-100/80">${normalized.sidebox.text}</p>
+          </div>
+        `;
 
-    galleryWrapper.appendChild(sectionClone)
-  })
+        // Use a 2-column layout with image and box side-by-side
+        const container = document.createElement('div');
+        container.className = `grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch col-span-full`;
+        if (side === 'left') {
+          container.appendChild(sideBox);
+          container.appendChild(itemClone);
+        } else {
+          container.appendChild(itemClone);
+          container.appendChild(sideBox);
+        }
+        grid.appendChild(container);
+      } else {
+        grid.appendChild(itemClone);
+      }
+    });
+
+    galleryWrapper.appendChild(sectionClone);
+  });
 }
 
 // Helpers
