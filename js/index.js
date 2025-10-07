@@ -1,108 +1,24 @@
 // =====================
 // GALLERY CONFIGURATION
 // =====================
-const galleryData = [
-  {
-    title: 'Exterior & Grounds',
-    description: 'Stone facades, terracotta roofs, and fragrant gardens that frame every arrival and sunset.',
-    images: [
-      { file: 'home-foto.jpg', title: 'Golden hour arrival', description: 'Evening light washes over the farmhouse and the rolling vines beyond.', format: 'landscape', fullscreen: true },
-      { file: 'house-front-view-01.jpeg', title: 'Front Garden', format: 'portrait' },
-      { file: 'house-side-view-02.jpeg', title: 'Terrace', format: 'landscape' },
-      { file: 'house-side-view-03.jpeg', title: 'Backyard Garden', format: 'landscape' },
-      { file: 'house-side-view-03-portrait.jpeg', title: 'Stone Pathway', format: 'portrait' },
-      { file: 'house-side-view-04-portrait.jpeg', title: 'House Arcade', format: 'portrait' },
-      { file: 'house-back-view-parking-01.jpeg', title: 'Parking Area', format: 'landscape' },
-      { file: 'house-back-view-parking-02-portrait.jpeg', title: 'Small shed', description: 'Guests approach through the estate’s private olive grove.', format: 'portrait' },
-      { file: 'entrance-01-portrait.jpeg', title: 'Entrance', format: 'portrait' }
-    ]
-  },
-  {
-    title: 'Living Spaces',
-    description: 'Layered textures, curated art, and generous seating for conversations that last late into the evening.',
-    images: [
-      { file: 'first-livingroom-01.jpeg', title: 'Grand salon seating', format: 'landscape', fullscreen: true },
-      { file: 'first-livingroom-02.jpeg', title: 'Light-filled gathering room', format: 'landscape' },
-      { file: 'first-livingroom-03-portrait.jpeg', title: 'Rear house exit', format: 'portrait' },
-      { file: 'first-livingroom-04-portrait.jpeg', title: 'Living room details', format: 'portrait' },
-      { file: 'first-livingroom-05.jpeg', title: 'Evening ambience', format: 'landscape' },
-      { file: 'second-living-room-03.jpeg', title: 'First floor lounge', format: 'landscape' },
-      { file: 'second-living-room-02-portrait.jpeg', title: 'First floor lounge', format: 'portrait' },
-      { file: 'second-living-room-03-portrait.jpeg', title: 'First floor lounge', format: 'portrait' },
-      { file: 'second-livingroom-01.jpeg', title: 'First floor lounge', format: 'landscape' },
-      { file: 'staircase-01.jpeg', title: 'Sweeping staircase', format: 'landscape' }
-    ]
-  },
-  {
-    title: 'Chef’s Kitchen & Dining',
-    description: 'Bright culinary spaces made for sharing local produce and unforgettable meals.',
-    images: [
-      { file: 'kitchen-01.jpeg', title: 'Kitchen', format: 'landscape' },
-      { file: 'kitchen-02-portrait.jpeg', title: 'Kitchen Oven', format: 'portrait' }
-    ]
-  },
-  {
-    title: 'First Suite',
-    description: 'A serene ensuite with private outlooks for slow mornings and quiet nights.',
-    images: [
-      { file: 'first-bedroom-01.jpeg', title: 'Suite with countryside views', format: 'landscape', fullscreen: true },
-      { file: 'first-bedroom-02.jpeg', title: 'Soft neutral palette', format: 'landscape' },
-      { file: 'first-bedroom-03.jpeg', title: 'Bedside details', format: 'portrait' },
-      { file: 'first-bedroom-05.jpeg', title: 'Warm timber wardrobe', format: 'landscape' },
-      { file: 'third-bedroom-04.jpeg', title: 'Cozy ambiance', format: 'landscape' }
-    ]
-  },
-  {
-    title: 'Second Suite',
-    description: 'A spacious retreat with vaulted ceilings and a private terrace overlooking the vineyards.',
-    images: [
-      { file: 'second-bedroom-01.jpeg', title: 'Vaulted ceilings', format: 'landscape', fullscreen: true },
-      { file: 'second-bedroom-02-portrait.jpeg', title: 'Terrace access', format: 'portrait' },
-      { file: 'second-bedroom-03-portrait.jpeg', title: 'Natural light', format: 'portrait' }
-    ]
-  },
-  {
-    title: 'Third Suite',
-    description: 'A charming room with rustic beams and a tranquil garden outlook.',
-    images: [
-      { file: 'third-bedroom-01.jpeg', title: 'Rustic charm', format: 'landscape', fullscreen: true },
-      { file: 'third-bedroom-02.jpeg', title: 'Garden views', format: 'landscape' },
-      { file: 'third-bedroom-03.jpeg', title: 'Warm accents', format: 'landscape' }
-    ]
-  },
-  {
-    title: 'Fourth Suite',
-    description: 'A bright and airy room with traditional Tuscan decor and vineyard views.',
-    images: [
-      { file: 'fourth-bedroom-01.jpeg', title: 'Vineyard views', format: 'landscape', fullscreen: true },
-      { file: 'fourth-bedroom-02.jpeg', title: 'Traditional decor', format: 'landscape' },
-      { file: 'fourth-bedroom-03-portrait.jpeg', title: 'Light-filled space', format: 'portrait' },
-      { file: 'fourth-bedroom-04-portrait.jpeg', title: 'Comfortable furnishings', format: 'portrait' },
-      { file: 'fourth-bedroom-05-portrait.jpeg', title: 'Elegant touches', format: 'portrait' }
-    ]
-  },
-  {
-    title: 'Bathrooms',
-    description: 'Two bathrooms with modern fixtures and serene views.',
-    images: [
-      { file: 'first-bathroom-01-portrait.jpeg', title: 'Spa-like atmosphere', format: 'portrait'},
-      { file: 'first-bathroom-02-portrait.jpeg', title: 'Elegant vanities', format: 'portrait' },
-      { file: 'first-bathroom-03-portrait.jpeg', title: 'Shower', format: 'portrait' },
-      { file: 'first-bathroom-04-portrait.jpeg', title: '1 of 2 Toilets', format: 'portrait' }
-    ]
-  }
-]
-
-// =================
-// GALLERY RENDERING
-// =================
-const assetPrefix = document.body?.dataset.assetPrefix ?? '.'
+const assetPrefix = './assets'
 const galleryWrapper = document.getElementById('gallery-wrapper')
 const sectionTemplate = document.getElementById('gallery-section-template')
 const itemTemplate = document.getElementById('gallery-item-template')
 const galleryItemsFlat = []
 
-if (galleryWrapper && sectionTemplate && itemTemplate) {
+// Load gallery data dynamically from /assets/gallery-data.json
+fetch(`${assetPrefix}/gallery-data.json`)
+  .then(res => {
+    if (!res.ok) throw new Error('Failed to load gallery-data.json')
+    return res.json()
+  })
+  .then(galleryData => renderGallery(galleryData))
+  .catch(err => console.error('Error loading gallery data:', err))
+
+function renderGallery(galleryData) {
+  if (!galleryWrapper || !sectionTemplate || !itemTemplate) return
+
   galleryData.forEach(group => {
     const sectionClone = sectionTemplate.content.cloneNode(true)
     const heading = sectionClone.querySelector('h3')
