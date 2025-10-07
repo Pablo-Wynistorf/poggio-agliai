@@ -373,3 +373,69 @@ function setFeedback(msg, type) {
   feedback.className = 'text-sm font-medium'
   feedback.classList.add(type === 'success' ? 'text-brand-200' : 'text-rose-300')
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Make clicking anywhere inside the date box open the picker
+  const startBox = document.querySelector('#datepicker-range-start').closest('div');
+  const endBox = document.querySelector('#datepicker-range-end').closest('div');
+  const startInput = document.querySelector('#datepicker-range-start');
+  const endInput = document.querySelector('#datepicker-range-end');
+
+  // When clicking anywhere in the box, focus the input to trigger Flowbite
+  startBox.addEventListener('click', () => startInput.focus());
+  endBox.addEventListener('click', () => endInput.focus());
+
+  // Create independent Flowbite datepickers (no automatic range)
+  const startPicker = new Datepicker(startInput, {
+    autohide: true,
+    format: 'dd.mm.yyyy'
+  });
+  const endPicker = new Datepicker(endInput, {
+    autohide: true,
+    format: 'dd.mm.yyyy'
+  });
+
+  // Ensure the end date is always after the start date
+  startInput.addEventListener('changeDate', () => {
+    const start = parseDate(startInput.value);
+    const end = parseDate(endInput.value);
+
+    if (end && start && end <= start) {
+      endInput.value = '';
+    }
+  });
+
+  endInput.addEventListener('changeDate', () => {
+    const start = parseDate(startInput.value);
+    const end = parseDate(endInput.value);
+    if (start && end) {
+      const diffDays = Math.round((end - start) / (1000 * 60 * 60 * 24));
+      if (diffDays < 6) {
+        alert('The minimum stay is 6 nights. Please select a longer period.');
+        endInput.value = '';
+      }
+    }
+  });
+
+  // On form submit, verify dates again
+  const form = document.querySelector('#contact-form');
+  form.addEventListener('submit', (e) => {
+    const start = parseDate(startInput.value);
+    const end = parseDate(endInput.value);
+    if (start && end) {
+      const diffDays = Math.round((end - start) / (1000 * 60 * 60 * 24));
+      if (diffDays < 6) {
+        e.preventDefault();
+        alert('The minimum stay is 6 nights. Please select a longer period.');
+      }
+    }
+  });
+
+  function parseDate(str) {
+    const parts = str.split('.');
+    if (parts.length !== 3) return null;
+    const [day, month, year] = parts.map(Number);
+    return new Date(year, month - 1, day);
+  }
+});
