@@ -362,8 +362,10 @@ form?.addEventListener('submit', e => {
   const name = fd.get('name')?.toString().trim()
   const email = fd.get('email')?.toString().trim()
   const message = fd.get('message')?.toString().trim()
-  if (!name || !email || !message) return setFeedback('Please complete all fields before submitting.', 'error')
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setFeedback('Please enter a valid email address.', 'error')
+  if (!name || !email || !message)
+    return setFeedback('Please complete all fields before submitting.', 'error')
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    return setFeedback('Please enter a valid email address.', 'error')
   form.reset()
   setFeedback('Thank you! Your message has been sent.', 'success')
 })
@@ -374,68 +376,64 @@ function setFeedback(msg, type) {
   feedback.classList.add(type === 'success' ? 'text-brand-200' : 'text-rose-300')
 }
 
-
+// ====================
+// DATEPICKER HANDLING
+// ====================
 document.addEventListener("DOMContentLoaded", () => {
-  // Make clicking anywhere inside the date box open the picker
-  const startBox = document.querySelector('#datepicker-range-start').closest('div');
-  const endBox = document.querySelector('#datepicker-range-end').closest('div');
-  const startInput = document.querySelector('#datepicker-range-start');
-  const endInput = document.querySelector('#datepicker-range-end');
+  const startInput = document.querySelector('#datepicker-range-start')
+  const endInput = document.querySelector('#datepicker-range-end')
+  const startBox = startInput.closest('div')
+  const endBox = endInput.closest('div')
 
-  // When clicking anywhere in the box, focus the input to trigger Flowbite
-  startBox.addEventListener('click', () => startInput.focus());
-  endBox.addEventListener('click', () => endInput.focus());
+  // clicking anywhere in the box opens the picker
+  startBox.addEventListener('click', () => startInput._flatpickr.open())
+  endBox.addEventListener('click', () => endInput._flatpickr.open())
 
-  // Create independent Flowbite datepickers (no automatic range)
-  const startPicker = new Datepicker(startInput, {
-    autohide: true,
-    format: 'dd.mm.yyyy'
-  });
-  const endPicker = new Datepicker(endInput, {
-    autohide: true,
-    format: 'dd.mm.yyyy'
-  });
+  const today = new Date()
 
-  // Ensure the end date is always after the start date
-  startInput.addEventListener('changeDate', () => {
-    const start = parseDate(startInput.value);
-    const end = parseDate(endInput.value);
-
-    if (end && start && end <= start) {
-      endInput.value = '';
-    }
-  });
-
-  endInput.addEventListener('changeDate', () => {
-    const start = parseDate(startInput.value);
-    const end = parseDate(endInput.value);
-    if (start && end) {
-      const diffDays = Math.round((end - start) / (1000 * 60 * 60 * 24));
-      if (diffDays < 6) {
-        alert('The minimum stay is 6 nights. Please select a longer period.');
-        endInput.value = '';
+  const startPicker = flatpickr(startInput, {
+    dateFormat: "d/m/Y",
+    minDate: today,
+    disableMobile: true,
+    onChange: function (selectedDates) {
+      if (selectedDates.length > 0) {
+        const startDate = selectedDates[0]
+        // set min end date to +1 day
+        endPicker.set('minDate', new Date(startDate.getTime() + 24 * 60 * 60 * 1000))
+        // open the end picker immediately
+        setTimeout(() => endInput._flatpickr.open(), 100)
       }
     }
-  });
+  })
 
-  // On form submit, verify dates again
-  const form = document.querySelector('#contact-form');
-  form.addEventListener('submit', (e) => {
-    const start = parseDate(startInput.value);
-    const end = parseDate(endInput.value);
-    if (start && end) {
-      const diffDays = Math.round((end - start) / (1000 * 60 * 60 * 24));
-      if (diffDays < 6) {
-        e.preventDefault();
-        alert('The minimum stay is 6 nights. Please select a longer period.');
+  const endPicker = flatpickr(endInput, {
+    dateFormat: "d/m/Y",
+    disableMobile: true,
+    onChange: function (selectedDates) {
+      if (selectedDates.length > 0 && startInput.value) {
+        const startDate = flatpickr.parseDate(startInput.value, "d/m/Y")
+        const endDate = selectedDates[0]
+        const nights = (endDate - startDate) / (1000 * 60 * 60 * 24)
+        if (nights < 6) {
+          showAlert(`Minimum stay is 6 nights (selected: ${nights})`)
+          endInput.value = ""
+        }
       }
     }
-  });
+  })
 
-  function parseDate(str) {
-    const parts = str.split('.');
-    if (parts.length !== 3) return null;
-    const [day, month, year] = parts.map(Number);
-    return new Date(year, month - 1, day);
+  // bottom-center popup alert
+  function showAlert(msg) {
+    let alertBox = document.getElementById('alert-box')
+    if (!alertBox) {
+      alertBox = document.createElement('div')
+      alertBox.id = 'alert-box'
+      alertBox.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-sm font-semibold px-6 py-3 rounded-full shadow-lg transition-opacity duration-300 opacity-0 z-50'
+      document.body.appendChild(alertBox)
+    }
+    alertBox.textContent = msg
+    alertBox.style.opacity = '1'
+    setTimeout(() => (alertBox.style.opacity = '0'), 3500)
   }
-});
+})
+
