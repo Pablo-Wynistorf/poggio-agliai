@@ -1,3 +1,6 @@
+// =====================
+// GALLERY CONFIGURATION
+// =====================
 const galleryData = [
   {
     title: 'Exterior & Grounds',
@@ -6,156 +9,112 @@ const galleryData = [
       {
         file: 'home-foto.jpg',
         title: 'Golden hour arrival',
-        description: 'Evening light washes over the farmhouse and the rolling vines beyond.'
+        description: 'Evening light washes over the farmhouse and the rolling vines beyond.',
+        format: 'landscape',
+        fullscreen: true
       },
-      { file: 'house-front-view-01.jpeg', title: 'Courtyard welcome' },
-      {
-        file: 'house-side-view-01.jpeg',
-        title: 'Cypress-lined terrace',
-        description: 'A sunlit terrace framed by cypress trees, perfect for lazy aperitivo hours.'
-      },
-      { file: 'house-side-view-02.jpeg', title: 'Tuscan farmhouse profile' },
-      { file: 'house-side-view-03.jpeg', title: 'Stone walls and olive groves' },
-      { file: 'house-side-view-03-portrait.jpeg', title: 'Olive grove pathway' },
-      { file: 'house-side-view-04-portrait.jpeg', title: 'Morning light on the pergola' },
-      { file: 'house-back-view-parking-01.jpeg', title: 'Drive lined with rosemary' },
+      { file: 'house-front-view-01.jpeg', title: 'Front Garden', format: 'portrait' },
+      { file: 'house-side-view-02.jpeg', title: 'Terrace', format: 'landscape' },
+      { file: 'house-side-view-03.jpeg', title: 'Backyard Garden', format: 'landscape' },
+      { file: 'house-side-view-03-portrait.jpeg', title: 'Stone Pathway', format: 'portrait' },
+      { file: 'house-side-view-04-portrait.jpeg', title: 'House Arcade', format: 'portrait' },
+      { file: 'house-back-view-parking-01.jpeg', title: 'Parking Area', format: 'landscape' },
       {
         file: 'house-back-view-parking-02-portrait.jpeg',
-        title: 'Arrival amongst the olives',
-        description: 'Guests approach through the estate’s private olive grove.'
+        title: 'Small shed',
+        description: 'Guests approach through the estate’s private olive grove.',
+        format: 'portrait'
       },
-      { file: 'house-back-view-03-portrait.jpeg', title: 'Sunset courtyard silhouette' },
-      {
-        file: 'house-outside-entrance-view-01-portrait.jpeg',
-        title: 'Arched stone entrance',
-        description: 'Hand-hewn stonework frames the original entry to the farmhouse.'
-      },
-      { file: 'entrance-01-portrait.jpeg', title: 'Cotto tiles and antique doors' }
+      { file: 'entrance-01-portrait.jpeg', title: 'Entrance', format: 'portrait' }
     ]
   },
   {
     title: 'Living Spaces',
     description: 'Layered textures, curated art, and generous seating for conversations that last late into the evening.',
     images: [
-      {
-        file: 'first-livingroom-01.jpeg',
-        title: 'Grand salon seating',
-        description: 'Comfortable sofas invite lingering conversations beside curated artworks.'
-      },
-      { file: 'first-livingroom-02.jpeg', title: 'Light-filled gathering room' },
-      { file: 'first-livingroom-03-portrait.jpeg', title: 'Reading corner' },
-      { file: 'first-livingroom-04-portrait.jpeg', title: 'Heritage beams' },
-      { file: 'first-livingroom-05.jpeg', title: 'Evening ambience' },
-      { file: 'second-living-room-03.jpeg', title: 'Intimate lounge' },
-      {
-        file: 'second-living-room-02-portrait.jpeg',
-        title: 'Fireplace focus',
-        description: 'The second lounge centres on a sculptural hearth for cosy nights in.'
-      },
-      { file: 'second-living-room-03-portrait.jpeg', title: 'Artwork and textures' },
-      { file: 'second-livingroom-01.jpeg', title: 'Open-plan living' },
-      { file: 'staircase-01.jpeg', title: 'Sweeping staircase' }
+      { file: 'first-livingroom-01.jpeg', title: 'Grand salon seating', format: 'landscape', fullscreen: true },
+      { file: 'first-livingroom-02.jpeg', title: 'Light-filled gathering room', format: 'landscape' },
+      { file: 'first-livingroom-03-portrait.jpeg', title: 'Rear house exit', format: 'portrait' },
+      { file: 'first-livingroom-04-portrait.jpeg', title: 'Living room details', format: 'portrait' },
+      { file: 'first-livingroom-05.jpeg', title: 'Evening ambience', format: 'landscape' },
+      { file: 'second-living-room-03.jpeg', title: 'First floor lounge', format: 'landscape' },
+      { file: 'second-living-room-02-portrait.jpeg', title: 'First floor lounge', format: 'portrait' },
+      { file: 'second-living-room-03-portrait.jpeg', title: 'First floor lounge', format: 'portrait' },
+      { file: 'second-livingroom-01.jpeg', title: 'First floor lounge', format: 'landscape' },
+      { file: 'staircase-01.jpeg', title: 'Sweeping staircase', format: 'landscape' }
     ]
   },
   {
     title: 'Chef’s Kitchen & Dining',
     description: 'Bright culinary spaces made for sharing local produce and unforgettable meals.',
     images: [
-      {
-        file: 'kitchen-01.jpeg',
-        title: 'Chef’s kitchen',
-        description: 'A generous island and premium appliances make entertaining effortless.'
-      },
-      { file: 'kitchen-01-portrait.jpeg', title: 'Tuscan pantry details' },
-      { file: 'kitchen-02-portrait.jpeg', title: 'Breakfast nook' }
+      { file: 'kitchen-01.jpeg', title: 'Kitchen', format: 'landscape' },
+      { file: 'kitchen-02-portrait.jpeg', title: 'Kitchen Oven', format: 'portrait' }
     ]
   },
   {
     title: 'First Suite',
     description: 'A serene ensuite with private outlooks for slow mornings and quiet nights.',
     images: [
-      {
-        file: 'first-bedroom-01.jpeg',
-        title: 'Suite with countryside views',
-        description: 'Large windows frame the Val di Cornia beyond crisp linens.'
-      },
-      { file: 'first-bedroom-02.jpeg', title: 'Soft neutral palette' },
-      { file: 'first-bedroom-03.jpeg', title: 'Bedside details' },
-      { file: 'first-bedroom-04.jpeg', title: 'Ensuite sitting area' },
-      { file: 'first-bedroom-05.jpeg', title: 'Warm timber wardrobe' },
-      { file: 'first-bedroom-06.jpeg', title: 'Textured throws and cushions' }
+      { file: 'first-bedroom-01.jpeg', title: 'Suite with countryside views', format: 'landscape', fullscreen: true },
+      { file: 'first-bedroom-02.jpeg', title: 'Soft neutral palette', format: 'landscape' },
+      { file: 'first-bedroom-03.jpeg', title: 'Bedside details', format: 'portriat' },
+      { file: 'first-bedroom-05.jpeg', title: 'Warm timber wardrobe', format: 'landscape' },
+      { file: 'third-bedroom-04.jpeg', title: 'Cozy ambiance', format: 'landscape' },
     ]
   },
   {
     title: 'Second Suite',
-    description: 'Soft hues and artisanal textiles set the tone for restorative rest.',
+    description: 'A spacious retreat with vaulted ceilings and a private terrace overlooking the vineyards.',
     images: [
-      { file: 'second-bedroom-01.jpeg', title: 'Second suite overview' },
-      {
-        file: 'second-bedroom-01-portrait.jpeg',
-        title: 'Window seat moments',
-        description: 'A cushioned nook perfect for morning espresso and quiet reading.'
-      },
-      { file: 'second-bedroom-02-portrait.jpeg', title: 'Layered linens' },
-      { file: 'second-bedroom-03-portrait.jpeg', title: 'Wardrobe and vanity' }
+      { file: 'second-bedroom-01.jpeg', title: 'Vaulted ceilings', format: 'landscape', fullscreen: true },
+      { file: 'second-bedroom-02-portrait.jpeg', title: 'Terrace access', format: 'portrait' },
+      { file: 'second-bedroom-03-portrait.jpeg', title: 'Natural light', format: 'portrait' }
     ]
   },
   {
     title: 'Third Suite',
-    description: 'Crisp linens, natural light, and restful corners overlooking the countryside.',
+    description: 'A charming room with rustic beams and a tranquil garden outlook.',
     images: [
-      { file: 'third-bedroom-01.jpeg', title: 'Sun-washed third suite' },
-      { file: 'third-bedroom-01-portrait.jpeg', title: 'Textured wall art' },
-      {
-        file: 'third-bedroom-02.jpeg',
-        title: 'Canopy bed retreat',
-        description: 'An airy canopy and rattan textures create a calming hideaway.'
-      },
-      { file: 'third-bedroom-03.jpeg', title: 'Closet and dressing area' },
-      { file: 'third-bedroom-04.jpeg', title: 'Quiet reading chair' }
+      { file: 'third-bedroom-01.jpeg', title: 'Rustic charm', format: 'landscape', fullscreen: true },
+      { file: 'third-bedroom-02.jpeg', title: 'Garden views', format: 'landscape' },
+      { file: 'third-bedroom-03.jpeg', title: 'Warm accents', format: 'landscape' }
     ]
   },
   {
     title: 'Fourth Suite',
-    description: 'Contemporary comfort enriched with bespoke details for a peaceful retreat.',
+    description: 'A bright and airy room with traditional Tuscan decor and vineyard views.',
     images: [
-      {
-        file: 'fourth-bedroom-01.jpeg',
-        title: 'Ground floor bedroom',
-        description: 'Earthy textiles and sculptural lighting create a restful atmosphere.'
-      },
-      { file: 'fourth-bedroom-02.jpeg', title: 'Garden-view windows' },
-      { file: 'fourth-bedroom-03-portrait.jpeg', title: 'Bedside pendant lights' },
-      { file: 'fourth-bedroom-04-portrait.jpeg', title: 'Layered organic textures' },
-      { file: 'fourth-bedroom-05-portrait.jpeg', title: 'Ensuite entry' }
+      { file: 'fourth-bedroom-01.jpeg', title: 'Vineyard views', format: 'landscape', fullscreen: true },
+      { file: 'fourth-bedroom-02.jpeg', title: 'Traditional decor', format: 'landscape' },
+      { file: 'fourth-bedroom-03-portrait.jpeg', title: 'Light-filled space', format: 'portrait' },
+      { file: 'fourth-bedroom-04-portrait.jpeg', title: 'Comfortable furnishings', format: 'portrait' },
+      { file: 'fourth-bedroom-05-portrait.jpeg', title: 'Elegant touches', format: 'portrait' }
     ]
   },
   {
-    title: 'Spa Baths',
-    description: 'Stone, light, and warm finishes create tranquil sanctuaries for relaxation.',
+    title: 'Bathrooms',
+    description: 'Two bathrooms with modern fixtures and serene views.',
     images: [
-      { file: 'first-bathroom-01-portrait.jpeg', title: 'Freestanding tub' },
-      {
-        file: 'first-bathroom-02-portrait.jpeg',
-        title: 'Travertine vanities',
-        description: 'Natural stone, timber shelving, and brass fixtures elevate each ritual.'
-      },
-      { file: 'first-bathroom-03-portrait.jpeg', title: 'Rain shower detail' },
-      { file: 'first-bathroom-04-portrait.jpeg', title: 'Soft lighting and textures' }
+      { file: 'first-bathroom-01-portrait.jpeg', title: 'Spa-like atmosphere', format: 'portrait'},
+      { file: 'first-bathroom-02-portrait.jpeg', title: 'Elegant vanities', format: 'portrait' },
+      { file: 'first-bathroom-03-portrait.jpeg', title: 'Shower', format: 'portrait' },
+      { file: 'first-bathroom-04-portrait.jpeg', title: '1 of 2 Toilets', format: 'portrait' }
     ]
   }
 ]
 
+// =================
+// GALLERY RENDERING
+// =================
 const assetPrefix = document.body?.dataset.assetPrefix ?? '.'
-
 const galleryWrapper = document.getElementById('gallery-wrapper')
 const sectionTemplate = document.getElementById('gallery-section-template')
 const itemTemplate = document.getElementById('gallery-item-template')
-
 const galleryItemsFlat = []
 
 if (galleryWrapper && sectionTemplate && itemTemplate) {
-  galleryData.forEach((group) => {
+  galleryData.forEach(group => {
     const sectionClone = sectionTemplate.content.cloneNode(true)
     const heading = sectionClone.querySelector('h3')
     const description = sectionClone.querySelector('p')
@@ -164,7 +123,7 @@ if (galleryWrapper && sectionTemplate && itemTemplate) {
     if (heading) heading.textContent = group.title
     if (description) description.textContent = group.description
 
-    group.images.forEach((image) => {
+    group.images.forEach(image => {
       const itemClone = itemTemplate.content.cloneNode(true)
       const button = itemClone.querySelector('[data-gallery-item]')
       const img = itemClone.querySelector('img')
@@ -175,42 +134,51 @@ if (galleryWrapper && sectionTemplate && itemTemplate) {
       if (!button || !img || !grid) return
 
       const itemIndex = galleryItemsFlat.length
-      const normalizedImage = normalizeImage(image)
-      const src = `${assetPrefix}/images/${normalizedImage.file}`
+      const normalized = normalizeImage(image)
+      const src = `${assetPrefix}/images/${normalized.file}`
+
+      const format = normalized.format || inferOrientation(normalized.file)
+      const fullscreen = normalized.fullscreen === true
 
       const itemData = {
         src,
-        title: normalizedImage.title ?? createTitle(normalizedImage.file),
-        description: normalizedImage.description ?? '',
-        orientation: normalizedImage.orientation ?? inferOrientation(normalizedImage.file)
+        title: normalized.title ?? createTitle(normalized.file),
+        description: normalized.description ?? '',
+        format,
+        fullscreen
       }
 
       img.src = src
       img.alt = itemData.title
 
-      if (wrapper) {
-        wrapper.classList.add('w-full', 'relative')
-        if (itemData.orientation === 'portrait') {
-          wrapper.classList.add('aspect-[3/4]')
-        } else {
-          wrapper.classList.add('aspect-[4/3]')
-        }
+      // Aspect ratio & width
+      wrapper.classList.add('w-full', 'relative')
+      if (itemData.format === 'portrait') {
+        wrapper.classList.add('aspect-[3/4]')
+      } else {
+        wrapper.classList.add('aspect-[4/3]')
       }
 
-      if (titleEl) {
-        titleEl.textContent = itemData.title
+      // Landscape = double width
+      if (itemData.format === 'landscape') {
+        button.classList.add('sm:col-span-2')
       }
 
+      // Fullscreen images span entire width
+      if (itemData.fullscreen) {
+        button.classList.add('col-span-full', 'w-full')
+        button.style.gridColumn = '1 / -1'
+      }
+
+      if (titleEl) titleEl.textContent = itemData.title
       if (descriptionEl) {
-        if (itemData.description) {
-          descriptionEl.textContent = itemData.description
-        } else {
-          descriptionEl.classList.add('hidden')
-        }
+        if (itemData.description) descriptionEl.textContent = itemData.description
+        else descriptionEl.classList.add('hidden')
       }
 
       button.dataset.index = String(itemIndex)
-      button.dataset.orientation = itemData.orientation
+      button.dataset.format = itemData.format
+      if (itemData.fullscreen) button.dataset.fullscreen = 'true'
       button.setAttribute('aria-label', `Open ${itemData.title}`)
       button.setAttribute('title', itemData.title)
       button.addEventListener('click', () => openLightbox(itemIndex))
@@ -223,10 +191,9 @@ if (galleryWrapper && sectionTemplate && itemTemplate) {
   })
 }
 
+// Helpers
 function normalizeImage(image) {
-  if (typeof image === 'string') {
-    return { file: image }
-  }
+  if (typeof image === 'string') return { file: image }
   return image
 }
 
@@ -234,13 +201,16 @@ function createTitle(filename) {
   return filename
     .replace(/[-_]+/g, ' ')
     .replace(/\.[^.]+$/, '')
-    .replace(/\b(\w)/g, (match) => match.toUpperCase())
+    .replace(/\b(\w)/g, m => m.toUpperCase())
 }
 
 function inferOrientation(filename) {
   return filename.includes('portrait') ? 'portrait' : 'landscape'
 }
 
+// ==============
+// LIGHTBOX LOGIC
+// ==============
 const lightbox = document.getElementById('lightbox')
 const lightboxImage = document.getElementById('lightbox-image')
 const titleEl = document.getElementById('lightbox-title')
@@ -252,7 +222,6 @@ const nextBtn = document.querySelector('[data-lightbox-next]')
 const prevBtnMobile = document.querySelector('[data-lightbox-prev-mobile]')
 const nextBtnMobile = document.querySelector('[data-lightbox-next-mobile]')
 const closeBtn = document.querySelector('[data-lightbox-close]')
-
 let currentIndex = 0
 
 function openLightbox(index) {
@@ -266,54 +235,24 @@ function openLightbox(index) {
 }
 
 function updateLightbox(item) {
-  if (!lightboxImage) return
-
   lightboxImage.src = item.src
   lightboxImage.alt = item.title
+  titleEl.textContent = item.title
+  descriptionEl.textContent = item.description || ''
+  counterEl.textContent = `${currentIndex + 1} / ${galleryItemsFlat.length}`
+  viewerEl.dataset.format = item.format
 
-  if (titleEl) {
-    titleEl.textContent = item.title
-  }
-
-  if (descriptionEl) {
-    if (item.description) {
-      descriptionEl.textContent = item.description
-      descriptionEl.classList.remove('hidden')
-    } else {
-      descriptionEl.textContent = ''
-      descriptionEl.classList.add('hidden')
-    }
-  }
-
-  if (counterEl) {
-    counterEl.textContent = `${currentIndex + 1} / ${galleryItemsFlat.length}`
-  }
-
-  if (viewerEl) {
-    viewerEl.dataset.orientation = item.orientation
-    if (item.orientation === 'portrait') {
-      viewerEl.style.maxWidth = 'min(520px, 90vw)'
-    } else {
-      viewerEl.style.maxWidth = ''
-    }
-  }
-
-  lightboxImage.classList.remove('w-auto')
-  lightboxImage.classList.remove('max-h-[80vh]')
-  lightboxImage.classList.remove('max-h-[82vh]')
-  lightboxImage.classList.add('w-full')
-  lightboxImage.classList.add('max-h-[72vh]')
-
-  if (item.orientation === 'portrait') {
-    lightboxImage.classList.remove('w-full')
-    lightboxImage.classList.add('w-auto')
-    lightboxImage.classList.remove('max-h-[72vh]')
-    lightboxImage.classList.add('max-h-[82vh]')
+  // Adjust size logic
+  if (item.fullscreen) {
+    viewerEl.style.maxWidth = '100%'
+  } else if (item.format === 'portrait') {
+    viewerEl.style.maxWidth = 'min(520px, 90vw)'
+  } else {
+    viewerEl.style.maxWidth = ''
   }
 }
 
 function closeLightbox() {
-  if (!lightbox) return
   lightbox.classList.add('hidden')
   lightbox.classList.remove('flex')
   lightbox.setAttribute('aria-hidden', 'true')
@@ -321,43 +260,27 @@ function closeLightbox() {
 }
 
 closeBtn?.addEventListener('click', closeLightbox)
+lightbox?.addEventListener('click', e => { if (e.target === lightbox) closeLightbox() })
+prevBtn?.addEventListener('click', () => show(-1))
+nextBtn?.addEventListener('click', () => show(1))
+prevBtnMobile?.addEventListener('click', () => show(-1))
+nextBtnMobile?.addEventListener('click', () => show(1))
 
-lightbox?.addEventListener('click', (event) => {
-  if (event.target === lightbox) {
-    closeLightbox()
-  }
-})
-
-const showPrevious = () => {
-  currentIndex = (currentIndex - 1 + galleryItemsFlat.length) % galleryItemsFlat.length
+function show(step) {
+  currentIndex = (currentIndex + step + galleryItemsFlat.length) % galleryItemsFlat.length
   updateLightbox(galleryItemsFlat[currentIndex])
 }
 
-const showNext = () => {
-  currentIndex = (currentIndex + 1) % galleryItemsFlat.length
-  updateLightbox(galleryItemsFlat[currentIndex])
-}
-
-prevBtn?.addEventListener('click', showPrevious)
-nextBtn?.addEventListener('click', showNext)
-prevBtnMobile?.addEventListener('click', showPrevious)
-nextBtnMobile?.addEventListener('click', showNext)
-
-document.addEventListener('keydown', (event) => {
-  if (!lightbox || lightbox.classList.contains('hidden')) return
-
-  if (event.key === 'Escape') {
-    closeLightbox()
-  } else if (event.key === 'ArrowRight') {
-    showNext()
-  } else if (event.key === 'ArrowLeft') {
-    showPrevious()
-  }
+document.addEventListener('keydown', e => {
+  if (lightbox.classList.contains('hidden')) return
+  if (e.key === 'Escape') closeLightbox()
+  if (e.key === 'ArrowRight') show(1)
+  if (e.key === 'ArrowLeft') show(-1)
 })
 
-const menuLinks = document.querySelectorAll('[data-menu-link]')
-
-
+// ====================
+// CONTACT FORM HANDLER
+// ====================
 const form = document.getElementById('contact-form')
 const feedback = document.getElementById('form-feedback')
 
@@ -386,13 +309,8 @@ form?.addEventListener('submit', (event) => {
 
 function setFeedback(message, status) {
   if (!feedback) return
-
   feedback.textContent = message
   feedback.className = 'text-sm font-medium'
-
-  if (status === 'success') {
-    feedback.classList.add('text-brand-200')
-  } else if (status === 'error') {
-    feedback.classList.add('text-rose-300')
-  }
+  if (status === 'success') feedback.classList.add('text-brand-200')
+  else if (status === 'error') feedback.classList.add('text-rose-300')
 }
