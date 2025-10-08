@@ -303,6 +303,7 @@ form?.addEventListener('submit', async e => {
   const fd = new FormData(form)
   const name = fd.get('name')?.toString().trim()
   const email = fd.get('email')?.toString().trim()
+  const guests = fd.get('guests')?.toString().trim()
   const message = fd.get('message')?.toString().trim()
   const start = fd.get('start')?.toString().trim()
   const end = fd.get('end')?.toString().trim()
@@ -323,7 +324,7 @@ form?.addEventListener('submit', async e => {
       const res = await fetch('https://ucs565k35fstrkdxejprc4uaoa0zaixg.lambda-url.eu-central-1.on.aws', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message, start, end, recaptchaToken: token })
+        body: JSON.stringify({ name, email, message, guests, start, end, recaptchaToken: token })
       })
 
       if (res.ok) {
