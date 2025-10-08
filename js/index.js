@@ -7,6 +7,92 @@ const sectionTemplate = document.getElementById('gallery-section-template')
 const itemTemplate = document.getElementById('gallery-item-template')
 const galleryItemsFlat = []
 
+const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+const animationState = {
+  observer: null,
+  prefersReduced: motionQuery.matches,
+  tracked: new WeakSet(),
+  loadListenerBound: false
+}
+
+function ensureAnimationObserver() {
+  if (animationState.prefersReduced) return null
+  if (animationState.observer) return animationState.observer
+
+  animationState.observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible')
+        obs.unobserve(entry.target)
+      }
+    })
+  }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' })
+
+  if (!animationState.loadListenerBound) {
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.will-animate').forEach(el => {
+        if (el.classList.contains('is-visible')) return
+        const rect = el.getBoundingClientRect()
+        if (rect.top <= window.innerHeight * 0.9) {
+          el.classList.add('is-visible')
+          animationState.observer?.unobserve(el)
+        }
+      })
+    })
+    animationState.loadListenerBound = true
+  }
+
+  return animationState.observer
+}
+
+function registerAnimatedElements(root = document) {
+  const scope = root.querySelectorAll ? root : document
+  const elements = scope.querySelectorAll ? scope.querySelectorAll('[data-animate]') : document.querySelectorAll('[data-animate]')
+  const collection = []
+
+  if (scope instanceof Element && scope.hasAttribute('data-animate')) {
+    collection.push(scope)
+  }
+
+  elements.forEach(el => collection.push(el))
+  if (!collection.length) return
+
+  if (animationState.prefersReduced) {
+    collection.forEach(el => {
+      el.classList.add('is-visible')
+    })
+    return
+  }
+
+  const observer = ensureAnimationObserver()
+
+  collection.forEach(el => {
+    if (animationState.tracked.has(el)) return
+    animationState.tracked.add(el)
+    if (!el.classList.contains('will-animate')) el.classList.add('will-animate')
+
+    const delayAttr = el.getAttribute('data-animate-delay')
+    if (delayAttr) {
+      const delay = Number(delayAttr)
+      if (!Number.isNaN(delay)) el.style.setProperty('--animate-delay', `${delay}s`)
+    }
+
+    observer?.observe(el)
+  })
+}
+
+motionQuery.addEventListener?.('change', event => {
+  animationState.prefersReduced = event.matches
+  animationState.tracked = new WeakSet()
+  if (event.matches) {
+    animationState.observer?.disconnect()
+    animationState.observer = null
+    document.querySelectorAll('[data-animate]').forEach(el => el.classList.add('is-visible'))
+  } else {
+    registerAnimatedElements()
+  }
+})
+
 // Load gallery data dynamically from /assets/gallery-data.json
 fetch(`${assetPrefix}/gallery-data.json`)
   .then(res => {
@@ -21,6 +107,11 @@ function renderGallery(galleryData) {
 
   galleryData.forEach(group => {
     const sectionClone = sectionTemplate.content.cloneNode(true);
+    const sectionElement = sectionClone.querySelector('section');
+    if (sectionElement && !sectionElement.hasAttribute('data-animate')) {
+      sectionElement.setAttribute('data-animate', 'fade-up');
+      sectionElement.setAttribute('data-animate-delay', '0.12');
+    }
     const heading = sectionClone.querySelector('h3');
     const description = sectionClone.querySelector('p');
     const grid = sectionClone.querySelector('[data-gallery-grid]');
@@ -64,6 +155,12 @@ function renderGallery(galleryData) {
         button.style.gridColumn = '1 / -1';
       }
 
+      if (button) {
+        button.dataset.animate = button.dataset.animate || 'fade-up';
+        const delay = 0.12 + (itemIndex % 4) * 0.06;
+        button.dataset.animateDelay = delay.toFixed(2);
+      }
+
       if (titleEl) titleEl.textContent = itemData.title;
       if (descriptionEl) {
         if (itemData.description) descriptionEl.textContent = itemData.description;
@@ -78,7 +175,7 @@ function renderGallery(galleryData) {
         const side = normalized.sidebox.side === 'left' ? 'left' : 'right';
         const sideBox = document.createElement('div');
         sideBox.className = `
-          flex items-center justify-center p-6 rounded-3xl border border-brand-700/40 bg-brand-800/40 
+          flex items-center justify-center p-6 rounded-3xl border border-brand-700/40 bg-brand-800/40
           text-brand-50 shadow-lg shadow-black/20 sm:col-span-1 aspect-[3/4]
         `;
         sideBox.innerHTML = `
@@ -87,10 +184,14 @@ function renderGallery(galleryData) {
             <p class="text-sm text-brand-100/80">${normalized.sidebox.text}</p>
           </div>
         `;
+        sideBox.dataset.animate = side === 'left' ? 'fade-right' : 'fade-left';
+        sideBox.dataset.animateDelay = '0.24';
 
         // Use a 2-column layout with image and box side-by-side
         const container = document.createElement('div');
         container.className = `grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch col-span-full`;
+        container.dataset.animate = 'fade-up';
+        container.dataset.animateDelay = '0.18';
         if (side === 'left') {
           container.appendChild(sideBox);
           container.appendChild(itemClone);
@@ -105,6 +206,7 @@ function renderGallery(galleryData) {
     });
 
     galleryWrapper.appendChild(sectionClone);
+    if (sectionElement) registerAnimatedElements(sectionElement);
   });
 }
 
@@ -349,6 +451,7 @@ function setFeedback(msg, type) {
 // DATEPICKER HANDLING
 // ====================
 document.addEventListener("DOMContentLoaded", () => {
+  registerAnimatedElements();
   const startInput = document.querySelector('#datepicker-range-start')
   const endInput = document.querySelector('#datepicker-range-end')
   const startBox = startInput.closest('div')
