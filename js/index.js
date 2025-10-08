@@ -406,4 +406,3 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => (alertBox.style.opacity = '0'), 3500)
   }
 })
-
