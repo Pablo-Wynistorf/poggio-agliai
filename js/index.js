@@ -10,9 +10,66 @@ const galleryItemsFlat = []
 const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 const animationState = {
   observer: null,
-  prefersReduced: motionQuery.matches,
-  tracked: new WeakSet(),
-  loadListenerBound: false
+  prefersReduced: motionQuery.matches
+}
+
+const animationPresets = {
+  fade: {
+    initial: ['opacity-0', 'scale-95'],
+    visible: ['opacity-100', 'scale-100']
+  },
+  'fade-up': {
+    initial: ['opacity-0', 'translate-y-8'],
+    visible: ['opacity-100', 'translate-y-0']
+  },
+  'fade-down': {
+    initial: ['opacity-0', '-translate-y-8'],
+    visible: ['opacity-100', 'translate-y-0']
+  },
+  'fade-left': {
+    initial: ['opacity-0', '-translate-x-8'],
+    visible: ['opacity-100', 'translate-x-0']
+  },
+  'fade-right': {
+    initial: ['opacity-0', 'translate-x-8'],
+    visible: ['opacity-100', 'translate-x-0']
+  },
+  scale: {
+    initial: ['opacity-0', 'scale-95'],
+    visible: ['opacity-100', 'scale-100']
+  }
+}
+
+const baseAnimationClasses = [
+  'transition-all',
+  'duration-[900ms]',
+  'ease-[cubic-bezier(0.25,0.8,0.25,1)]',
+  'will-change-[transform,opacity]',
+  'motion-reduce:transition-none',
+  'motion-reduce:transform-none',
+  'motion-reduce:opacity-100'
+]
+
+function getAnimationPreset(el) {
+  const key = el.getAttribute('data-animate') || 'fade'
+  return animationPresets[key] || animationPresets.fade
+}
+
+function applyBaseAnimationClasses(el) {
+  baseAnimationClasses.forEach(cls => el.classList.add(cls))
+}
+
+function applyInitialState(el, preset) {
+  preset.visible?.forEach(cls => el.classList.remove(cls))
+  preset.initial?.forEach(cls => el.classList.add(cls))
+  el.dataset.animatePrepared = 'true'
+  el.dataset.animateVisible = 'false'
+}
+
+function applyVisibleState(el, preset) {
+  preset.initial?.forEach(cls => el.classList.remove(cls))
+  preset.visible?.forEach(cls => el.classList.add(cls))
+  el.dataset.animateVisible = 'true'
 }
 
 function ensureAnimationObserver() {
@@ -21,45 +78,44 @@ function ensureAnimationObserver() {
 
   animationState.observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible')
-        obs.unobserve(entry.target)
-      }
+      if (!entry.isIntersecting) return
+      const target = entry.target
+      applyVisibleState(target, getAnimationPreset(target))
+      obs.unobserve(target)
     })
   }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' })
-
-  if (!animationState.loadListenerBound) {
-    window.addEventListener('load', () => {
-      document.querySelectorAll('.will-animate').forEach(el => {
-        if (el.classList.contains('is-visible')) return
-        const rect = el.getBoundingClientRect()
-        if (rect.top <= window.innerHeight * 0.9) {
-          el.classList.add('is-visible')
-          animationState.observer?.unobserve(el)
-        }
-      })
-    })
-    animationState.loadListenerBound = true
-  }
 
   return animationState.observer
 }
 
+function prepareAnimationDelay(el) {
+  const delayAttr = el.getAttribute('data-animate-delay')
+  if (!delayAttr) return
+  const delay = Number(delayAttr)
+  if (!Number.isNaN(delay)) {
+    el.style.transitionDelay = `${delay}s`
+  }
+}
+
 function registerAnimatedElements(root = document) {
   const scope = root.querySelectorAll ? root : document
-  const elements = scope.querySelectorAll ? scope.querySelectorAll('[data-animate]') : document.querySelectorAll('[data-animate]')
   const collection = []
 
   if (scope instanceof Element && scope.hasAttribute('data-animate')) {
     collection.push(scope)
   }
 
-  elements.forEach(el => collection.push(el))
+  scope.querySelectorAll?.('[data-animate]').forEach(el => {
+    collection.push(el)
+  })
+
   if (!collection.length) return
 
   if (animationState.prefersReduced) {
     collection.forEach(el => {
-      el.classList.add('is-visible')
+      applyBaseAnimationClasses(el)
+      prepareAnimationDelay(el)
+      applyVisibleState(el, getAnimationPreset(el))
     })
     return
   }
@@ -67,28 +123,33 @@ function registerAnimatedElements(root = document) {
   const observer = ensureAnimationObserver()
 
   collection.forEach(el => {
-    if (animationState.tracked.has(el)) return
-    animationState.tracked.add(el)
-    if (!el.classList.contains('will-animate')) el.classList.add('will-animate')
-
-    const delayAttr = el.getAttribute('data-animate-delay')
-    if (delayAttr) {
-      const delay = Number(delayAttr)
-      if (!Number.isNaN(delay)) el.style.setProperty('--animate-delay', `${delay}s`)
+    if (el.dataset.animateVisible === 'true') return
+    applyBaseAnimationClasses(el)
+    prepareAnimationDelay(el)
+    if (el.dataset.animatePrepared !== 'true') {
+      applyInitialState(el, getAnimationPreset(el))
     }
-
     observer?.observe(el)
   })
 }
 
 motionQuery.addEventListener?.('change', event => {
   animationState.prefersReduced = event.matches
-  animationState.tracked = new WeakSet()
+  animationState.observer?.disconnect()
+  animationState.observer = null
+
   if (event.matches) {
-    animationState.observer?.disconnect()
-    animationState.observer = null
-    document.querySelectorAll('[data-animate]').forEach(el => el.classList.add('is-visible'))
+    document.querySelectorAll('[data-animate]').forEach(el => {
+      applyBaseAnimationClasses(el)
+      prepareAnimationDelay(el)
+      applyVisibleState(el, getAnimationPreset(el))
+    })
   } else {
+    document.querySelectorAll('[data-animate]').forEach(el => {
+      const preset = getAnimationPreset(el)
+      applyBaseAnimationClasses(el)
+      applyInitialState(el, preset)
+    })
     registerAnimatedElements()
   }
 })

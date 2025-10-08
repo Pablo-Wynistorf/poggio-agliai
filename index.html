@@ -41,63 +41,6 @@
     }
   </script>
   <script defer src="js/index.js"></script>
-  <style>
-    :root {
-      --luxury-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    .will-animate {
-      opacity: 0;
-      transform: translateY(32px) scale(0.98);
-      filter: blur(10px);
-      transition:
-        opacity 1.1s var(--luxury-ease),
-        transform 1.1s var(--luxury-ease),
-        filter 1s var(--luxury-ease);
-      transition-delay: var(--animate-delay, 0s);
-      will-change: transform, opacity, filter;
-    }
-
-    .will-animate[data-animate='fade'] {
-      transform: scale(0.98);
-    }
-
-    .will-animate[data-animate='fade-up'] {
-      transform: translateY(48px);
-    }
-
-    .will-animate[data-animate='fade-down'] {
-      transform: translateY(-48px);
-    }
-
-    .will-animate[data-animate='fade-left'] {
-      transform: translateX(48px);
-    }
-
-    .will-animate[data-animate='fade-right'] {
-      transform: translateX(-48px);
-    }
-
-    .will-animate[data-animate='scale'] {
-      transform: scale(0.9);
-    }
-
-    .will-animate.is-visible {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) scale(1);
-      filter: blur(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .will-animate {
-        transition-duration: 0.01ms !important;
-        transition-delay: 0ms !important;
-        transform: none !important;
-        filter: none !important;
-        opacity: 1 !important;
-      }
-    }
-  </style>
 </head>
 
 <body id="home" class="bg-white font-sans text-slate-800" data-asset-prefix="./assets">
