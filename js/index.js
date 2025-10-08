@@ -293,23 +293,50 @@ document.addEventListener('keydown', e => {
 
 
 // ====================
-// CONTACT FORM HANDLER
+// CONTACT FORM HANDLER WITH reCAPTCHA
 // ====================
 const form = document.getElementById('contact-form')
 const feedback = document.getElementById('form-feedback')
 
-form?.addEventListener('submit', e => {
+form?.addEventListener('submit', async e => {
   e.preventDefault()
   const fd = new FormData(form)
   const name = fd.get('name')?.toString().trim()
   const email = fd.get('email')?.toString().trim()
   const message = fd.get('message')?.toString().trim()
-  if (!name || !email || !message)
+  const start = fd.get('start')?.toString().trim()
+  const end = fd.get('end')?.toString().trim()
+
+  if (!name || !email || !message || !start || !end)
     return setFeedback('Please complete all fields before submitting.', 'error')
+
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
     return setFeedback('Please enter a valid email address.', 'error')
-  form.reset()
-  setFeedback('Thank you! Your message has been sent.', 'success')
+
+  try {
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute(
+        '6Ld7AeMrAAAAAOCZNOxMxQEWSLstdO-JaW5ZOrnS',
+        { action: 'submit_form' }
+      )
+
+      const res = await fetch('https://ucs565k35fstrkdxejprc4uaoa0zaixg.lambda-url.eu-central-1.on.aws', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, start, end, recaptchaToken: token })
+      })
+
+      if (res.ok) {
+        form.reset()
+        setFeedback('Thank you! Your message has been sent.', 'success')
+      } else {
+        setFeedback('Something went wrong. Please try again later.', 'error')
+      }
+    })
+  } catch (err) {
+    console.error('reCAPTCHA error:', err)
+    setFeedback('reCAPTCHA validation failed. Please reload and try again.', 'error')
+  }
 })
 
 function setFeedback(msg, type) {
