@@ -46,14 +46,17 @@
 
 <body id="home" class="bg-white font-sans text-slate-800" data-asset-prefix="./assets">
   <nav
-    class="fixed top-4 left-1/2 z-50 -translate-x-1/2 rounded-3xl bg-lime-900/50 px-8 py-3 backdrop-blur-md shadow-lg flex items-center justify-center gap-6 text-white text-sm font-medium">
+    class="fixed top-4 left-1/2 z-50 -translate-x-1/2 flex items-center justify-center gap-6 rounded-3xl bg-lime-900/50 px-8 py-3 text-white shadow-lg backdrop-blur-md font-medium text-[clamp(0.75rem,1.8vw,0.95rem)] whitespace-nowrap">
     <a href="#home" class="hover:text-brand-200 transition">Home</a>
-
     <a href="#about" class="hover:text-brand-200 transition">About</a>
-    <a href="#contact" class="rounded-full border border-white/40 px-4 py-1.5 hover:bg-white/10 transition">Book Now</a>
+    <a href="#contact"
+      class="rounded-full border border-white/40 px-4 py-1.5 hover:bg-white/10 transition shrink-0 whitespace-nowrap">
+      Book Now
+    </a>
     <a href="#gallery" class="hover:text-brand-200 transition">Gallery</a>
     <a href="#contact" class="hover:text-brand-200 transition">Contact</a>
   </nav>
+
   <header class="relative isolate overflow-hidden bg-slate-900 text-white min-h-screen flex flex-col justify-between">
     <!-- Background Image -->
     <img src="assets/images/home-foto.jpg" alt="Tuscan farmhouse exterior"
@@ -70,14 +73,11 @@
       <div id="mobile-menu"
         class="flex flex-col gap-6 rounded-xl border border-white/20 bg-slate-900/80 p-6 text-sm font-medium text-white lg:hidden hidden"
         data-mobile-menu>
-        <a href="#about" data-menu-link>About</a>
-        <a href="#gallery" data-menu-link>Gallery</a>
-        <a href="#contact" data-menu-link>Contact</a>
       </div>
     </div>
 
     <!-- Hero Content -->
-    <div class="relative z-10 flex flex-col items-start justify-center px-6 pb-24 lg:px-8 lg:pb-32 max-w-7xl mx-auto">
+    <div class="relative z-10 flex flex-col items-start justify-center px-6 pb-28 lg:px-8 lg:pb-32 max-w-7xl mx-auto">
       <p class="text-sm uppercase tracking-[0.3em] text-brand-200 mb-3">Tuscan Countryside Retreat</p>
       <h1 class="max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
         Experience warm, unhurried living in the heart of Tuscany
