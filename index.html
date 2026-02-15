@@ -19,7 +19,9 @@
   <script src="js/tailwind.js"></script>
   <script src="js/translations.js"></script>
   <script defer src="js/google_analytics.js"></script>
+  <script defer src="js/hero-intro.js"></script>
   <script defer src="js/index.js"></script>
+  <script defer src="js/scroll-animations.js"></script>
   <style>
     .nav-outline {
       position: absolute;
@@ -29,13 +31,69 @@
       pointer-events: none;
       opacity: 0;
     }
+
+    /* Hero intro animation */
+    .hero-loading { overflow: hidden; }
+
+    .hero-img-intro {
+      transform: scale(1.15);
+      transition: transform 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .hero-img-intro.intro-done { transform: scale(1); }
+
+    .hero-overlay-intro {
+      opacity: 1;
+      background: rgba(2, 6, 23, 0.7);
+      transition: background 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
+    }
+    .hero-overlay-intro.intro-done { background: rgba(2, 6, 23, 0.2); }
+
+    .hero-text-intro {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .hero-text-intro.intro-done {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-nav-intro {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .hero-nav-intro.intro-done {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .hero-scroll-intro {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .hero-scroll-intro.intro-done { opacity: 1; }
+
+    /* Scroll animations */
+    [data-scroll] {
+      opacity: 0;
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    [data-scroll="up"] { transform: translateY(40px); }
+    [data-scroll="left"] { transform: translateX(-40px); }
+    [data-scroll="right"] { transform: translateX(40px); }
+    [data-scroll="scale"] { transform: scale(0.92); }
+    [data-scroll].is-visible {
+      opacity: 1;
+      transform: translate(0) scale(1);
+    }
   </style>
 </head>
 
 <body id="home" class="bg-white font-sans text-slate-800" data-asset-prefix="./assets">
   <!-- Floating Nav -->
   <nav id="main-nav"
-    class="fixed top-4 left-1/2 z-50 -translate-x-1/2 flex items-center justify-center gap-6 rounded-3xl bg-lime-900/50 px-8 py-3 text-white shadow-lg backdrop-blur-md font-medium text-[clamp(0.75rem,1.8vw,0.95rem)] whitespace-nowrap">
+    class="hero-nav-intro fixed top-4 left-1/2 z-50 -translate-x-1/2 flex items-center justify-center gap-6 rounded-3xl bg-lime-900/50 px-8 py-3 text-white shadow-lg backdrop-blur-md font-medium text-[clamp(0.75rem,1.8vw,0.95rem)] whitespace-nowrap">
     <div class="nav-outline" id="nav-outline"></div>
     <a href="#home" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="home" data-i18n="navHome">Home</a>
     <a href="#about" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="about" data-i18n="navAbout">About</a>
@@ -60,8 +118,8 @@
   <!-- Hero Header -->
   <header class="relative isolate overflow-hidden bg-slate-900 text-white min-h-screen flex flex-col justify-between">
     <img src="assets/images/home-foto.jpg" alt="Tuscan farmhouse exterior"
-      class="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
-    <div class="absolute inset-0 -z-10 bg-slate-950/20"></div>
+      class="hero-img-intro absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+    <div class="hero-overlay-intro absolute inset-0 -z-10"></div>
 
     <div class="mx-auto w-full max-w-7xl flex flex-col gap-16 px-6 pt-6 lg:px-8">
       <nav class="flex items-center justify-between gap-8" aria-label="Primary">
@@ -73,12 +131,12 @@
       </div>
     </div>
 
-    <div class="relative z-10 flex flex-col items-start justify-center px-6 pb-28 lg:px-8 lg:pb-32 max-w-7xl mx-auto">
-      <p class="text-sm uppercase tracking-[0.3em] text-brand-200 mb-3" data-i18n="heroSubtitle">Benvenuto nell'eredità</p>
-      <h1 class="max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl" data-i18n="heroTitle">
+    <div class="relative z-10 flex flex-col items-start justify-center px-6 pb-28 lg:px-8 lg:pb-32 max-w-7xl mx-auto" data-scroll="up">
+      <p class="hero-text-intro text-sm uppercase tracking-[0.3em] text-brand-200 mb-3" data-i18n="heroSubtitle">Benvenuto nell'eredità</p>
+      <h1 class="hero-text-intro max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl" data-i18n="heroTitle">
         Welcome to the legacy in nature's realm, be part of our Tuscan story
       </h1>
-      <div class="mt-8 flex flex-wrap gap-4">
+      <div class="hero-text-intro mt-8 flex flex-wrap gap-4">
         <a class="inline-flex items-center justify-center rounded-full bg-brand-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300"
           href="#contact" data-i18n="heroCta1">Book Now</a>
         <a class="inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-sm font-semibold text-white transition hover:border-white hover:text-white"
@@ -86,7 +144,7 @@
       </div>
     </div>
 
-    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white">
+    <div class="hero-scroll-intro absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white">
       <span class="text-3xl mb-1" data-i18n="heroScroll">Scroll</span>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="w-6 h-6 animate-bounce">
@@ -99,7 +157,7 @@
     <!-- About Section -->
     <section id="about" class="relative overflow-hidden py-24 sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
-        <div class="space-y-6">
+        <div class="space-y-6" data-scroll="up">
           <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500" data-i18n="aboutLabel">About the Residence</p>
           <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl" data-i18n="aboutTitle">
             Casa Poggio Agliai
@@ -119,7 +177,7 @@
         </div>
         <div class="grid gap-8 sm:grid-cols-2">
           <!-- At a glance card -->
-          <div class="rounded-3xl border border-brand-100 bg-brand-50 p-8 shadow-sm">
+          <div class="rounded-3xl border border-brand-100 bg-brand-50 p-8 shadow-sm" data-scroll="up" data-scroll-delay="100">
             <h3 class="font-display text-xl text-brand-800" data-i18n="glanceTitle">At a glance</h3>
             <dl class="mt-6 space-y-3 text-sm text-slate-700">
               <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
@@ -145,7 +203,7 @@
             </dl>
           </div>
           <!-- Seasonal highlights card -->
-          <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+          <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm" data-scroll="up" data-scroll-delay="200">
             <h3 class="font-display text-xl text-brand-800" data-i18n="seasonsTitle">Every season tells its own story</h3>
             <ul class="mt-6 space-y-4 text-sm text-slate-700">
               <li><span class="font-semibold text-brand-700" data-i18n="seasonsSpring">Spring:</span> <span data-i18n="seasonsSpringDesc">Nature's colours burst into life, wildflower walks and cycling tours</span></li>
@@ -161,7 +219,7 @@
     <!-- Nearby Section -->
     <section id="nearby" class="relative overflow-hidden bg-brand-50 py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="space-y-6 max-w-3xl mb-16">
+        <div class="space-y-6 max-w-3xl mb-16" data-scroll="up">
           <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500" data-i18n="nearbySubtitle">Explore the region</p>
           <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl" data-i18n="nearbyTitle">Nearby inspirations</h2>
         </div>
@@ -240,7 +298,7 @@
     <!-- Gallery Section -->
     <section id="gallery" class="bg-brand-900 py-24 text-brand-50 sm:py-32">
       <div class="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:px-8">
-        <div class="max-w-3xl space-y-4">
+        <div class="max-w-3xl space-y-4" data-scroll="up">
           <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300" data-i18n="galleryLabel">Gallery</p>
           <h2 class="font-display text-3xl font-semibold sm:text-4xl" data-i18n="galleryTitle">Every room tells a Tuscan story</h2>
           <p class="text-base text-brand-100/80" data-i18n="galleryDesc">
@@ -255,8 +313,8 @@
     <section id="contact" class="bg-slate-950 py-24 text-white sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
         <div class="space-y-6">
-          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300" data-i18n="bookingLabel">Reserve your stay</p>
-          <h2 class="font-display text-3xl font-semibold sm:text-4xl" data-i18n="bookingTitle">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300" data-scroll="up" data-i18n="bookingLabel">Reserve your stay</p>
+          <h2 class="font-display text-3xl font-semibold sm:text-4xl" data-scroll="up" data-scroll-delay="100" data-i18n="bookingTitle">
             Share your plans — we will arrange your Tuscan escape
           </h2>
           <p class="text-lg text-white/80" data-i18n="bookingDesc">
@@ -323,13 +381,13 @@
         </div>
 
         <div class="space-y-8">
-          <div class="overflow-hidden rounded-3xl shadow-lg shadow-black/40">
+          <div class="overflow-hidden rounded-3xl shadow-lg shadow-black/40" data-scroll="scale">
             <iframe width="100%" height="650px" frameborder="0" style="border:0"
               src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAba9Iz85BQFLWhRJlzGTh2upDjXJXW2BI&q=43.10459171089201,10.682569205894895&maptype=satellite"
               allowfullscreen>
             </iframe>
           </div>
-          <div class="rounded-3xl border border-white/20 bg-white/5 p-8 backdrop-blur">
+          <div class="rounded-3xl border border-white/20 bg-white/5 p-8 backdrop-blur" data-scroll="up" data-scroll-delay="200">
             <h3 class="font-display text-2xl text-brand-100" data-i18n="contactTitle">Contact</h3>
             <p class="mt-4 text-sm text-white/80" data-i18n-html="contactAddress">
               Località Poggio Agliai 113<br/>57028 Suvereto LI, Tuscany · Italy
