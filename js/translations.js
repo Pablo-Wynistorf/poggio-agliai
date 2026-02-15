@@ -1,0 +1,518 @@
+// ========================
+// TRANSLATION SYSTEM
+// ========================
+const translations = {
+  en: {
+    // Nav
+    navHome: "Home",
+    navAbout: "About",
+    navBookNow: "Book Now",
+    navGallery: "Gallery",
+    navContact: "Contact",
+    navNearby: "Nearby",
+
+    // Hero
+    heroSubtitle: "Benvenuto nell'eredità",
+    heroTitle: "Welcome to the legacy in nature's realm, be part of our Tuscan story",
+    heroCta1: "Book Now",
+    heroCta2: "Discover More",
+    heroScroll: "Scroll",
+
+    // About
+    aboutLabel: "About the Residence",
+    aboutTitle: "Casa Poggio Agliai",
+    aboutP1: "Whether it's springtime, when nature's colours burst into life, a summer evening, when you can marvel at the incomparable view of the Milky Way during the cicada concert, autumn, when the mild climate extends the outdoor season until late in the year, or winter, when the stormy winds invite you to cosy up in front of the open fire: Casa Poggio Agliai offers a place of tranquillity and rejuvenation in every season.",
+    aboutP2: "In the hills around Suvereto, the winding road leads up to the small hamlet of Prata. From there, a well-maintained natural road leads into the heart of the Alta Maremma countryside. For over a hundred years, the former farmhouse has stood at the end of Poggio Agliai, whose two valleys are surrounded by the Fosso Bruno and Fosso Mulino streams.",
+    aboutP3: "The house offers comfort for 10 people with four bedrooms, three with double beds, one with a queen-size bed, and two single beds in the living room on the first floor. In addition to a functional kitchen and a wood-fired oven house for homemade pizzas, the large living room offers plenty of space for cozy dinners and relaxed evenings.",
+    aboutP4: "The portico and veranda around the house also offer many opportunities to spend time outdoors.",
+
+    // At a glance
+    glanceTitle: "At a glance",
+    glanceBedrooms: "Bedrooms",
+    glanceBedroomsVal: "Four, plus two single beds in the 1st floor salon",
+    glanceWifi: "WiFi",
+    glanceWifiVal: "5G-based WiFi",
+    glanceBathrooms: "Bathrooms/WC",
+    glanceBathroomsVal: "Two, ground floor and first floor",
+    glanceOutdoor: "Outdoor",
+    glanceOutdoorVal: "Hiking & bike trails start right at the house",
+    glanceGuests: "Guests",
+    glanceGuestsVal: "Up to 10",
+
+    // Nearby
+    nearbyTitle: "Nearby inspirations",
+    nearbySubtitle: "Explore the region",
+    nearbySuvereto: "Suvereto",
+    nearbySuveretoDesc: "A charming medieval town, 15 min. by car",
+    nearbyBolgheri: "Bolgheri",
+    nearbyBolgheriDesc: "The most famous Super Tuscan wines (Sassicaia, Tignanello, Ornellaia, etc.) in the neighbourhood (road via Sassetta), while Suvereto itself has top-class wineries (Tua Rita, Michele Russo, Petra, etc.)",
+    nearbyBaratti: "Golfo di Baratti / Populonia",
+    nearbyBarattiDesc: "Crescent-shaped bathing bay, Etruscan culture, 30 min. by car",
+    nearbyVenturina: "Venturina Terme",
+    nearbyVenturinaDesc: "37°C warm water straight from the mountain",
+    nearbySanSilvestro: "San Silvestro Mine",
+    nearbySanSilvestroDesc: "Geological history of the region",
+    nearbyValDiCornia: "Val di Cornia",
+    nearbyValDiCorniaDesc: "Everything that makes Tuscany special",
+    nearbyElba: "Elba",
+    nearbyElbaDesc: "Another world within another world",
+    nearbyDayTrips: "Day trips",
+    nearbyDayTripsDesc: "Florence, Pisa, Siena, Volterra, San Gimignano, Chianti — each reachable in a day trip",
+    nearbyMonteCalvi: "Monte Calvi",
+    nearbyMonteCalviDesc: "Endemic plants",
+    nearbyFlora: "Flora & Fauna",
+    nearbyFloraDesc: "From the colour-changing gorgonians in Baratti to the wolf pack in Val di Cornia. The forests, trees and plants on the property and surroundings, to the ornithological diversity.",
+    nearbyDiving: "Diving",
+    nearbyDivingDesc: "Sport & technical diving: Baratti Diving, Il Careno Diving, Talas Diving",
+    nearbyMaremma: "Maremma Nature Park",
+    nearbyMaremmaDesc: "Campiglia Marittima, Massa Marittima, with a detour to San Galgano",
+    nearbyOlives: "Private olive grove",
+    nearbyOlivesDesc: "150 trees (the property covers 21 hectares in total)",
+    nearbyTarot: "Giardino dei Tarocchi",
+    nearbyTarotDesc: "The Tarot Garden, the legacy of Niki de Saint Phalle",
+    nearbyOrbetello: "Orbetello, Monte Argentario",
+    nearbyOrbetelloDesc: "Coastal beauty and lagoon nature reserve",
+    nearbySaturnia: "Saturnia",
+    nearbySaturniaDesc: "The incredible travertine pools of Saturnia",
+
+    // Seasons
+    seasonsLabel: "Seasons",
+    seasonsTitle: "Every season tells its own story",
+    seasonsSpring: "Spring",
+    seasonsSpringDesc: "Nature's colours burst into life, wildflower walks and cycling tours",
+    seasonsSummer: "Summer",
+    seasonsSummerDesc: "Marvel at the Milky Way during the cicada concert, coastal escapes to Baratti",
+    seasonsAutumn: "Autumn",
+    seasonsAutumnDesc: "Mild climate extends outdoor time late into the year, harvest festivals",
+    seasonsWinter: "Winter",
+    seasonsWinterDesc: "Stormy winds invite cosy evenings by the open fire, thermal spas",
+
+    // Booking
+    bookingLabel: "Reserve your stay",
+    bookingTitle: "Share your plans — we will arrange your Tuscan escape",
+    bookingDesc: "Booking is only possible two weeks in advance. Minimum rental period: 1 week. Prices are weekly/seasonal including number of guests, bed linen, towels, and final cleaning.",
+    formName: "Name",
+    formNamePh: "Your full name",
+    formEmail: "Email",
+    formEmailPh: "you@example.com",
+    formDates: "Travel Dates",
+    formFrom: "From",
+    formTo: "To",
+    formGuests: "Number of Guests",
+    formGuestsPh: "Enter number of guests",
+    formMessage: "Message",
+    formMessagePh: "Tell us about your ideal Tuscan holiday",
+    formSubmit: "Send Inquiry",
+    formSuccess: "Thank you! Your message has been sent.",
+    formError: "Something went wrong. Please try again later.",
+    formValidation: "Please complete all fields before submitting.",
+    formEmailError: "Please enter a valid email address.",
+    formRecaptchaError: "reCAPTCHA validation failed. Please reload and try again.",
+
+    // Contact
+    contactTitle: "Contact",
+    contactAddress: "Località Poggio Agliai 113<br/>57028 Suvereto LI, Tuscany · Italy",
+
+    // Gallery
+    galleryLabel: "Gallery",
+    galleryTitle: "Every room tells a Tuscan story",
+    galleryDesc: "Explore the spaces of Poggio Agliai. Select any photograph for a closer look.",
+    galleryPreview: "Gallery Preview",
+
+    // Footer
+    footerRights: "© 2025 Poggio Agliai. All rights reserved.",
+
+    // Min stay alert
+    minStayAlert: "Minimum stay is 6 nights (selected: {n})",
+
+    // Datepicker
+    dateStartPh: "Select date start",
+    dateEndPh: "Select date end",
+  },
+  de: {
+    navHome: "Home",
+    navAbout: "Über uns",
+    navBookNow: "Buchen",
+    navGallery: "Galerie",
+    navContact: "Kontakt",
+    navNearby: "Umgebung",
+
+    heroSubtitle: "Benvenuto nell'eredità",
+    heroTitle: "Willkommen im Erbe der Natur, werde Teil unserer toskanischen Geschichte",
+    heroCta1: "Buchen",
+    heroCta2: "Mehr erfahren",
+    heroScroll: "Scrollen",
+
+    aboutLabel: "Über das Haus",
+    aboutTitle: "Casa Poggio Agliai",
+    aboutP1: "Ob im Frühling die Farben der Natur zu neuer Kraft erwachsen, an einem Sommerabend während des Zykadenkonzerts die hier unvergleichliche Aussicht auf die Milchstrasse bestaunt wird, im Herbst das milde Klima bis spät ins Jahr die Zeit draussen verlängert, oder im Winter die stürmischen Winde zur gemütlichen Zeit vor dem Kaminfeuer einladen: Das Casa Poggio Agliai, bietet zu jeder Jahreszeit ein Ort der Ruhe und zum tanken frischer Kräfte.",
+    aboutP2: "Von den Hügelzügen um Suvereto führt die kurvige Strasse hoch zum kleinen Weiler Prata. Ab dort führt eine gut ausgebaute Naturstrasse, inmitten in die Natur der Alta Maremma. Hier steht seit über hundert Jahren das ehemalige Bauernhaus am Ende des Poggio Agliai, dessen zwei Täler von den Bächen Fosso Bruno und Fosso Mulino umflossen wird.",
+    aboutP3: "Das Haus bietet mit vier Schlafzimmer mit dreimal je Doppelbetten, eines mit einem französischen Bett, sowie zwei einzelne Betten im Salotto des 1. Stocks, Komfort für 10 Personen. Nebst einer funktionalen Küche, einem Ofenhaus für selbstgemachte Pizzen, bietet das grosse Wohnzimmer viel Platz für gemütliche Dinner und entspannte Abende.",
+    aboutP4: "Zudem bieten der Portikus und die Veranda ums Haus, viele Möglichkeiten, die Zeit draussen zu verbringen.",
+
+    glanceTitle: "Auf einen Blick",
+    glanceBedrooms: "Schlafzimmer",
+    glanceBedroomsVal: "Vier, zwei einzelne Betten im Salon des 1. Stocks",
+    glanceWifi: "WLAN",
+    glanceWifiVal: "5G basiertes WLAN",
+    glanceBathrooms: "Badezimmer/WC",
+    glanceBathroomsVal: "Zwei, Erdgeschoss und im 1. Stock",
+    glanceOutdoor: "Draussen",
+    glanceOutdoorVal: "Wander- und Bike Trails starten direkt vor dem Haus",
+    glanceGuests: "Gäste",
+    glanceGuestsVal: "Bis zu 10",
+
+    nearbyTitle: "In der Nähe",
+    nearbySubtitle: "Die Region entdecken",
+    nearbySuvereto: "Suvereto",
+    nearbySuveretoDesc: "Ein charmantes mittelalterliches Städtchen, 15 Min. mit dem Auto",
+    nearbyBolgheri: "Bolgheri",
+    nearbyBolgheriDesc: "Die berühmtesten Super Toskaner Weine (Sassicaia, Tignanello, Ornellaia, etc.) in der Nachbarschaft (Strasse über Sassetta), wobei Suvereto selbst über Weingüter der Spitzenklasse verfügt (Tua Rita, Michele Russo, Petra, etc.)",
+    nearbyBaratti: "Golfo di Baratti / Populonia",
+    nearbyBarattiDesc: "Halbmond Badebucht, etruskische Kultur, 30 Min. mit dem Auto",
+    nearbyVenturina: "Venturina Terme",
+    nearbyVenturinaDesc: "37°C warmes Wasser direkt aus dem Berg",
+    nearbySanSilvestro: "San Silvestro Bergwerk",
+    nearbySanSilvestroDesc: "Geologische Geschichte der Region",
+    nearbyValDiCornia: "Val di Cornia",
+    nearbyValDiCorniaDesc: "Alles, was die Toskana ausmacht",
+    nearbyElba: "Elba",
+    nearbyElbaDesc: "Eine andere Welt in einer anderen Welt",
+    nearbyDayTrips: "Tagesausflüge",
+    nearbyDayTripsDesc: "Florenz, Pisa, Siena, Volterra, San Gimignano, Chianti — jeweils in einer Tagesreise erreichbar",
+    nearbyMonteCalvi: "Monte Calvi",
+    nearbyMonteCalviDesc: "Endemische Pflanzen",
+    nearbyFlora: "Flora und Fauna",
+    nearbyFloraDesc: "Von den farbwechselnden Gorgonien in Baratti über das Wolfrudel im Val di Cornia. Die Wälder, Bäume und Pflanzen auf dem Grundstück und Umgebung, hin zur ornithologischen Vielfalt.",
+    nearbyDiving: "Tauchen",
+    nearbyDivingDesc: "Sport- und technisches Tauchen: Baratti Diving, Il Careno Diving, Talas Diving",
+    nearbyMaremma: "Naturpark Maremma",
+    nearbyMaremmaDesc: "Campiglia Marittima, Massa Marittima, mit Abstecher nach San Galgano",
+    nearbyOlives: "Privater Olivenhain",
+    nearbyOlivesDesc: "150 Bäume (das Grundstück umfasst total 21 Ha)",
+    nearbyTarot: "Giardino dei Tarocchi",
+    nearbyTarotDesc: "Der Tarot Garten, das Erbe von Niki de Saint Phalle",
+    nearbyOrbetello: "Orbetello, Monte Argentario",
+    nearbyOrbetelloDesc: "Küstenschönheit und Lagunen-Naturschutzgebiet",
+    nearbySaturnia: "Saturnia",
+    nearbySaturniaDesc: "Die unglaublichen Sinterbecken von Saturnia",
+
+    seasonsLabel: "Jahreszeiten",
+    seasonsTitle: "Jede Jahreszeit erzählt ihre eigene Geschichte",
+    seasonsSpring: "Frühling",
+    seasonsSpringDesc: "Die Farben der Natur erwachen zu neuer Kraft, Wildblumenwanderungen und Radtouren",
+    seasonsSummer: "Sommer",
+    seasonsSummerDesc: "Die unvergleichliche Milchstrasse während des Zykadenkonzerts bestaunen, Küstenausflüge nach Baratti",
+    seasonsAutumn: "Herbst",
+    seasonsAutumnDesc: "Mildes Klima verlängert die Zeit draussen bis spät ins Jahr, Erntefeste",
+    seasonsWinter: "Winter",
+    seasonsWinterDesc: "Stürmische Winde laden zur gemütlichen Zeit vor dem Kaminfeuer ein, Thermalbäder",
+
+    bookingLabel: "Aufenthalt reservieren",
+    bookingTitle: "Teilen Sie uns Ihre Pläne mit — wir gestalten Ihren toskanischen Aufenthalt",
+    bookingDesc: "Buchung nur zwei Wochen im Voraus möglich. Mindestmietdauer: 1 Woche. Preise sind Wochenpreise/saisonal inkl. Anzahl Personen, Bettwäsche, Frotteewäsche und Endreinigung.",
+    formName: "Name",
+    formNamePh: "Ihr vollständiger Name",
+    formEmail: "E-Mail",
+    formEmailPh: "sie@beispiel.com",
+    formDates: "Reisedaten",
+    formFrom: "Von",
+    formTo: "Bis",
+    formGuests: "Anzahl Gäste",
+    formGuestsPh: "Anzahl der Gäste eingeben",
+    formMessage: "Nachricht",
+    formMessagePh: "Erzählen Sie uns von Ihrem idealen Toskana-Urlaub",
+    formSubmit: "Anfrage senden",
+    formSuccess: "Vielen Dank! Ihre Nachricht wurde gesendet.",
+    formError: "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.",
+    formValidation: "Bitte füllen Sie alle Felder aus.",
+    formEmailError: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    formRecaptchaError: "reCAPTCHA-Validierung fehlgeschlagen. Bitte laden Sie die Seite neu.",
+
+    contactTitle: "Kontakt",
+    contactAddress: "Località Poggio Agliai 113<br/>57028 Suvereto LI, Toskana · Italien",
+
+    galleryLabel: "Galerie",
+    galleryTitle: "Jeder Raum erzählt eine toskanische Geschichte",
+    galleryDesc: "Entdecken Sie die Räume von Poggio Agliai. Wählen Sie ein Foto für eine grössere Ansicht.",
+    galleryPreview: "Galerievorschau",
+
+    footerRights: "© 2025 Poggio Agliai. Alle Rechte vorbehalten.",
+    minStayAlert: "Mindestaufenthalt 6 Nächte (gewählt: {n})",
+    dateStartPh: "Startdatum wählen",
+    dateEndPh: "Enddatum wählen",
+  },
+  fr: {
+    navHome: "Accueil",
+    navAbout: "À propos",
+    navBookNow: "Réserver",
+    navGallery: "Galerie",
+    navContact: "Contact",
+    navNearby: "Environs",
+
+    heroSubtitle: "Benvenuto nell'eredità",
+    heroTitle: "Bienvenue dans l'héritage au cœur de la nature, faites partie de notre histoire toscane",
+    heroCta1: "Réserver",
+    heroCta2: "En savoir plus",
+    heroScroll: "Défiler",
+
+    aboutLabel: "À propos de la résidence",
+    aboutTitle: "Casa Poggio Agliai",
+    aboutP1: "Que ce soit au printemps, lorsque les couleurs de la nature éclatent de vie, un soir d'été, lorsque l'on peut admirer la vue incomparable sur la Voie lactée pendant le concert des cigales, en automne, lorsque le climat doux prolonge la saison en plein air jusqu'à tard dans l'année, ou en hiver, lorsque les vents orageux invitent à se blottir devant le feu ouvert : Casa Poggio Agliai offre un lieu de tranquillité et de ressourcement en toute saison.",
+    aboutP2: "Dans les collines autour de Suvereto, la route sinueuse monte jusqu'au petit hameau de Prata. De là, une route naturelle bien entretenue mène au cœur de la campagne de l'Alta Maremma. Depuis plus de cent ans, l'ancienne ferme se dresse au bout du Poggio Agliai, dont les deux vallées sont entourées par les ruisseaux Fosso Bruno et Fosso Mulino.",
+    aboutP3: "La maison offre un confort pour 10 personnes avec quatre chambres, trois avec des lits doubles, une avec un lit queen-size, et deux lits simples dans le salon au premier étage. En plus d'une cuisine fonctionnelle et d'un four à bois pour les pizzas maison, le grand salon offre beaucoup d'espace pour des dîners conviviaux et des soirées détendues.",
+    aboutP4: "Le portique et la véranda autour de la maison offrent également de nombreuses possibilités de passer du temps en plein air.",
+
+    glanceTitle: "En un coup d'œil",
+    glanceBedrooms: "Chambres",
+    glanceBedroomsVal: "Quatre, plus deux lits simples au salon du 1er étage",
+    glanceWifi: "WiFi",
+    glanceWifiVal: "WiFi basé sur la 5G",
+    glanceBathrooms: "Salles de bain/WC",
+    glanceBathroomsVal: "Deux, rez-de-chaussée et premier étage",
+    glanceOutdoor: "Extérieur",
+    glanceOutdoorVal: "Sentiers de randonnée et de vélo au départ de la maison",
+    glanceGuests: "Invités",
+    glanceGuestsVal: "Jusqu'à 10",
+
+    nearbyTitle: "À proximité",
+    nearbySubtitle: "Explorer la région",
+    nearbySuvereto: "Suvereto",
+    nearbySuveretoDesc: "Un charmant village médiéval, 15 min. en voiture",
+    nearbyBolgheri: "Bolgheri",
+    nearbyBolgheriDesc: "Les plus célèbres vins Super Toscans (Sassicaia, Tignanello, Ornellaia, etc.) dans le voisinage (route via Sassetta), tandis que Suvereto possède des domaines viticoles de premier ordre (Tua Rita, Michele Russo, Petra, etc.)",
+    nearbyBaratti: "Golfo di Baratti / Populonia",
+    nearbyBarattiDesc: "Baie en croissant, culture étrusque, 30 min. en voiture",
+    nearbyVenturina: "Venturina Terme",
+    nearbyVenturinaDesc: "Eau chaude à 37°C directement de la montagne",
+    nearbySanSilvestro: "Mine de San Silvestro",
+    nearbySanSilvestroDesc: "Histoire géologique de la région",
+    nearbyValDiCornia: "Val di Cornia",
+    nearbyValDiCorniaDesc: "Tout ce qui fait la Toscane",
+    nearbyElba: "Elbe",
+    nearbyElbaDesc: "Un autre monde dans un autre monde",
+    nearbyDayTrips: "Excursions d'une journée",
+    nearbyDayTripsDesc: "Florence, Pise, Sienne, Volterra, San Gimignano, Chianti — chacun accessible en excursion d'une journée",
+    nearbyMonteCalvi: "Monte Calvi",
+    nearbyMonteCalviDesc: "Plantes endémiques",
+    nearbyFlora: "Flore et faune",
+    nearbyFloraDesc: "Des gorgones changeant de couleur à Baratti à la meute de loups du Val di Cornia. Les forêts, arbres et plantes de la propriété et des environs, jusqu'à la diversité ornithologique.",
+    nearbyDiving: "Plongée",
+    nearbyDivingDesc: "Plongée sportive et technique : Baratti Diving, Il Careno Diving, Talas Diving",
+    nearbyMaremma: "Parc naturel de la Maremme",
+    nearbyMaremmaDesc: "Campiglia Marittima, Massa Marittima, avec un détour par San Galgano",
+    nearbyOlives: "Oliveraie privée",
+    nearbyOlivesDesc: "150 arbres (la propriété couvre 21 hectares au total)",
+    nearbyTarot: "Giardino dei Tarocchi",
+    nearbyTarotDesc: "Le Jardin des Tarots, l'héritage de Niki de Saint Phalle",
+    nearbyOrbetello: "Orbetello, Monte Argentario",
+    nearbyOrbetelloDesc: "Beauté côtière et réserve naturelle lagunaire",
+    nearbySaturnia: "Saturnia",
+    nearbySaturniaDesc: "Les incroyables bassins de travertin de Saturnia",
+
+    seasonsLabel: "Saisons",
+    seasonsTitle: "Chaque saison raconte sa propre histoire",
+    seasonsSpring: "Printemps",
+    seasonsSpringDesc: "Les couleurs de la nature éclatent de vie, promenades fleuries et tours à vélo",
+    seasonsSummer: "Été",
+    seasonsSummerDesc: "Admirez la Voie lactée pendant le concert des cigales, escapades côtières à Baratti",
+    seasonsAutumn: "Automne",
+    seasonsAutumnDesc: "Le climat doux prolonge le temps en plein air tard dans l'année, fêtes des récoltes",
+    seasonsWinter: "Hiver",
+    seasonsWinterDesc: "Les vents orageux invitent aux soirées douillettes au coin du feu, thermes",
+
+    bookingLabel: "Réservez votre séjour",
+    bookingTitle: "Partagez vos projets — nous organiserons votre escapade toscane",
+    bookingDesc: "Réservation possible uniquement deux semaines à l'avance. Durée minimale de location : 1 semaine. Les prix sont hebdomadaires/saisonniers, incluant le nombre de personnes, le linge de lit, les serviettes et le nettoyage final.",
+    formName: "Nom",
+    formNamePh: "Votre nom complet",
+    formEmail: "E-mail",
+    formEmailPh: "vous@exemple.com",
+    formDates: "Dates de voyage",
+    formFrom: "Du",
+    formTo: "Au",
+    formGuests: "Nombre d'invités",
+    formGuestsPh: "Entrez le nombre d'invités",
+    formMessage: "Message",
+    formMessagePh: "Parlez-nous de vos vacances toscanes idéales",
+    formSubmit: "Envoyer la demande",
+    formSuccess: "Merci ! Votre message a été envoyé.",
+    formError: "Une erreur s'est produite. Veuillez réessayer plus tard.",
+    formValidation: "Veuillez remplir tous les champs.",
+    formEmailError: "Veuillez entrer une adresse e-mail valide.",
+    formRecaptchaError: "Validation reCAPTCHA échouée. Veuillez recharger la page.",
+
+    contactTitle: "Contact",
+    contactAddress: "Località Poggio Agliai 113<br/>57028 Suvereto LI, Toscane · Italie",
+
+    galleryLabel: "Galerie",
+    galleryTitle: "Chaque pièce raconte une histoire toscane",
+    galleryDesc: "Explorez les espaces de Poggio Agliai. Sélectionnez une photo pour un aperçu plus grand.",
+    galleryPreview: "Aperçu de la galerie",
+
+    footerRights: "© 2025 Poggio Agliai. Tous droits réservés.",
+    minStayAlert: "Séjour minimum de 6 nuits (sélectionné : {n})",
+    dateStartPh: "Sélectionner la date de début",
+    dateEndPh: "Sélectionner la date de fin",
+  },
+  it: {
+    navHome: "Home",
+    navAbout: "Chi siamo",
+    navBookNow: "Prenota",
+    navGallery: "Galleria",
+    navContact: "Contatto",
+    navNearby: "Dintorni",
+
+    heroSubtitle: "Benvenuto nell'eredità",
+    heroTitle: "Benvenuto nell'eredità nel regno della natura, fai parte della nostra storia toscana",
+    heroCta1: "Prenota ora",
+    heroCta2: "Scopri di più",
+    heroScroll: "Scorri",
+
+    aboutLabel: "La residenza",
+    aboutTitle: "Casa Poggio Agliai",
+    aboutP1: "Che sia primavera, quando i colori della natura esplodono di vita, una sera d'estate, quando si può ammirare l'incomparabile vista della Via Lattea durante il concerto delle cicale, autunno, quando il clima mite prolunga la stagione all'aperto fino a tardi nell'anno, o inverno, quando i venti tempestosi invitano ad accoccolarsi davanti al camino: Casa Poggio Agliai offre un luogo di tranquillità e rigenerazione in ogni stagione.",
+    aboutP2: "Nelle colline intorno a Suvereto, la strada tortuosa sale fino al piccolo borgo di Prata. Da lì, una strada naturale ben tenuta conduce nel cuore della campagna dell'Alta Maremma. Da oltre cento anni, l'antica casa colonica si erge alla fine del Poggio Agliai, le cui due valli sono circondate dai torrenti Fosso Bruno e Fosso Mulino.",
+    aboutP3: "La casa offre comfort per 10 persone con quattro camere da letto, tre con letti matrimoniali, una con un letto alla francese, e due letti singoli nel soggiorno al primo piano. Oltre a una cucina funzionale e un forno a legna per le pizze fatte in casa, il grande soggiorno offre ampio spazio per cene accoglienti e serate rilassate.",
+    aboutP4: "Il portico e la veranda intorno alla casa offrono anche molte opportunità per trascorrere del tempo all'aperto.",
+
+    glanceTitle: "A colpo d'occhio",
+    glanceBedrooms: "Camere",
+    glanceBedroomsVal: "Quattro, più due letti singoli nel salone del 1° piano",
+    glanceWifi: "WiFi",
+    glanceWifiVal: "WiFi basato su 5G",
+    glanceBathrooms: "Bagni/WC",
+    glanceBathroomsVal: "Due, piano terra e primo piano",
+    glanceOutdoor: "Esterno",
+    glanceOutdoorVal: "Sentieri escursionistici e ciclabili partono dalla casa",
+    glanceGuests: "Ospiti",
+    glanceGuestsVal: "Fino a 10",
+
+    nearbyTitle: "Nelle vicinanze",
+    nearbySubtitle: "Esplora la regione",
+    nearbySuvereto: "Suvereto",
+    nearbySuveretoDesc: "Un affascinante borgo medievale, 15 min. in auto",
+    nearbyBolgheri: "Bolgheri",
+    nearbyBolgheriDesc: "I più famosi vini Super Toscani (Sassicaia, Tignanello, Ornellaia, ecc.) nel vicinato (strada via Sassetta), mentre Suvereto stessa ha cantine di prima classe (Tua Rita, Michele Russo, Petra, ecc.)",
+    nearbyBaratti: "Golfo di Baratti / Populonia",
+    nearbyBarattiDesc: "Baia a mezzaluna, cultura etrusca, 30 min. in auto",
+    nearbyVenturina: "Venturina Terme",
+    nearbyVenturinaDesc: "Acqua calda a 37°C direttamente dalla montagna",
+    nearbySanSilvestro: "Miniera di San Silvestro",
+    nearbySanSilvestroDesc: "Storia geologica della regione",
+    nearbyValDiCornia: "Val di Cornia",
+    nearbyValDiCorniaDesc: "Tutto ciò che rende speciale la Toscana",
+    nearbyElba: "Elba",
+    nearbyElbaDesc: "Un altro mondo in un altro mondo",
+    nearbyDayTrips: "Gite giornaliere",
+    nearbyDayTripsDesc: "Firenze, Pisa, Siena, Volterra, San Gimignano, Chianti — ciascuno raggiungibile in una gita giornaliera",
+    nearbyMonteCalvi: "Monte Calvi",
+    nearbyMonteCalviDesc: "Piante endemiche",
+    nearbyFlora: "Flora e fauna",
+    nearbyFloraDesc: "Dalle gorgonie cangianti di Baratti al branco di lupi della Val di Cornia. I boschi, gli alberi e le piante della proprietà e dei dintorni, fino alla diversità ornitologica.",
+    nearbyDiving: "Immersioni",
+    nearbyDivingDesc: "Immersioni sportive e tecniche: Baratti Diving, Il Careno Diving, Talas Diving",
+    nearbyMaremma: "Parco naturale della Maremma",
+    nearbyMaremmaDesc: "Campiglia Marittima, Massa Marittima, con deviazione a San Galgano",
+    nearbyOlives: "Oliveto privato",
+    nearbyOlivesDesc: "150 alberi (la proprietà copre 21 ettari in totale)",
+    nearbyTarot: "Giardino dei Tarocchi",
+    nearbyTarotDesc: "Il Giardino dei Tarocchi, l'eredità di Niki de Saint Phalle",
+    nearbyOrbetello: "Orbetello, Monte Argentario",
+    nearbyOrbetelloDesc: "Bellezza costiera e riserva naturale lagunare",
+    nearbySaturnia: "Saturnia",
+    nearbySaturniaDesc: "Le incredibili vasche di travertino di Saturnia",
+
+    seasonsLabel: "Stagioni",
+    seasonsTitle: "Ogni stagione racconta la sua storia",
+    seasonsSpring: "Primavera",
+    seasonsSpringDesc: "I colori della natura esplodono di vita, passeggiate tra i fiori e tour in bicicletta",
+    seasonsSummer: "Estate",
+    seasonsSummerDesc: "Ammirate la Via Lattea durante il concerto delle cicale, fughe costiere a Baratti",
+    seasonsAutumn: "Autunno",
+    seasonsAutumnDesc: "Il clima mite prolunga il tempo all'aperto fino a tardi nell'anno, feste del raccolto",
+    seasonsWinter: "Inverno",
+    seasonsWinterDesc: "I venti tempestosi invitano a serate accoglienti davanti al camino, terme",
+
+    bookingLabel: "Prenota il tuo soggiorno",
+    bookingTitle: "Condividi i tuoi piani — organizzeremo la tua fuga toscana",
+    bookingDesc: "Prenotazione possibile solo con due settimane di anticipo. Durata minima del noleggio: 1 settimana. I prezzi sono settimanali/stagionali, incluso il numero di persone, biancheria da letto, asciugamani e pulizia finale.",
+    formName: "Nome",
+    formNamePh: "Il tuo nome completo",
+    formEmail: "E-mail",
+    formEmailPh: "tu@esempio.com",
+    formDates: "Date di viaggio",
+    formFrom: "Dal",
+    formTo: "Al",
+    formGuests: "Numero di ospiti",
+    formGuestsPh: "Inserisci il numero di ospiti",
+    formMessage: "Messaggio",
+    formMessagePh: "Raccontaci della tua vacanza toscana ideale",
+    formSubmit: "Invia richiesta",
+    formSuccess: "Grazie! Il tuo messaggio è stato inviato.",
+    formError: "Qualcosa è andato storto. Riprova più tardi.",
+    formValidation: "Compila tutti i campi prima di inviare.",
+    formEmailError: "Inserisci un indirizzo e-mail valido.",
+    formRecaptchaError: "Validazione reCAPTCHA fallita. Ricarica la pagina e riprova.",
+
+    contactTitle: "Contatto",
+    contactAddress: "Località Poggio Agliai 113<br/>57028 Suvereto LI, Toscana · Italia",
+
+    galleryLabel: "Galleria",
+    galleryTitle: "Ogni stanza racconta una storia toscana",
+    galleryDesc: "Esplora gli spazi di Poggio Agliai. Seleziona una foto per un'anteprima più grande.",
+    galleryPreview: "Anteprima galleria",
+
+    footerRights: "© 2025 Poggio Agliai. Tutti i diritti riservati.",
+    minStayAlert: "Soggiorno minimo di 6 notti (selezionato: {n})",
+    dateStartPh: "Seleziona data di inizio",
+    dateEndPh: "Seleziona data di fine",
+  }
+}
+
+// Current language
+let currentLang = localStorage.getItem('poggio-lang') || 'en'
+
+function t(key) {
+  return translations[currentLang]?.[key] || translations.en[key] || key
+}
+
+function setLanguage(lang) {
+  currentLang = lang
+  localStorage.setItem('poggio-lang', lang)
+  document.documentElement.lang = lang
+  applyTranslations()
+  updateLangSwitcher()
+  // Re-render gallery with new language
+  if (typeof galleryRawData !== 'undefined' && galleryRawData) {
+    renderGallery(galleryRawData)
+  }
+}
+
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n')
+    const val = t(key)
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      if (el.hasAttribute('placeholder')) el.placeholder = val
+    } else {
+      if (val.includes('<br')) el.innerHTML = val
+      else el.textContent = val
+    }
+  })
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = t(el.getAttribute('data-i18n-placeholder'))
+  })
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    el.innerHTML = t(el.getAttribute('data-i18n-html'))
+  })
+}
+
+function updateLangSwitcher() {
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+    const lang = btn.getAttribute('data-lang-btn')
+    btn.classList.toggle('bg-white/20', lang === currentLang)
+    btn.classList.toggle('text-white', lang === currentLang)
+    btn.classList.toggle('font-semibold', lang === currentLang)
+  })
+}

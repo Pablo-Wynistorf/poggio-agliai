@@ -17,59 +17,77 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFEV1SQ2DX"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="js/tailwind.js"></script>
+  <script src="js/translations.js"></script>
   <script defer src="js/google_analytics.js"></script>
   <script defer src="js/index.js"></script>
+  <style>
+    .nav-outline {
+      position: absolute;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      border-radius: 9999px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      opacity: 0;
+    }
+  </style>
 </head>
 
 <body id="home" class="bg-white font-sans text-slate-800" data-asset-prefix="./assets">
-  <nav
+  <!-- Floating Nav -->
+  <nav id="main-nav"
     class="fixed top-4 left-1/2 z-50 -translate-x-1/2 flex items-center justify-center gap-6 rounded-3xl bg-lime-900/50 px-8 py-3 text-white shadow-lg backdrop-blur-md font-medium text-[clamp(0.75rem,1.8vw,0.95rem)] whitespace-nowrap">
-    <a href="#home" class="hover:text-brand-200 transition">Home</a>
-    <a href="#about" class="hover:text-brand-200 transition">About</a>
+    <div class="nav-outline" id="nav-outline"></div>
+    <a href="#home" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="home" data-i18n="navHome">Home</a>
+    <a href="#about" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="about" data-i18n="navAbout">About</a>
+    <a href="#nearby" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="nearby" data-i18n="navNearby">Nearby</a>
     <a href="#contact"
-      class="rounded-full border border-white/40 px-4 py-1.5 hover:bg-white/10 transition shrink-0 whitespace-nowrap">
+      class="nav-link rounded-full border border-white/40 px-4 py-1.5 hover:bg-white/10 transition shrink-0 whitespace-nowrap"
+      data-nav="contact" data-i18n="navBookNow">
       Book Now
     </a>
-    <a href="#gallery" class="hover:text-brand-200 transition">Gallery</a>
-    <a href="#contact" class="hover:text-brand-200 transition">Contact</a>
+    <a href="#gallery" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="gallery" data-i18n="navGallery">Gallery</a>
+    <a href="#contact" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="contact" data-i18n="navContact">Contact</a>
+
+    <!-- Language Switcher -->
+    <div class="flex items-center gap-1 ml-2 border-l border-white/30 pl-4">
+      <button data-lang-btn="en" onclick="setLanguage('en')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">EN</button>
+      <button data-lang-btn="de" onclick="setLanguage('de')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">DE</button>
+      <button data-lang-btn="fr" onclick="setLanguage('fr')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">FR</button>
+      <button data-lang-btn="it" onclick="setLanguage('it')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">IT</button>
+    </div>
   </nav>
 
+  <!-- Hero Header -->
   <header class="relative isolate overflow-hidden bg-slate-900 text-white min-h-screen flex flex-col justify-between">
-    <!-- Background Image -->
     <img src="assets/images/home-foto.jpg" alt="Tuscan farmhouse exterior"
       class="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
     <div class="absolute inset-0 -z-10 bg-slate-950/20"></div>
 
-    <!-- Navbar -->
     <div class="mx-auto w-full max-w-7xl flex flex-col gap-16 px-6 pt-6 lg:px-8">
       <nav class="flex items-center justify-between gap-8" aria-label="Primary">
         <a href="#top" class="text-lg font-semibold tracking-wide text-white">Poggio Agliai</a>
       </nav>
-
-      <!-- Mobile Menu -->
       <div id="mobile-menu"
         class="flex flex-col gap-6 rounded-xl border border-white/20 bg-slate-900/80 p-6 text-sm font-medium text-white lg:hidden hidden"
         data-mobile-menu>
       </div>
     </div>
 
-    <!-- Hero Content -->
     <div class="relative z-10 flex flex-col items-start justify-center px-6 pb-28 lg:px-8 lg:pb-32 max-w-7xl mx-auto">
-      <p class="text-sm uppercase tracking-[0.3em] text-brand-200 mb-3">Tuscan Countryside Retreat</p>
-      <h1 class="max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-        Experience warm, unhurried living in the heart of Tuscany
+      <p class="text-sm uppercase tracking-[0.3em] text-brand-200 mb-3" data-i18n="heroSubtitle">Benvenuto nell'eredità</p>
+      <h1 class="max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl" data-i18n="heroTitle">
+        Welcome to the legacy in nature's realm, be part of our Tuscan story
       </h1>
       <div class="mt-8 flex flex-wrap gap-4">
         <a class="inline-flex items-center justify-center rounded-full bg-brand-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300"
-          href="#contact">Book Now</a>
+          href="#contact" data-i18n="heroCta1">Book Now</a>
         <a class="inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-sm font-semibold text-white transition hover:border-white hover:text-white"
-          href="#about">Discover More</a>
+          href="#about" data-i18n="heroCta2">Discover More</a>
       </div>
     </div>
 
-    <!-- Scroll Arrows -->
     <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white">
-      <span class="text-3xl mb-1">Scroll</span>
+      <span class="text-3xl mb-1" data-i18n="heroScroll">Scroll</span>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="w-6 h-6 animate-bounce">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -77,199 +95,226 @@
     </div>
   </header>
 
-
   <main class="bg-brand-300">
+    <!-- About Section -->
     <section id="about" class="relative overflow-hidden py-24 sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
         <div class="space-y-6">
-          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">About the Residence</p>
-          <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl">
-            A farmhouse of warmth, character, and effortless elegance
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500" data-i18n="aboutLabel">About the Residence</p>
+          <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl" data-i18n="aboutTitle">
+            Casa Poggio Agliai
           </h2>
-          <p class="text-lg text-slate-700">
-            Poggio Agliai embraces traditional Tuscan craftsmanship with contemporary comfort. Four ensuite bedrooms
-            welcome up
-            to eight guests, while sunlit living rooms, a chef's kitchen, and pergola-shaded terraces create space for
-            slow
-            mornings and convivial evenings. Outside, fragrant herb gardens, a saltwater pool, and private olive groves
-            open to
-            sweeping countryside views.
+          <p class="text-lg text-slate-700" data-i18n="aboutP1">
+            Whether it's springtime, when nature's colours burst into life, a summer evening, when you can marvel at the incomparable view of the Milky Way during the cicada concert, autumn, when the mild climate extends the outdoor season until late in the year, or winter, when the stormy winds invite you to cosy up in front of the open fire: Casa Poggio Agliai offers a place of tranquillity and rejuvenation in every season.
           </p>
-          <p class="text-lg text-slate-700">
-            Spend your days exploring Suvereto, Bolgheri, and the Etruscan Coast, tasting celebrated wines, and
-            returning to
-            golden sunsets over the Val di Cornia. Every stay can be tailored with curated experiences that celebrate
-            the
-            flavours, history, and calm of Tuscany.
+          <p class="text-lg text-slate-700" data-i18n="aboutP2">
+            In the hills around Suvereto, the winding road leads up to the small hamlet of Prata. From there, a well-maintained natural road leads into the heart of the Alta Maremma countryside. For over a hundred years, the former farmhouse has stood at the end of Poggio Agliai, whose two valleys are surrounded by the Fosso Bruno and Fosso Mulino streams.
+          </p>
+          <p class="text-lg text-slate-700" data-i18n="aboutP3">
+            The house offers comfort for 10 people with four bedrooms, three with double beds, one with a queen-size bed, and two single beds in the living room on the first floor. In addition to a functional kitchen and a wood-fired oven house for homemade pizzas, the large living room offers plenty of space for cozy dinners and relaxed evenings.
+          </p>
+          <p class="text-lg text-slate-700" data-i18n="aboutP4">
+            The portico and veranda around the house also offer many opportunities to spend time outdoors.
           </p>
         </div>
         <div class="grid gap-8 sm:grid-cols-2">
+          <!-- At a glance card -->
           <div class="rounded-3xl border border-brand-100 bg-brand-50 p-8 shadow-sm">
-            <h3 class="font-display text-xl text-brand-800">At a glance</h3>
+            <h3 class="font-display text-xl text-brand-800" data-i18n="glanceTitle">At a glance</h3>
             <dl class="mt-6 space-y-3 text-sm text-slate-700">
               <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
-                <dt class="font-semibold text-brand-700">Bedrooms</dt>
-                <dd>4 ensuite suites</dd>
+                <dt class="font-semibold text-brand-700" data-i18n="glanceBedrooms">Bedrooms</dt>
+                <dd data-i18n="glanceBedroomsVal">Four, plus two single beds in the 1st floor salon</dd>
               </div>
               <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
-                <dt class="font-semibold text-brand-700">Bathrooms</dt>
-                <dd>2 refined baths</dd>
+                <dt class="font-semibold text-brand-700" data-i18n="glanceWifi">WiFi</dt>
+                <dd data-i18n="glanceWifiVal">5G-based WiFi</dd>
               </div>
               <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
-                <dt class="font-semibold text-brand-700">Guests</dt>
-                <dd>Up to 10 guests</dd>
+                <dt class="font-semibold text-brand-700" data-i18n="glanceBathrooms">Bathrooms/WC</dt>
+                <dd data-i18n="glanceBathroomsVal">Two, ground floor and first floor</dd>
               </div>
               <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
-                <dt class="font-semibold text-brand-700">Outdoor</dt>
-                <dd>Pretty terraces</dd>
+                <dt class="font-semibold text-brand-700" data-i18n="glanceOutdoor">Outdoor</dt>
+                <dd data-i18n="glanceOutdoorVal">Hiking &amp; bike trails start right at the house</dd>
+              </div>
+              <div class="flex justify-between gap-3">
+                <dt class="font-semibold text-brand-700" data-i18n="glanceGuests">Guests</dt>
+                <dd data-i18n="glanceGuestsVal">Up to 10</dd>
               </div>
             </dl>
           </div>
+          <!-- Seasonal highlights card -->
           <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-            <h3 class="font-display text-xl text-brand-800">Nearby inspirations</h3>
+            <h3 class="font-display text-xl text-brand-800" data-i18n="seasonsTitle">Every season tells its own story</h3>
             <ul class="mt-6 space-y-4 text-sm text-slate-700">
-              <li><span class="font-semibold text-brand-700">Suvereto:</span> medieval village 10 minutes away</li>
-              <li><span class="font-semibold text-brand-700">Bolgheri Wine Route:</span> celebrated Super Tuscan estates
-              </li>
-              <li><span class="font-semibold text-brand-700">Gulf of Baratti:</span> Etruscan beaches and crystal waters
-              </li>
-              <li><span class="font-semibold text-brand-700">Val di Cornia trails:</span> scenic cycling and walking
-                routes</li>
+              <li><span class="font-semibold text-brand-700" data-i18n="seasonsSpring">Spring:</span> <span data-i18n="seasonsSpringDesc">Nature's colours burst into life, wildflower walks and cycling tours</span></li>
+              <li><span class="font-semibold text-brand-700" data-i18n="seasonsSummer">Summer:</span> <span data-i18n="seasonsSummerDesc">Marvel at the Milky Way during the cicada concert, coastal escapes to Baratti</span></li>
+              <li><span class="font-semibold text-brand-700" data-i18n="seasonsAutumn">Autumn:</span> <span data-i18n="seasonsAutumnDesc">Mild climate extends outdoor time late into the year, harvest festivals</span></li>
+              <li><span class="font-semibold text-brand-700" data-i18n="seasonsWinter">Winter:</span> <span data-i18n="seasonsWinterDesc">Stormy winds invite cosy evenings by the open fire, thermal spas</span></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Nearby Section -->
+    <section id="nearby" class="relative overflow-hidden bg-brand-50 py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="space-y-6 max-w-3xl mb-16">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500" data-i18n="nearbySubtitle">Explore the region</p>
+          <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl" data-i18n="nearbyTitle">Nearby inspirations</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbySuvereto">Suvereto</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbySuveretoDesc">A charming medieval town, 15 min. by car</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyBolgheri">Bolgheri</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyBolgheriDesc">The most famous Super Tuscan wines (Sassicaia, Tignanello, Ornellaia, etc.) in the neighbourhood</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyBaratti">Golfo di Baratti / Populonia</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyBarattiDesc">Crescent-shaped bathing bay, Etruscan culture, 30 min. by car</p>
+            <a href="https://www.parchivaldicornia.it/de/parchi-archeologici/parco-archeominerario-di-san-silvestro/" target="_blank" rel="noopener" class="mt-2 inline-block text-xs text-brand-500 underline hover:text-brand-700">Parchi Val di Cornia →</a>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyVenturina">Venturina Terme</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyVenturinaDesc">37°C warm water straight from the mountain</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbySanSilvestro">San Silvestro Mine</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbySanSilvestroDesc">Geological history of the region</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyValDiCornia">Val di Cornia</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyValDiCorniaDesc">Everything that makes Tuscany special</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyElba">Elba</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyElbaDesc">Another world within another world</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyDayTrips">Day trips</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyDayTripsDesc">Florence, Pisa, Siena, Volterra, San Gimignano, Chianti — each reachable in a day trip</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyMonteCalvi">Monte Calvi</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyMonteCalviDesc">Endemic plants</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyFlora">Flora &amp; Fauna</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyFloraDesc">From the colour-changing gorgonians in Baratti to the wolf pack in Val di Cornia.</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyDiving">Diving</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyDivingDesc">Sport &amp; technical diving: Baratti Diving, Il Careno Diving, Talas Diving</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyMaremma">Maremma Nature Park</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyMaremmaDesc">Campiglia Marittima, Massa Marittima, with a detour to San Galgano</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyOlives">Private olive grove</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyOlivesDesc">150 trees (the property covers 21 hectares in total)</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyTarot">Giardino dei Tarocchi</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyTarotDesc">The Tarot Garden, the legacy of Niki de Saint Phalle</p>
+            <a href="https://ilgiardinodeitarocchi.it/" target="_blank" rel="noopener" class="mt-2 inline-block text-xs text-brand-500 underline hover:text-brand-700">ilgiardinodeitarocchi.it →</a>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbyOrbetello">Orbetello, Monte Argentario</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbyOrbetelloDesc">Coastal beauty and lagoon nature reserve</p>
+          </div>
+          <div class="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm">
+            <h4 class="font-semibold text-brand-700" data-i18n="nearbySaturnia">Saturnia</h4>
+            <p class="mt-2 text-sm text-slate-700" data-i18n="nearbySaturniaDesc">The incredible travertine pools of Saturnia</p>
+            <a href="https://www.enjoymaremma.it/de/spa-relax/thermen-von-saturnia/" target="_blank" rel="noopener" class="mt-2 inline-block text-xs text-brand-500 underline hover:text-brand-700">Thermen von Saturnia →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
     <section id="gallery" class="bg-brand-900 py-24 text-brand-50 sm:py-32">
       <div class="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:px-8">
         <div class="max-w-3xl space-y-4">
-          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300">Gallery</p>
-          <h2 class="font-display text-3xl font-semibold sm:text-4xl">Every room tells a Tuscan story</h2>
-          <p class="text-base text-brand-100/80">
-            Explore the spaces of Poggio Agliai. Select any photograph for a closer look, from sunlit suites to tranquil
-            gardens.
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300" data-i18n="galleryLabel">Gallery</p>
+          <h2 class="font-display text-3xl font-semibold sm:text-4xl" data-i18n="galleryTitle">Every room tells a Tuscan story</h2>
+          <p class="text-base text-brand-100/80" data-i18n="galleryDesc">
+            Explore the spaces of Poggio Agliai. Select any photograph for a closer look.
           </p>
         </div>
         <div id="gallery-wrapper" class="space-y-16"></div>
       </div>
     </section>
 
-    <section class="relative overflow-hidden bg-brand-50 py-24 sm:py-32">
-      <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:px-8">
-        <div class="space-y-6">
-          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500">Experiences</p>
-          <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl">Curated moments, tailored to you
-          </h2>
-          <p class="text-lg text-slate-700">
-            Let our concierge arrange sunrise yoga overlooking the olive groves, vineyard tastings with local
-            sommeliers, truffle
-            hunts in nearby woods, or chef-prepared dinners on the terrace. Each stay is a bespoke journey into Tuscan
-            culture,
-            crafted with care.
-          </p>
-          <p class="text-lg text-slate-700">
-            Families, friends, and couples alike discover a rhythm of slow mornings, adventurous afternoons, and
-            evenings that
-            linger over candlelight and local wine.
-          </p>
-        </div>
-        <div class="rounded-3xl border border-brand-100 bg-white p-8 shadow-lg shadow-brand-900/5">
-          <h3 class="font-display text-xl text-brand-800">Seasonal highlights</h3>
-          <ul class="mt-6 space-y-4 text-sm text-slate-700">
-            <li><span class="font-semibold text-brand-700">Spring:</span> Wildflower walks, olive oil press visits, and
-              cycling tours</li>
-            <li><span class="font-semibold text-brand-700">Summer:</span> Poolside aperitivo hours and coastal escapes
-              to Baratti</li>
-            <li><span class="font-semibold text-brand-700">Autumn:</span> Harvest festivals, cellar tastings, and golden
-              sunsets</li>
-            <li><span class="font-semibold text-brand-700">Winter:</span> Firelit evenings, thermal spas, and festive
-              markets</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
+    <!-- Booking / Contact Section -->
     <section id="contact" class="bg-slate-950 py-24 text-white sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
         <div class="space-y-6">
-          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300">Reserve your stay</p>
-          <h2 class="font-display text-3xl font-semibold sm:text-4xl">
-            Share your plans—we will curate your Tuscan escape
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-300" data-i18n="bookingLabel">Reserve your stay</p>
+          <h2 class="font-display text-3xl font-semibold sm:text-4xl" data-i18n="bookingTitle">
+            Share your plans — we will arrange your Tuscan escape
           </h2>
-          <p class="text-lg text-white/80">
-            Let us know your travel dates and any special requests. Our team will respond with availability, bespoke
-            itineraries,
-            and concierge services to make your stay unforgettable.
+          <p class="text-lg text-white/80" data-i18n="bookingDesc">
+            Booking is only possible two weeks in advance. Minimum rental period: 1 week. Prices are weekly/seasonal including number of guests, bed linen, towels, and final cleaning.
           </p>
 
           <form id="contact-form" class="grid gap-8 text-slate-900">
-            <!-- Name -->
             <label class="space-y-2 text-sm font-medium text-white">
-              <span>Name</span>
-              <input type="text" name="name" required placeholder="Your full name"
+              <span data-i18n="formName">Name</span>
+              <input type="text" name="name" required placeholder="Your full name" data-i18n-placeholder="formNamePh"
                 class="w-full rounded-2xl border border-white/20 bg-white/95 px-5 py-3 text-sm text-slate-900 shadow-inner placeholder:text-slate-500 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
             </label>
 
-            <!-- Email -->
             <label class="space-y-2 text-sm font-medium text-white">
-              <span>Email</span>
-              <input type="email" name="email" required placeholder="you@example.com"
+              <span data-i18n="formEmail">Email</span>
+              <input type="email" name="email" required placeholder="you@example.com" data-i18n-placeholder="formEmailPh"
                 class="w-full rounded-2xl border border-white/20 bg-white/95 px-5 py-3 text-sm text-slate-900 shadow-inner placeholder:text-slate-500 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
             </label>
 
-            <!-- Date selector (replace your current date inputs) -->
             <div class="space-y-3 text-sm font-medium text-white">
-              <span class="block">Travel Dates</span>
-
+              <span class="block" data-i18n="formDates">Travel Dates</span>
               <div id="date-range-picker" date-rangepicker class="flex flex-col sm:flex-row items-center gap-4 w-full">
-                <!-- FROM -->
-                <div
-                  class="flex items-center w-full sm:w-1/2 rounded-2xl bg-white/95 px-4 py-3 shadow-inner text-slate-900 focus-within:ring-0 focus-within:outline-none transition">
-                  <span class="text-sm font-semibold text-brand-700 w-14 tracking-wide">From</span>
+                <div class="flex items-center w-full sm:w-1/2 rounded-2xl bg-white/95 px-4 py-3 shadow-inner text-slate-900 focus-within:ring-0 focus-within:outline-none transition">
+                  <span class="text-sm font-semibold text-brand-700 w-14 tracking-wide" data-i18n="formFrom">From</span>
                   <input id="datepicker-range-start" name="start" type="text"
                     class="flex-1 bg-transparent border-0 outline-none ring-0 focus:border-0 focus:ring-0 text-sm placeholder:text-slate-500"
-                    placeholder="Select date start" required />
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-500 ml-2 pointer-events-none"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v11a2 2 0 002 2z" />
+                    placeholder="Select date start" data-i18n-placeholder="dateStartPh" required />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-500 ml-2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v11a2 2 0 002 2z" />
                   </svg>
                 </div>
-
-                <!-- TO -->
-                <div
-                  class="flex items-center w-full sm:w-1/2 rounded-2xl bg-white/95 px-4 py-3 shadow-inner text-slate-900 focus-within:ring-0 focus-within:outline-none transition">
-                  <span class="text-sm font-semibold text-brand-700 w-14 tracking-wide">To</span>
+                <div class="flex items-center w-full sm:w-1/2 rounded-2xl bg-white/95 px-4 py-3 shadow-inner text-slate-900 focus-within:ring-0 focus-within:outline-none transition">
+                  <span class="text-sm font-semibold text-brand-700 w-14 tracking-wide" data-i18n="formTo">To</span>
                   <input id="datepicker-range-end" name="end" type="text"
                     class="flex-1 bg-transparent border-0 outline-none ring-0 focus:border-0 focus:ring-0 text-sm placeholder:text-slate-500"
-                    placeholder="Select date end" required />
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-500 ml-2 pointer-events-none"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v11a2 2 0 002 2z" />
+                    placeholder="Select date end" data-i18n-placeholder="dateEndPh" required />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-500 ml-2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v11a2 2 0 002 2z" />
                   </svg>
                 </div>
               </div>
             </div>
 
-            <!-- Amount of Guests -->
             <label class="space-y-2 text-sm font-medium text-white">
-              <span>Amount of Guests</span>
-              <input type="number" name="guests" min="1" max="10" required placeholder="Enter number of guests"
+              <span data-i18n="formGuests">Number of Guests</span>
+              <input type="number" name="guests" min="1" max="10" required placeholder="Enter number of guests" data-i18n-placeholder="formGuestsPh"
                 class="w-full rounded-2xl border border-white/20 bg-white/95 px-5 py-3 text-sm text-slate-900 shadow-inner placeholder:text-slate-500 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
             </label>
 
-            <!-- Message -->
             <label class="space-y-2 text-sm font-medium text-white">
-              <span>Message</span>
-              <textarea name="message" rows="4" required placeholder="Tell us about your ideal Tuscan holiday"
+              <span data-i18n="formMessage">Message</span>
+              <textarea name="message" rows="4" required placeholder="Tell us about your ideal Tuscan holiday" data-i18n-placeholder="formMessagePh"
                 class="w-full rounded-2xl border border-white/20 bg-white/95 px-5 py-3 text-sm text-slate-900 shadow-inner placeholder:text-slate-500 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60"></textarea>
             </label>
 
-            <!-- Submit -->
             <button type="submit"
-              class="mt-2 inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-brand-400 px-10 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300">
+              class="mt-2 inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-brand-400 px-10 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300"
+              data-i18n="formSubmit">
               Send Inquiry
             </button>
 
@@ -285,9 +330,9 @@
             </iframe>
           </div>
           <div class="rounded-3xl border border-white/20 bg-white/5 p-8 backdrop-blur">
-            <h3 class="font-display text-2xl text-brand-100">Contact</h3>
-            <p class="mt-4 text-sm text-white/80">
-              Località Poggio Agliai 113<br />57028 Suvereto LI, Tuscany · Italy
+            <h3 class="font-display text-2xl text-brand-100" data-i18n="contactTitle">Contact</h3>
+            <p class="mt-4 text-sm text-white/80" data-i18n-html="contactAddress">
+              Località Poggio Agliai 113<br/>57028 Suvereto LI, Tuscany · Italy
             </p>
             Email: <a href="mailto:stay@poggio-agliai.com"
               class="underline decoration-brand-200/50 hover:text-brand-200">stay@poggio-agliai.com</a>
@@ -295,27 +340,26 @@
         </div>
       </div>
     </section>
-
-
   </main>
 
+  <!-- Footer -->
   <footer class="border-t border-slate-200 bg-white py-10">
-    <div
-      class="mx-auto flex max-w-7xl flex-col gap-6 px-6 text-sm text-slate-600 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-      <p>&copy; 2025 Poggio Agliai. All rights reserved.</p>
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 text-sm text-slate-600 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <p data-i18n="footerRights">&copy; 2025 Poggio Agliai. All rights reserved.</p>
       <div class="flex flex-wrap items-center gap-4">
-        <a href="#about" class="transition hover:text-brand-600">About</a>
-        <a href="#gallery" class="transition hover:text-brand-600">Gallery</a>
-        <a href="#contact" class="transition hover:text-brand-600">Contact</a>
+        <a href="#about" class="transition hover:text-brand-600" data-i18n="navAbout">About</a>
+        <a href="#gallery" class="transition hover:text-brand-600" data-i18n="navGallery">Gallery</a>
+        <a href="#contact" class="transition hover:text-brand-600" data-i18n="navContact">Contact</a>
         <span class="hidden h-5 w-px bg-slate-300 lg:inline-block"></span>
       </div>
     </div>
   </footer>
 
+  <!-- Lightbox -->
   <div id="lightbox" class="fixed inset-0 z-50 hidden flex-col bg-slate-950/95 text-brand-100" role="dialog"
     aria-modal="true" aria-hidden="true">
     <div class="flex items-center justify-between px-6 py-5 sm:px-10">
-      <div class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-300">Gallery Preview</div>
+      <div class="text-xs font-semibold uppercase tracking-[0.4em] text-brand-300" data-i18n="galleryPreview">Gallery Preview</div>
       <button type="button"
         class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
         data-lightbox-close aria-label="Close gallery">
@@ -329,14 +373,12 @@
         class="group absolute left-4 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:bg-white/20 sm:flex"
         data-lightbox-prev aria-label="View previous image">
         <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-          <path d="M15.75 19.5L8.25 12l7.5-7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round" />
+          <path d="M15.75 19.5L8.25 12l7.5-7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
       <div class="flex max-w-5xl flex-1 flex-col items-center gap-6 text-center" data-lightbox-viewer>
         <div class="relative flex w-full items-center justify-center">
-          <img id="lightbox-image" alt="Gallery detail"
-            class="max-h-[72vh] w-full rounded-3xl object-contain shadow-black/60" />
+          <img id="lightbox-image" alt="Gallery detail" class="max-h-[72vh] w-full rounded-3xl object-contain shadow-black/60" />
         </div>
         <div class="space-y-2 px-4">
           <h3 id="lightbox-title" class="font-display text-2xl font-semibold text-white sm:text-3xl"></h3>
@@ -347,8 +389,7 @@
         class="group absolute right-4 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white transition hover:bg-white/20 sm:flex"
         data-lightbox-next aria-label="View next image">
         <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-          <path d="M8.25 4.5L15.75 12l-7.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round" />
+          <path d="M8.25 4.5L15.75 12l-7.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
     </div>
@@ -356,19 +397,16 @@
       <div class="flex items-center gap-3 sm:hidden">
         <button type="button"
           class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-white/20"
-          data-lightbox-prev-mobile>
-          Prev
-        </button>
+          data-lightbox-prev-mobile>Prev</button>
         <button type="button"
           class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-white/20"
-          data-lightbox-next-mobile>
-          Next
-        </button>
+          data-lightbox-next-mobile>Next</button>
       </div>
       <div class="text-xs uppercase tracking-[0.35em]" id="lightbox-counter"></div>
     </div>
   </div>
 
+  <!-- Gallery Templates -->
   <template id="gallery-section-template">
     <section class="space-y-6">
       <div class="space-y-2">
@@ -384,16 +422,13 @@
       class="group relative block overflow-hidden rounded-3xl border border-brand-700/40 bg-brand-800/40 text-left shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:border-brand-400"
       data-gallery-item>
       <div class="relative overflow-hidden" data-image-wrapper>
-        <img alt="Gallery" loading="lazy"
-          class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <img alt="Gallery" loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
       </div>
-      <div
-        class="pointer-events-none absolute inset-x-4 bottom-4 rounded-2xl bg-black/45 p-4 text-white backdrop-blur-sm transition group-hover:bg-black/55">
+      <div class="pointer-events-none absolute inset-x-4 bottom-4 rounded-2xl bg-black/45 p-4 text-white backdrop-blur-sm transition group-hover:bg-black/55">
         <p class="text-sm font-semibold" data-item-title></p>
         <p class="mt-1 text-xs text-brand-100/80" data-item-description></p>
       </div>
     </button>
   </template>
 </body>
-
 </html>

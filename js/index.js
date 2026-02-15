@@ -5,7 +5,16 @@ const assetPrefix = './assets'
 const galleryWrapper = document.getElementById('gallery-wrapper')
 const sectionTemplate = document.getElementById('gallery-section-template')
 const itemTemplate = document.getElementById('gallery-item-template')
-const galleryItemsFlat = []
+let galleryItemsFlat = []
+let galleryRawData = null
+
+// Resolve i18n: use currentLang translation if available, fall back to default
+function i18nText(item, field) {
+  if (item.i18n && item.i18n[currentLang] && item.i18n[currentLang][field] !== undefined) {
+    return item.i18n[currentLang][field]
+  }
+  return item[field] ?? ''
+}
 
 // Load gallery data dynamically from /assets/gallery-data.json
 fetch(`${assetPrefix}/gallery-data.json`)
@@ -13,11 +22,18 @@ fetch(`${assetPrefix}/gallery-data.json`)
     if (!res.ok) throw new Error('Failed to load gallery-data.json')
     return res.json()
   })
-  .then(galleryData => renderGallery(galleryData))
+  .then(data => {
+    galleryRawData = data
+    renderGallery(data)
+  })
   .catch(err => console.error('Error loading gallery data:', err))
 
 function renderGallery(galleryData) {
   if (!galleryWrapper || !sectionTemplate || !itemTemplate) return;
+
+  // Clear previous render
+  galleryWrapper.innerHTML = ''
+  galleryItemsFlat = []
 
   galleryData.forEach(group => {
     const sectionClone = sectionTemplate.content.cloneNode(true);
@@ -25,8 +41,8 @@ function renderGallery(galleryData) {
     const description = sectionClone.querySelector('p');
     const grid = sectionClone.querySelector('[data-gallery-grid]');
 
-    if (heading) heading.textContent = group.title;
-    if (description) description.textContent = group.description;
+    if (heading) heading.textContent = i18nText(group, 'title');
+    if (description) description.textContent = i18nText(group, 'description');
 
     group.images.forEach(image => {
       const normalized = normalizeImage(image);
@@ -37,15 +53,14 @@ function renderGallery(galleryData) {
 
       const itemData = {
         src,
-        title: normalized.title ?? createTitle(normalized.file),
-        description: normalized.description ?? '',
+        title: i18nText(normalized, 'title') || createTitle(normalized.file),
+        description: i18nText(normalized, 'description'),
         format,
         fullscreen
       };
 
       galleryItemsFlat.push(itemData);
 
-      // Create the gallery item button
       const itemClone = itemTemplate.content.cloneNode(true);
       const button = itemClone.querySelector('[data-gallery-item]');
       const img = itemClone.querySelector('img');
@@ -73,7 +88,6 @@ function renderGallery(galleryData) {
       button.dataset.index = String(itemIndex);
       button.addEventListener('click', () => openLightbox(itemIndex));
 
-      // ✅ Handle optional sidebox
       if (normalized.sidebox) {
         const side = normalized.sidebox.side === 'left' ? 'left' : 'right';
         const sideBox = document.createElement('div');
@@ -87,8 +101,6 @@ function renderGallery(galleryData) {
             <p class="text-sm text-brand-100/80">${normalized.sidebox.text}</p>
           </div>
         `;
-
-        // Use a 2-column layout with image and box side-by-side
         const container = document.createElement('div');
         container.className = `grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch col-span-full`;
         if (side === 'left') {
@@ -126,10 +138,10 @@ function inferOrientation(filename) {
 // ==============
 const lightbox = document.getElementById('lightbox')
 const lightboxImage = document.getElementById('lightbox-image')
-lightboxImage.setAttribute('draggable', 'false') // prevent browser drag behavior
+lightboxImage.setAttribute('draggable', 'false')
 
-const titleEl = document.getElementById('lightbox-title')
-const descriptionEl = document.getElementById('lightbox-description')
+const lbTitleEl = document.getElementById('lightbox-title')
+const lbDescriptionEl = document.getElementById('lightbox-description')
 const counterEl = document.getElementById('lightbox-counter')
 const prevBtn = document.querySelector('[data-lightbox-prev]')
 const nextBtn = document.querySelector('[data-lightbox-next]')
@@ -138,7 +150,6 @@ const nextBtnMobile = document.querySelector('[data-lightbox-next-mobile]')
 const closeBtn = document.querySelector('[data-lightbox-close]')
 let currentIndex = 0
 
-// zoom + drag state
 let zoomActive = false
 let isDragging = false
 let startX = 0
@@ -160,11 +171,10 @@ function updateLightbox(item) {
   resetZoom()
   lightboxImage.src = item.src
   lightboxImage.alt = item.title
-  titleEl.textContent = item.title
-  descriptionEl.textContent = item.description || ''
+  lbTitleEl.textContent = item.title
+  lbDescriptionEl.textContent = item.description || ''
   counterEl.textContent = `${currentIndex + 1} / ${galleryItemsFlat.length}`
 
-  // consistent navigation buttons
   const navButtons = [prevBtn, nextBtn].filter(Boolean)
   navButtons.forEach(btn => {
     btn.style.position = 'fixed'
@@ -199,13 +209,8 @@ function applyTransform() {
   lightboxImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`
 }
 
-// ==========================
-// CLICK-TO-ZOOM + DRAG LOGIC
-// ==========================
 lightboxImage.addEventListener('click', e => {
   const rect = lightboxImage.getBoundingClientRect()
-
-  // toggle zoom
   if (!zoomActive) {
     zoomActive = true
     scale = 2
@@ -223,7 +228,6 @@ lightboxImage.addEventListener('click', e => {
   }
 })
 
-// Desktop drag
 lightboxImage.addEventListener('mousedown', e => {
   if (!zoomActive) return
   isDragging = true
@@ -245,7 +249,6 @@ document.addEventListener('mousemove', e => {
   applyTransform()
 })
 
-// Mobile touch support
 lightboxImage.addEventListener('touchstart', e => {
   if (!zoomActive) return
   const touch = e.touches[0]
@@ -263,13 +266,9 @@ lightboxImage.addEventListener('touchmove', e => {
   applyTransform()
 }, { passive: true })
 
-lightboxImage.addEventListener('touchend', () => {
-  isDragging = false
-})
+lightboxImage.addEventListener('touchend', () => { isDragging = false })
 
-// ==================
-// NAVIGATION BUTTONS
-// ==================
+// Navigation buttons
 prevBtn?.addEventListener('click', e => { e.stopPropagation(); show(-1) })
 nextBtn?.addEventListener('click', e => { e.stopPropagation(); show(1) })
 prevBtnMobile?.addEventListener('click', e => { e.stopPropagation(); show(-1) })
@@ -291,9 +290,8 @@ document.addEventListener('keydown', e => {
 })
 
 
-
 // ====================
-// CONTACT FORM HANDLER WITH reCAPTCHA
+// CONTACT FORM HANDLER
 // ====================
 const form = document.getElementById('contact-form')
 const feedback = document.getElementById('form-feedback')
@@ -309,10 +307,10 @@ form?.addEventListener('submit', async e => {
   const end = fd.get('end')?.toString().trim()
 
   if (!name || !email || !message || !start || !end)
-    return setFeedback('Please complete all fields before submitting.', 'error')
+    return setFeedback(t('formValidation'), 'error')
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-    return setFeedback('Please enter a valid email address.', 'error')
+    return setFeedback(t('formEmailError'), 'error')
 
   try {
     grecaptcha.enterprise.ready(async () => {
@@ -329,14 +327,14 @@ form?.addEventListener('submit', async e => {
 
       if (res.ok) {
         form.reset()
-        setFeedback('Thank you! Your message has been sent.', 'success')
+        setFeedback(t('formSuccess'), 'success')
       } else {
-        setFeedback('Something went wrong. Please try again later.', 'error')
+        setFeedback(t('formError'), 'error')
       }
     })
   } catch (err) {
     console.error('reCAPTCHA error:', err)
-    setFeedback('reCAPTCHA validation failed. Please reload and try again.', 'error')
+    setFeedback(t('formRecaptchaError'), 'error')
   }
 })
 
@@ -355,7 +353,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const startBox = startInput.closest('div')
   const endBox = endInput.closest('div')
 
-  // clicking anywhere in the box opens the picker
   startBox.addEventListener('click', () => startInput._flatpickr.open())
   endBox.addEventListener('click', () => endInput._flatpickr.open())
 
@@ -368,9 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
     onChange: function (selectedDates) {
       if (selectedDates.length > 0) {
         const startDate = selectedDates[0]
-        // set min end date to +1 day
         endPicker.set('minDate', new Date(startDate.getTime() + 24 * 60 * 60 * 1000))
-        // open the end picker immediately
         setTimeout(() => endInput._flatpickr.open(), 100)
       }
     }
@@ -385,14 +380,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const endDate = selectedDates[0]
         const nights = (endDate - startDate) / (1000 * 60 * 60 * 24)
         if (nights < 6) {
-          showAlert(`Minimum stay is 6 nights (selected: ${nights})`)
+          showAlert(t('minStayAlert').replace('{n}', nights))
           endInput.value = ""
         }
       }
     }
   })
 
-  // bottom-center popup alert
   function showAlert(msg) {
     let alertBox = document.getElementById('alert-box')
     if (!alertBox) {
@@ -405,4 +399,46 @@ document.addEventListener("DOMContentLoaded", () => {
     alertBox.style.opacity = '1'
     setTimeout(() => (alertBox.style.opacity = '0'), 3500)
   }
+
+  // ====================
+  // NAV OUTLINE ANIMATION
+  // ====================
+  const mainNav = document.getElementById('main-nav')
+  const navOutline = document.getElementById('nav-outline')
+  const navLinks = mainNav.querySelectorAll('.nav-link')
+  const sections = ['home', 'about', 'nearby', 'gallery', 'contact']
+
+  function moveOutline(target) {
+    if (!target || !navOutline) return
+    const navRect = mainNav.getBoundingClientRect()
+    const linkRect = target.getBoundingClientRect()
+    navOutline.style.left = (linkRect.left - navRect.left - 4) + 'px'
+    navOutline.style.top = (linkRect.top - navRect.top - 4) + 'px'
+    navOutline.style.width = (linkRect.width + 8) + 'px'
+    navOutline.style.height = (linkRect.height + 8) + 'px'
+    navOutline.style.opacity = '1'
+  }
+
+  function updateActiveNav() {
+    const scrollY = window.scrollY + window.innerHeight / 3
+    let activeSection = 'home'
+    for (const id of sections) {
+      const el = document.getElementById(id)
+      if (el && el.offsetTop <= scrollY) activeSection = id
+    }
+    const activeLink = mainNav.querySelector(`[data-nav="${activeSection}"]`)
+    if (activeLink) moveOutline(activeLink)
+  }
+
+  // Outline only follows scroll position (active section), not hover
+  window.addEventListener('scroll', updateActiveNav, { passive: true })
+  window.addEventListener('resize', updateActiveNav)
+
+  // ====================
+  // INIT TRANSLATIONS
+  // ====================
+  applyTranslations()
+  updateLangSwitcher()
+  // Initial outline position
+  setTimeout(updateActiveNav, 100)
 })
