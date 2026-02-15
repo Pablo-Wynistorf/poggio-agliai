@@ -60,12 +60,22 @@
 
     .hero-nav-intro {
       opacity: 0;
-      transform: translateX(-50%) translateY(-20px);
       transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    #main-nav.hero-nav-intro {
+      transform: translateX(-50%) translateY(-20px);
+    }
+    #main-nav.hero-nav-intro.intro-done {
+      transform: translateX(-50%) translateY(0);
+    }
+    #mobile-nav.hero-nav-intro {
+      transform: translateY(-20px);
+    }
+    #mobile-nav.hero-nav-intro.intro-done {
+      transform: translateY(0);
     }
     .hero-nav-intro.intro-done {
       opacity: 1;
-      transform: translateX(-50%) translateY(0);
     }
 
     .hero-scroll-intro {
@@ -93,7 +103,8 @@
 <body id="home" class="bg-white font-sans text-slate-800" data-asset-prefix="./assets">
   <!-- Floating Nav -->
   <nav id="main-nav"
-    class="hero-nav-intro fixed top-4 left-1/2 z-50 -translate-x-1/2 flex items-center justify-center gap-6 rounded-3xl bg-lime-900/50 px-8 py-3 text-white shadow-lg backdrop-blur-md font-medium text-[clamp(0.75rem,1.8vw,0.95rem)] whitespace-nowrap">
+    class="hero-nav-intro fixed top-4 left-1/2 z-50 -translate-x-1/2 flex items-center justify-center gap-6 rounded-3xl bg-lime-900/50 px-8 py-3 text-white shadow-lg backdrop-blur-md font-medium text-[clamp(0.75rem,1.8vw,0.95rem)] whitespace-nowrap
+           max-lg:hidden">
     <div class="nav-outline" id="nav-outline"></div>
     <a href="#home" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="home" data-i18n="navHome">Home</a>
     <a href="#about" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="about" data-i18n="navAbout">About</a>
@@ -114,6 +125,34 @@
       <button data-lang-btn="it" onclick="setLanguage('it')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">IT</button>
     </div>
   </nav>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-nav" class="hero-nav-intro fixed top-4 right-4 z-50 lg:hidden flex flex-col items-end">
+    <button id="mobile-nav-toggle" type="button" aria-label="Toggle menu"
+      class="flex h-11 w-11 items-center justify-center rounded-full bg-lime-900/50 text-white shadow-lg backdrop-blur-md transition hover:bg-lime-900/70">
+      <svg id="mobile-nav-open-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <svg id="mobile-nav-close-icon" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div id="mobile-nav-menu"
+      class="mt-3 hidden flex-col gap-1 rounded-2xl bg-lime-900/80 px-5 py-4 text-white shadow-xl backdrop-blur-lg text-sm font-medium min-w-[180px]">
+      <a href="#home" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="home" data-i18n="navHome">Home</a>
+      <a href="#about" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="about" data-i18n="navAbout">About</a>
+      <a href="#nearby" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="nearby" data-i18n="navNearby">Nearby</a>
+      <a href="#gallery" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="gallery" data-i18n="navGallery">Gallery</a>
+      <a href="#contact" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="contact" data-i18n="navContact">Contact</a>
+      <a href="#contact" class="mt-1 rounded-full border border-white/40 px-4 py-2 text-center hover:bg-white/10 transition" data-nav="contact" data-i18n="navBookNow">Book Now</a>
+      <div class="flex items-center justify-center gap-1 mt-2 pt-2 border-t border-white/20">
+        <button data-lang-btn="en" onclick="setLanguage('en')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">EN</button>
+        <button data-lang-btn="de" onclick="setLanguage('de')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">DE</button>
+        <button data-lang-btn="fr" onclick="setLanguage('fr')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">FR</button>
+        <button data-lang-btn="it" onclick="setLanguage('it')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">IT</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Hero Header -->
   <header class="relative isolate overflow-hidden bg-slate-900 text-white min-h-screen flex flex-col justify-between">
