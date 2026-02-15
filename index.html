@@ -78,6 +78,9 @@
     }
     .hero-scroll-intro.intro-done { opacity: 1; }
 
+    /* Hide reCAPTCHA badge — attribution is shown near the form instead */
+    .grecaptcha-badge { visibility: hidden !important; }
+
     /* Scroll animations */
     [data-scroll] {
       opacity: 0;
@@ -411,6 +414,11 @@
             </button>
 
             <p id="form-feedback" class="text-sm font-medium"></p>
+            <p class="text-xs text-white/50" data-i18n-html="recaptchaNotice">
+              This site is protected by reCAPTCHA and the Google
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="underline hover:text-white/70">Privacy Policy</a> and
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener" class="underline hover:text-white/70">Terms of Service</a> apply.
+            </p>
           </form>
         </div>
 
