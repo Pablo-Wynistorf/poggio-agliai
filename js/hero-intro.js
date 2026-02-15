@@ -35,35 +35,7 @@
     }
   }
 
-  // Mobile nav toggle
-  function initMobileNav() {
-    var toggle = document.getElementById("mobile-nav-toggle");
-    var menu = document.getElementById("mobile-nav-menu");
-    var openIcon = document.getElementById("mobile-nav-open-icon");
-    var closeIcon = document.getElementById("mobile-nav-close-icon");
-    if (!toggle || !menu) return;
-
-    toggle.addEventListener("click", function () {
-      var isOpen = !menu.classList.contains("hidden");
-      menu.classList.toggle("hidden", isOpen);
-      menu.classList.toggle("flex", !isOpen);
-      openIcon.classList.toggle("hidden", !isOpen);
-      closeIcon.classList.toggle("hidden", isOpen);
-    });
-
-    // Close menu when a link is tapped
-    menu.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        menu.classList.add("hidden");
-        menu.classList.remove("flex");
-        openIcon.classList.remove("hidden");
-        closeIcon.classList.add("hidden");
-      });
-    });
-  }
-
   function boot() {
-    initMobileNav();
     if (!reducedMotion) requestAnimationFrame(runIntro);
   }
 

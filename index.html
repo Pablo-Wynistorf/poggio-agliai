@@ -123,7 +123,8 @@
   <!-- Mobile Nav -->
   <div id="mobile-nav" class="fixed top-4 right-4 z-50 lg:hidden flex flex-col items-end">
     <button id="mobile-nav-toggle" type="button" aria-label="Toggle menu"
-      class="flex h-11 w-11 items-center justify-center rounded-full bg-lime-900/50 text-white shadow-lg backdrop-blur-md transition hover:bg-lime-900/70">
+      onclick="var m=document.getElementById('mobile-nav-menu'),o=document.getElementById('mobile-nav-open-icon'),c=document.getElementById('mobile-nav-close-icon'),isOpen=!m.classList.contains('hidden');m.classList.toggle('hidden',isOpen);m.classList.toggle('flex',!isOpen);o.classList.toggle('hidden',!isOpen);c.classList.toggle('hidden',isOpen);"
+      class="relative z-10 flex h-11 w-11 items-center justify-center rounded-full bg-lime-900/50 text-white shadow-lg backdrop-blur-md transition hover:bg-lime-900/70">
       <svg id="mobile-nav-open-icon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
       </svg>
@@ -133,12 +134,12 @@
     </button>
     <div id="mobile-nav-menu"
       class="mt-3 hidden flex-col gap-1 rounded-2xl bg-lime-900/80 px-5 py-4 text-white shadow-xl backdrop-blur-lg text-sm font-medium min-w-[180px]">
-      <a href="#home" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="home" data-i18n="navHome">Home</a>
-      <a href="#about" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="about" data-i18n="navAbout">About</a>
-      <a href="#nearby" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="nearby" data-i18n="navNearby">Nearby</a>
-      <a href="#gallery" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="gallery" data-i18n="navGallery">Gallery</a>
-      <a href="#contact" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="contact" data-i18n="navContact">Contact</a>
-      <a href="#contact" class="mt-1 rounded-full border border-white/40 px-4 py-2 text-center hover:bg-white/10 transition" data-nav="contact" data-i18n="navBookNow">Book Now</a>
+      <a href="#home" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="home" data-i18n="navHome">Home</a>
+      <a href="#about" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="about" data-i18n="navAbout">About</a>
+      <a href="#nearby" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="nearby" data-i18n="navNearby">Nearby</a>
+      <a href="#gallery" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="gallery" data-i18n="navGallery">Gallery</a>
+      <a href="#contact" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="contact" data-i18n="navContact">Contact</a>
+      <a href="#contact" onclick="document.getElementById('mobile-nav-toggle').click()" class="mt-1 rounded-full border border-white/40 px-4 py-2 text-center hover:bg-white/10 transition" data-nav="contact" data-i18n="navBookNow">Book Now</a>
       <div class="flex items-center justify-center gap-1 mt-2 pt-2 border-t border-white/20">
         <button data-lang-btn="en" onclick="setLanguage('en')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">EN</button>
         <button data-lang-btn="de" onclick="setLanguage('de')" class="text-xs px-2 py-1 rounded-full hover:bg-white/10 transition">DE</button>
