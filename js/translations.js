@@ -120,7 +120,7 @@ const translations = {
     galleryPreview: "Gallery Preview",
 
     // Footer
-    footerRights: "© 2025 Poggio Agliai. All rights reserved.",
+    footerRights: "© 2026 Poggio Agliai. All rights reserved.",
 
     // Min stay alert
     minStayAlert: "Minimum stay is 6 nights (selected: {n})",
@@ -237,7 +237,7 @@ const translations = {
     galleryDesc: "Entdecken Sie die Räume von Poggio Agliai. Wählen Sie ein Foto für eine grössere Ansicht.",
     galleryPreview: "Galerievorschau",
 
-    footerRights: "© 2025 Poggio Agliai. Alle Rechte vorbehalten.",
+    footerRights: "© 2026 Poggio Agliai. Alle Rechte vorbehalten.",
     minStayAlert: "Mindestaufenthalt 6 Nächte (gewählt: {n})",
     dateStartPh: "Startdatum wählen",
     dateEndPh: "Enddatum wählen",
@@ -350,7 +350,7 @@ const translations = {
     galleryDesc: "Explorez les espaces de Poggio Agliai. Sélectionnez une photo pour un aperçu plus grand.",
     galleryPreview: "Aperçu de la galerie",
 
-    footerRights: "© 2025 Poggio Agliai. Tous droits réservés.",
+    footerRights: "© 2026 Poggio Agliai. Tous droits réservés.",
     minStayAlert: "Séjour minimum de 6 nuits (sélectionné : {n})",
     dateStartPh: "Sélectionner la date de début",
     dateEndPh: "Sélectionner la date de fin",
@@ -463,15 +463,16 @@ const translations = {
     galleryDesc: "Esplora gli spazi di Poggio Agliai. Seleziona una foto per un'anteprima più grande.",
     galleryPreview: "Anteprima galleria",
 
-    footerRights: "© 2025 Poggio Agliai. Tutti i diritti riservati.",
+    footerRights: "© 2026 Poggio Agliai. Tutti i diritti riservati.",
     minStayAlert: "Soggiorno minimo di 6 notti (selezionato: {n})",
     dateStartPh: "Seleziona data di inizio",
     dateEndPh: "Seleziona data di fine",
   }
 }
 
-// Current language
-let currentLang = localStorage.getItem('poggio-lang') || 'en'
+// Current language — respect URL param for SEO crawlers, then localStorage, then default
+const urlLang = new URLSearchParams(window.location.search).get('lang')
+let currentLang = (urlLang && translations[urlLang]) ? urlLang : (localStorage.getItem('poggio-lang') || 'en')
 
 function t(key) {
   return translations[currentLang]?.[key] || translations.en[key] || key
@@ -481,6 +482,26 @@ function setLanguage(lang) {
   currentLang = lang
   localStorage.setItem('poggio-lang', lang)
   document.documentElement.lang = lang
+
+  // Update URL for hreflang SEO (without reload)
+  const url = new URL(window.location)
+  if (lang === 'en') {
+    url.searchParams.delete('lang')
+  } else {
+    url.searchParams.set('lang', lang)
+  }
+  window.history.replaceState({}, '', url)
+
+  // Update meta description per language
+  const descriptions = {
+    en: "Poggio Agliai is a charming Tuscan vacation home near Suvereto, sleeping up to 10 guests. Four bedrooms, private olive grove, hiking trails, and stunning Maremma countryside views. Book your stay now.",
+    de: "Poggio Agliai ist ein charmantes toskanisches Ferienhaus bei Suvereto für bis zu 10 Gäste. Vier Schlafzimmer, privater Olivenhain, Wanderwege und atemberaubende Maremma-Landschaft. Jetzt buchen.",
+    fr: "Poggio Agliai est une charmante maison de vacances toscane près de Suvereto, accueillant jusqu'à 10 personnes. Quatre chambres, oliveraie privée, sentiers de randonnée et vues sur la Maremme. Réservez maintenant.",
+    it: "Poggio Agliai è un'affascinante casa vacanze toscana vicino a Suvereto, per un massimo di 10 ospiti. Quattro camere, oliveto privato, sentieri escursionistici e splendide viste sulla Maremma. Prenota ora."
+  }
+  const metaDesc = document.querySelector('meta[name="description"]')
+  if (metaDesc && descriptions[lang]) metaDesc.setAttribute('content', descriptions[lang])
+
   applyTranslations()
   updateLangSwitcher()
   // Re-render gallery with new language

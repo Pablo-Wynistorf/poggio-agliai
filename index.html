@@ -1,11 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Poggio Agliai · Tuscan Vacation Home</title>
+  <!-- Remove no-js class immediately when JS is available -->
+  <script>document.documentElement.classList.remove('no-js')</script>
+  <title>Poggio Agliai · Tuscan Vacation Home in Suvereto, Tuscany</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Poggio Agliai is a charming Tuscan vacation home near Suvereto, sleeping up to 10 guests. Four bedrooms, private olive grove, hiking trails, and stunning Maremma countryside views. Book your stay now." />
+  <meta name="keywords" content="Tuscany vacation home, Suvereto holiday rental, Tuscan farmhouse, Maremma accommodation, Italy villa rental, Poggio Agliai, agriturismo Toscana, vacation rental Tuscany, holiday home Italy" />
+  <meta name="author" content="Poggio Agliai" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.poggio-agliai.com/" />
+
+  <!-- Hreflang for multilingual SEO -->
+  <link rel="alternate" hreflang="en" href="https://www.poggio-agliai.com/" />
+  <link rel="alternate" hreflang="de" href="https://www.poggio-agliai.com/?lang=de" />
+  <link rel="alternate" hreflang="fr" href="https://www.poggio-agliai.com/?lang=fr" />
+  <link rel="alternate" hreflang="it" href="https://www.poggio-agliai.com/?lang=it" />
+  <link rel="alternate" hreflang="x-default" href="https://www.poggio-agliai.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.poggio-agliai.com/" />
+  <meta property="og:title" content="Poggio Agliai · Tuscan Vacation Home in Suvereto" />
+  <meta property="og:description" content="A charming Tuscan farmhouse near Suvereto sleeping up to 10 guests. Four bedrooms, private olive grove, hiking trails, and stunning Maremma countryside views." />
+  <meta property="og:image" content="https://www.poggio-agliai.com/assets/images/home-foto.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="de_DE" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="it_IT" />
+  <meta property="og:site_name" content="Poggio Agliai" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Poggio Agliai · Tuscan Vacation Home in Suvereto" />
+  <meta name="twitter:description" content="A charming Tuscan farmhouse near Suvereto sleeping up to 10 guests. Four bedrooms, private olive grove, and stunning Maremma countryside views." />
+  <meta name="twitter:image" content="https://www.poggio-agliai.com/assets/images/home-foto.jpg" />
+
+  <!-- Geo Meta Tags (local SEO) -->
+  <meta name="geo.region" content="IT-LI" />
+  <meta name="geo.placename" content="Suvereto" />
+  <meta name="geo.position" content="43.10459;10.68257" />
+  <meta name="ICBM" content="43.10459, 10.68257" />
+
+  <!-- Structured Data: VacationRental + LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VacationRental",
+    "name": "Poggio Agliai · Tuscan Vacation Home",
+    "description": "A charming Tuscan farmhouse near Suvereto sleeping up to 10 guests with four bedrooms, private olive grove, hiking trails, and stunning Maremma countryside views.",
+    "url": "https://www.poggio-agliai.com/",
+    "image": [
+      "https://www.poggio-agliai.com/assets/images/home-foto.jpg",
+      "https://www.poggio-agliai.com/assets/images/house-front-view-01.jpeg",
+      "https://www.poggio-agliai.com/assets/images/first-livingroom-01.jpeg"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Località Poggio Agliai 113",
+      "addressLocality": "Suvereto",
+      "postalCode": "57028",
+      "addressRegion": "LI",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.10459,
+      "longitude": 10.68257
+    },
+    "numberOfBedrooms": 4,
+    "numberOfBathroomsTotal": 2,
+    "occupancy": {
+      "@type": "QuantitativeValue",
+      "maxValue": 10
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "WiFi", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Kitchen", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Fireplace", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Parking", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Garden", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Terrace", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Wood-fired oven", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Hiking trails", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Private olive grove", "value": true }
+    ],
+    "containedInPlace": {
+      "@type": "Place",
+      "name": "Alta Maremma, Tuscany",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Tuscany",
+        "addressCountry": "IT"
+      }
+    },
+    "tourBookingPage": "https://www.poggio-agliai.com/#contact"
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.poggio-agliai.com/" },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.poggio-agliai.com/#about" },
+      { "@type": "ListItem", "position": 3, "name": "Gallery", "item": "https://www.poggio-agliai.com/#gallery" },
+      { "@type": "ListItem", "position": 4, "name": "Book Now", "item": "https://www.poggio-agliai.com/#contact" }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: WebSite with SearchAction potential -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Poggio Agliai",
+    "url": "https://www.poggio-agliai.com/",
+    "inLanguage": ["en", "de", "fr", "it"]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage for rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many guests can Poggio Agliai accommodate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Poggio Agliai accommodates up to 10 guests with four bedrooms (three with double beds, one with a queen-size bed) plus two single beds in the first floor salon."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is Poggio Agliai located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Poggio Agliai is located at Località Poggio Agliai 113, 57028 Suvereto LI, in the Alta Maremma region of Tuscany, Italy. Suvereto is a 15-minute drive away."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Poggio Agliai have WiFi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Poggio Agliai offers 5G-based WiFi throughout the property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the minimum stay at Poggio Agliai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The minimum rental period is 1 week. Booking is only possible two weeks in advance. Prices are weekly and seasonal, including bed linen, towels, and final cleaning."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What activities are available near Poggio Agliai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hiking and bike trails start right at the house. Nearby attractions include the medieval town of Suvereto (15 min), Golfo di Baratti beach (30 min), Bolgheri wine region, Venturina thermal baths, diving, and day trips to Florence, Pisa, Siena, and Volterra."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What amenities does Poggio Agliai offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Amenities include a fully equipped kitchen, wood-fired pizza oven, open fireplace, two bathrooms, private parking, garden, terrace, veranda, and a private olive grove with 150 trees on 21 hectares of land."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: ImageGallery for image search visibility -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Poggio Agliai Photo Gallery",
+    "description": "Photos of the Tuscan vacation home Poggio Agliai near Suvereto — exterior, living spaces, bedrooms, kitchen, and bathrooms.",
+    "url": "https://www.poggio-agliai.com/#gallery",
+    "image": [
+      {
+        "@type": "ImageObject",
+        "contentUrl": "https://www.poggio-agliai.com/assets/images/home-foto.jpg",
+        "name": "Tuscan Farmhouse Exterior",
+        "description": "A classic stone facade with terracotta roof tiles"
+      },
+      {
+        "@type": "ImageObject",
+        "contentUrl": "https://www.poggio-agliai.com/assets/images/first-livingroom-01.jpeg",
+        "name": "Grand Salon",
+        "description": "A spacious living area with vaulted ceilings, rustic wooden beams, and cozy fireplace"
+      },
+      {
+        "@type": "ImageObject",
+        "contentUrl": "https://www.poggio-agliai.com/assets/images/first-livingroom-02.jpeg",
+        "name": "Dining Table",
+        "description": "A large dining table that seats ten people"
+      },
+      {
+        "@type": "ImageObject",
+        "contentUrl": "https://www.poggio-agliai.com/assets/images/kitchen-01.jpeg",
+        "name": "Kitchen",
+        "description": "Functional kitchen with gas stove, oven, and large fridge"
+      },
+      {
+        "@type": "ImageObject",
+        "contentUrl": "https://www.poggio-agliai.com/assets/images/first-bedroom-01.jpeg",
+        "name": "First Bedroom",
+        "description": "Serene bedroom with private outlook"
+      },
+      {
+        "@type": "ImageObject",
+        "contentUrl": "https://www.poggio-agliai.com/assets/images/second-bedroom-01.jpeg",
+        "name": "Second Bedroom",
+        "description": "Spacious retreat with vaulted ceilings"
+      },
+      {
+        "@type": "ImageObject",
+        "contentUrl": "https://www.poggio-agliai.com/assets/images/house-front-view-01.jpeg",
+        "name": "Garden and Front View",
+        "description": "Garden in front of the Tuscan farmhouse"
+      }
+    ]
+  }
+  </script>
+
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+  <!-- Preload hero image for LCP performance -->
+  <link rel="preload" as="image" href="assets/images/home-foto.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -94,7 +335,19 @@
       opacity: 1;
       transform: translate(0) scale(1);
     }
+    /* Ensure content is visible when JS is disabled (for crawlers/SEO) */
+    .no-js [data-scroll] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
   </style>
+  <!-- noscript fallback: make all scroll-animated content visible for crawlers -->
+  <noscript>
+    <style>
+      [data-scroll] { opacity: 1 !important; transform: none !important; }
+      .hero-text-intro, .hero-nav-intro, .hero-scroll-intro { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
 </head>
 
 <body id="home" class="bg-white font-sans text-slate-800" data-asset-prefix="./assets">
@@ -154,7 +407,9 @@
 
   <!-- Hero Header -->
   <header class="relative isolate overflow-hidden bg-slate-900 text-white min-h-screen flex flex-col justify-between">
-    <img src="assets/images/home-foto.jpg" alt="Tuscan farmhouse exterior"
+    <img src="assets/images/home-foto.jpg" alt="Poggio Agliai Tuscan farmhouse exterior with stone facade and terracotta roof surrounded by olive groves near Suvereto, Tuscany"
+      width="1920" height="1080"
+      fetchpriority="high"
       class="hero-img-intro absolute inset-0 -z-20 h-full w-full object-cover object-center" />
     <div class="hero-overlay-intro absolute inset-0 -z-10"></div>
 
@@ -343,6 +598,31 @@
           </p>
         </div>
         <div id="gallery-wrapper" class="space-y-16"></div>
+        <!-- SEO: Static gallery content for crawlers that don't execute JavaScript -->
+        <noscript>
+          <div class="space-y-8 text-brand-100/80 text-sm">
+            <div>
+              <h3 class="font-display text-xl text-brand-50">Exterior &amp; Grounds</h3>
+              <p>Stone facades, terracotta roofs, and fragrant gardens that frame every arrival and sunset. Includes views of the Tuscan farmhouse, garden, kitchen terrace, backyard, stone pathway, house arcade, and parking area.</p>
+            </div>
+            <div>
+              <h3 class="font-display text-xl text-brand-50">Living Spaces</h3>
+              <p>Grand salon with vaulted ceilings and rustic wooden beams, cozy fireplace, large dining table seating ten, and first floor living room with staircase.</p>
+            </div>
+            <div>
+              <h3 class="font-display text-xl text-brand-50">Kitchen &amp; Dining</h3>
+              <p>Functional kitchen with gas stove, oven, and large fridge/freezer. Wood-fired oven for homemade pizzas.</p>
+            </div>
+            <div>
+              <h3 class="font-display text-xl text-brand-50">Bedrooms</h3>
+              <p>Four bedrooms: three with double beds and one with a queen-size bed. Two additional single beds in the first floor salon. Comfortable for up to 10 guests.</p>
+            </div>
+            <div>
+              <h3 class="font-display text-xl text-brand-50">Bathrooms</h3>
+              <p>Two bathrooms with modern fixtures, located on the ground floor and first floor.</p>
+            </div>
+          </div>
+        </noscript>
       </div>
     </section>
 
@@ -424,7 +704,7 @@
 
         <div class="space-y-8">
           <div class="overflow-hidden rounded-3xl shadow-lg shadow-black/40" data-scroll="scale">
-            <iframe width="100%" height="650px" frameborder="0" style="border:0"
+            <iframe title="Map showing Poggio Agliai location near Suvereto, Tuscany" width="100%" height="650px" frameborder="0" style="border:0" loading="lazy"
               src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAba9Iz85BQFLWhRJlzGTh2upDjXJXW2BI&q=43.10459171089201,10.682569205894895&maptype=satellite"
               allowfullscreen>
             </iframe>
@@ -445,13 +725,13 @@
   <!-- Footer -->
   <footer class="border-t border-slate-200 bg-white py-10">
     <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 text-sm text-slate-600 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-      <p data-i18n="footerRights">&copy; 2025 Poggio Agliai. All rights reserved.</p>
-      <div class="flex flex-wrap items-center gap-4">
+      <p data-i18n="footerRights">&copy; 2026 Poggio Agliai. All rights reserved.</p>
+      <nav aria-label="Footer navigation" class="flex flex-wrap items-center gap-4">
         <a href="#about" class="transition hover:text-brand-600" data-i18n="navAbout">About</a>
         <a href="#gallery" class="transition hover:text-brand-600" data-i18n="navGallery">Gallery</a>
         <a href="#contact" class="transition hover:text-brand-600" data-i18n="navContact">Contact</a>
         <span class="hidden h-5 w-px bg-slate-300 lg:inline-block"></span>
-      </div>
+      </nav>
     </div>
   </footer>
 
