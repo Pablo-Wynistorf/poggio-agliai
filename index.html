@@ -263,6 +263,45 @@
   <script defer src="js/hero-intro.js"></script>
   <script defer src="js/index.js"></script>
   <script defer src="js/scroll-animations.js"></script>
+
+  <!-- Google Maps Store Locator -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.11/index.min.js"></script>
+  <script>
+    const CONFIGURATION = {
+      "locations": [{
+        "title": "Casa Poggio Agliai",
+        "address1": "Località Poggio Agliai, 113",
+        "address2": "Suvereto, LI, Italy",
+        "coords": {"lat": 43.1046249, "lng": 10.6825222},
+        "placeId": "ChIJdQN1XgDjKRMR2Y7MEVXWt0g"
+      }],
+      "mapOptions": {
+        "center": {"lat": 43.1046249, "lng": 10.6825222},
+        "fullscreenControl": true,
+        "mapTypeControl": false,
+        "streetViewControl": false,
+        "zoom": 14,
+        "zoomControl": true,
+        "maxZoom": 17,
+        "mapId": "",
+        "mapTypeId": "satellite"
+      },
+      "mapsApiKey": "AIzaSyC6ZRJH0tdENegQdvsBphkBOE2bMxu-M6M",
+      "capabilities": {
+        "input": true,
+        "autocomplete": true,
+        "directions": false,
+        "distanceMatrix": true,
+        "details": false,
+        "actions": false
+      }
+    };
+    document.addEventListener('DOMContentLoaded', async () => {
+      await customElements.whenDefined('gmpx-store-locator');
+      const locator = document.querySelector('gmpx-store-locator');
+      if (locator) locator.configureFromQuickBuilder(CONFIGURATION);
+    });
+  </script>
   <style>
     .nav-outline {
       position: absolute;
@@ -339,6 +378,21 @@
     .no-js [data-scroll] {
       opacity: 1 !important;
       transform: none !important;
+    }
+
+    /* Store Locator theme overrides */
+    gmpx-store-locator {
+      --gmpx-color-surface: #0f172a;
+      --gmpx-color-on-surface: #e2e8f0;
+      --gmpx-color-on-surface-variant: #94a3b8;
+      --gmpx-color-primary: #a3be8c;
+      --gmpx-color-outline: #334155;
+      --gmpx-font-family-base: "Source Sans 3", sans-serif;
+      --gmpx-font-family-headings: "Playfair Display", serif;
+      --gmpx-font-size-base: 0.875rem;
+      --gmpx-fixed-panel-height-column-layout: 30%;
+      border-radius: 1.5rem;
+      overflow: hidden;
     }
   </style>
   <!-- noscript fallback: make all scroll-animated content visible for crawlers -->
@@ -704,10 +758,8 @@
 
         <div class="space-y-8">
           <div class="overflow-hidden rounded-3xl shadow-lg shadow-black/40" data-scroll="scale">
-            <iframe title="Map showing Poggio Agliai location near Suvereto, Tuscany" width="100%" height="650px" frameborder="0" style="border:0" loading="lazy"
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAba9Iz85BQFLWhRJlzGTh2upDjXJXW2BI&q=43.10459171089201,10.682569205894895&maptype=satellite"
-              allowfullscreen>
-            </iframe>
+            <gmpx-api-loader key="AIzaSyC6ZRJH0tdENegQdvsBphkBOE2bMxu-M6M" solution-channel="GMP_QB_locatorplus_v11_cABD"></gmpx-api-loader>
+            <gmpx-store-locator map-id="DEMO_MAP_ID" style="width:100%;height:900px;display:block;"></gmpx-store-locator>
           </div>
           <div class="rounded-3xl border border-white/20 bg-white/5 p-8 backdrop-blur" data-scroll="up" data-scroll-delay="200">
             <h3 class="font-display text-2xl text-brand-100" data-i18n="contactTitle">Contact</h3>
