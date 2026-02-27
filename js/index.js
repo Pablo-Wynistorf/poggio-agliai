@@ -327,7 +327,7 @@ form?.addEventListener('submit', async e => {
 
       if (res.ok) {
         form.reset()
-        setFeedback(t('formSuccess'), 'success')
+        window.location.href = '/thank-you.html'
       } else {
         setFeedback(t('formError'), 'error')
       }
