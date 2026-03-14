@@ -2,499 +2,121 @@
   {
     "title": "Exterior & Grounds",
     "i18n": {
-      "de": { "title": "Aussenbereich & Gelände", "description": "Steinfassaden, Terrakottadächer und duftende Gärten, die jede Ankunft und jeden Sonnenuntergang einrahmen." },
-      "fr": { "title": "Extérieur & Terrain", "description": "Façades en pierre, toits en terre cuite et jardins parfumés qui encadrent chaque arrivée et coucher de soleil." },
-      "it": { "title": "Esterno & Giardini", "description": "Facciate in pietra, tetti in terracotta e giardini profumati che incorniciano ogni arrivo e tramonto." }
+      "de": { "title": "Aussenbereich & Gelände" },
+      "fr": { "title": "Extérieur & Terrain" },
+      "it": { "title": "Esterno & Giardini" }
     },
-    "description": "Stone facades, terracotta roofs, and fragrant gardens that frame every arrival and sunset.",
     "images": [
-      {
-        "file": "home-foto.jpg",
-        "title": "Tuscan Farmhouse",
-        "description": "A classic stone facade with terracotta roof tiles.",
-        "i18n": {
-          "de": { "title": "Toskanisches Bauernhaus", "description": "Eine klassische Steinfassade mit Terrakotta-Dachziegeln." },
-          "fr": { "title": "Ferme toscane", "description": "Une façade classique en pierre avec des tuiles en terre cuite." },
-          "it": { "title": "Casa colonica toscana", "description": "Una classica facciata in pietra con tegole in terracotta." }
-        },
-        "format": "landscape",
-        "fullscreen": true
-      },
-      {
-        "file": "house-front-view-01.jpeg",
-        "title": "Garden in front of the house",
-        "i18n": {
-          "de": { "title": "Garten vor dem Haus" },
-          "fr": { "title": "Jardin devant la maison" },
-          "it": { "title": "Giardino davanti alla casa" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "house-side-view-02.jpeg",
-        "title": "Big kitchen terrace",
-        "i18n": {
-          "de": { "title": "Grosse Küchenterrasse" },
-          "fr": { "title": "Grande terrasse de cuisine" },
-          "it": { "title": "Grande terrazza della cucina" }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "house-side-view-03.jpeg",
-        "title": "Backyard Garden",
-        "i18n": {
-          "de": { "title": "Garten hinter dem Haus" },
-          "fr": { "title": "Jardin arrière" },
-          "it": { "title": "Giardino sul retro" }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "house-side-view-03-portrait.jpeg",
-        "title": "Stone Pathway",
-        "i18n": {
-          "de": { "title": "Steinweg" },
-          "fr": { "title": "Chemin en pierre" },
-          "it": { "title": "Sentiero in pietra" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "house-side-view-04-portrait.jpeg",
-        "title": "House Arcade",
-        "i18n": {
-          "de": { "title": "Hausarkade" },
-          "fr": { "title": "Arcade de la maison" },
-          "it": { "title": "Porticato della casa" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "house-back-view-parking-01.jpeg",
-        "title": "Parking Area",
-        "i18n": {
-          "de": { "title": "Parkplatz" },
-          "fr": { "title": "Parking" },
-          "it": { "title": "Parcheggio" }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "house-back-view-parking-02-portrait.jpeg",
-        "title": "Small shed",
-        "i18n": {
-          "de": { "title": "Kleiner Schuppen" },
-          "fr": { "title": "Petit abri" },
-          "it": { "title": "Piccolo capanno" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "entrance-01-portrait.jpeg",
-        "title": "First entrance door",
-        "i18n": {
-          "de": { "title": "Erster Eingang" },
-          "fr": { "title": "Première porte d'entrée" },
-          "it": { "title": "Prima porta d'ingresso" }
-        },
-        "format": "portrait"
-      }
+      { "file": "home-foto.jpg", "format": "landscape", "fullscreen": true },
+      { "file": "house-front-view-01.jpeg", "format": "portrait" },
+      { "file": "house-side-view-02.jpeg", "format": "landscape" },
+      { "file": "house-side-view-03.jpeg", "format": "landscape" },
+      { "file": "house-side-view-03-portrait.jpeg", "format": "portrait" },
+      { "file": "house-side-view-04-portrait.jpeg", "format": "portrait" },
+      { "file": "house-back-view-parking-01.jpeg", "format": "landscape" },
+      { "file": "house-back-view-parking-02-portrait.jpeg", "format": "portrait" },
+      { "file": "entrance-01-portrait.jpeg", "format": "portrait" }
     ]
   },
   {
     "title": "Living Spaces",
-    "description": "Layered textures, curated art, and generous seating for conversations that last late into the evening.",
     "i18n": {
-      "de": { "title": "Wohnräume", "description": "Vielschichtige Texturen, ausgewählte Kunst und grosszügige Sitzgelegenheiten für Gespräche bis spät in den Abend." },
-      "fr": { "title": "Espaces de vie", "description": "Textures variées, art sélectionné et sièges généreux pour des conversations qui durent tard dans la soirée." },
-      "it": { "title": "Spazi abitativi", "description": "Texture stratificate, arte curata e posti a sedere generosi per conversazioni che durano fino a tarda sera." }
+      "de": { "title": "Wohnräume" },
+      "fr": { "title": "Espaces de vie" },
+      "it": { "title": "Spazi abitativi" }
     },
     "images": [
-      {
-        "file": "first-livingroom-01.jpeg",
-        "title": "Grand salon seating",
-        "description": "A spacious living area with vaulted ceilings and rustic wooden beams. With cozy fireplace.",
-        "i18n": {
-          "de": { "title": "Grosser Salon", "description": "Ein geräumiger Wohnbereich mit Gewölbedecken und rustikalen Holzbalken. Mit gemütlichem Kamin." },
-          "fr": { "title": "Grand salon", "description": "Un espace de vie spacieux avec plafonds voûtés et poutres en bois rustiques. Avec cheminée chaleureuse." },
-          "it": { "title": "Grande salone", "description": "Un ampio soggiorno con soffitti a volta e travi in legno rustiche. Con camino accogliente." }
-        },
-        "format": "landscape",
-        "fullscreen": true
-      },
-      {
-        "file": "first-livingroom-02.jpeg",
-        "title": "Big dining table",
-        "description": "A large dining table that seats ten people, perfect for family meals and gatherings.",
-        "i18n": {
-          "de": { "title": "Grosser Esstisch", "description": "Ein grosser Esstisch für zehn Personen, perfekt für Familienessen und Zusammenkünfte." },
-          "fr": { "title": "Grande table à manger", "description": "Une grande table pouvant accueillir dix personnes, parfaite pour les repas en famille." },
-          "it": { "title": "Grande tavolo da pranzo", "description": "Un grande tavolo da pranzo per dieci persone, perfetto per pasti in famiglia." }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "first-livingroom-03-portrait.jpeg",
-        "title": "Rear house exit",
-        "i18n": {
-          "de": { "title": "Hinterer Hausausgang" },
-          "fr": { "title": "Sortie arrière" },
-          "it": { "title": "Uscita posteriore" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "first-livingroom-04-portrait.jpeg",
-        "title": "Grand salon details",
-        "i18n": {
-          "de": { "title": "Salon-Details" },
-          "fr": { "title": "Détails du salon" },
-          "it": { "title": "Dettagli del salone" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "first-livingroom-05.jpeg",
-        "title": "Evening ambience",
-        "i18n": {
-          "de": { "title": "Abendstimmung" },
-          "fr": { "title": "Ambiance du soir" },
-          "it": { "title": "Atmosfera serale" }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "second-living-room-03.jpeg",
-        "title": "First floor living room",
-        "i18n": {
-          "de": { "title": "Wohnzimmer im 1. Stock" },
-          "fr": { "title": "Salon du premier étage" },
-          "it": { "title": "Soggiorno al primo piano" }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "second-living-room-02-portrait.jpeg",
-        "title": "First floor living room",
-        "i18n": {
-          "de": { "title": "Wohnzimmer im 1. Stock" },
-          "fr": { "title": "Salon du premier étage" },
-          "it": { "title": "Soggiorno al primo piano" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "second-livingroom-01.jpeg",
-        "title": "First floor living room",
-        "i18n": {
-          "de": { "title": "Wohnzimmer im 1. Stock" },
-          "fr": { "title": "Salon du premier étage" },
-          "it": { "title": "Soggiorno al primo piano" }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "staircase-01.jpeg",
-        "title": "First floor staircase",
-        "i18n": {
-          "de": { "title": "Treppe zum 1. Stock" },
-          "fr": { "title": "Escalier du premier étage" },
-          "it": { "title": "Scala al primo piano" }
-        },
-        "format": "portrait"
-      }
+      { "file": "first-livingroom-01.jpeg", "format": "landscape", "fullscreen": true },
+      { "file": "first-livingroom-02.jpeg", "format": "landscape" },
+      { "file": "first-livingroom-03-portrait.jpeg", "format": "portrait" },
+      { "file": "first-livingroom-04-portrait.jpeg", "format": "portrait" },
+      { "file": "first-livingroom-05.jpeg", "format": "landscape" },
+      { "file": "second-living-room-03.jpeg", "format": "landscape" },
+      { "file": "second-living-room-02-portrait.jpeg", "format": "portrait" },
+      { "file": "second-livingroom-01.jpeg", "format": "landscape" },
+      { "file": "staircase-01.jpeg", "format": "portrait" }
     ]
   },
   {
     "title": "Kitchen & Dining",
-    "description": "Bright culinary spaces made for sharing local produce and unforgettable meals.",
     "i18n": {
-      "de": { "title": "Küche & Essbereich", "description": "Helle kulinarische Räume zum Teilen lokaler Produkte und unvergesslicher Mahlzeiten." },
-      "fr": { "title": "Cuisine & Salle à manger", "description": "Des espaces culinaires lumineux pour partager des produits locaux et des repas inoubliables." },
-      "it": { "title": "Cucina & Sala da pranzo", "description": "Spazi culinari luminosi per condividere prodotti locali e pasti indimenticabili." }
+      "de": { "title": "Küche & Essbereich" },
+      "fr": { "title": "Cuisine & Salle à manger" },
+      "it": { "title": "Cucina & Sala da pranzo" }
     },
     "images": [
-      {
-        "file": "kitchen-01.jpeg",
-        "title": "Kitchen Area",
-        "description": "Nice and functional kitchen with gas stove, oven, and large fridge/freezer.",
-        "i18n": {
-          "de": { "title": "Küchenbereich", "description": "Schöne und funktionale Küche mit Gasherd, Backofen und grossem Kühl-/Gefrierschrank." },
-          "fr": { "title": "Espace cuisine", "description": "Cuisine agréable et fonctionnelle avec cuisinière à gaz, four et grand réfrigérateur/congélateur." },
-          "it": { "title": "Area cucina", "description": "Cucina bella e funzionale con fornelli a gas, forno e grande frigorifero/congelatore." }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "kitchen-02-portrait.jpeg",
-        "title": "Kitchen oven",
-        "i18n": {
-          "de": { "title": "Küchenofen" },
-          "fr": { "title": "Four de cuisine" },
-          "it": { "title": "Forno della cucina" }
-        },
-        "format": "portrait"
-      }
+      { "file": "kitchen-01.jpeg", "format": "landscape" },
+      { "file": "kitchen-02-portrait.jpeg", "format": "portrait" }
     ]
   },
   {
     "title": "First Bedroom",
-    "description": "A serene room with private outlooks for slow mornings and quiet nights.",
     "i18n": {
-      "de": { "title": "Erstes Schlafzimmer", "description": "Ein ruhiges Zimmer mit privatem Ausblick für gemütliche Morgen und stille Nächte." },
-      "fr": { "title": "Première chambre", "description": "Une chambre sereine avec vue privée pour des matins tranquilles et des nuits calmes." },
-      "it": { "title": "Prima camera", "description": "Una camera serena con vista privata per mattine tranquille e notti silenziose." }
+      "de": { "title": "Erstes Schlafzimmer" },
+      "fr": { "title": "Première chambre" },
+      "it": { "title": "Prima camera" }
     },
     "images": [
-      {
-        "file": "first-bedroom-01.jpeg",
-        "title": "Bedroom for two guests",
-        "i18n": {
-          "de": { "title": "Schlafzimmer für zwei Gäste" },
-          "fr": { "title": "Chambre pour deux" },
-          "it": { "title": "Camera per due ospiti" }
-        },
-        "format": "landscape",
-        "fullscreen": true
-      },
-      {
-        "file": "first-bedroom-02.jpeg",
-        "title": "Soft neutral palette",
-        "i18n": {
-          "de": { "title": "Sanfte neutrale Farbtöne" },
-          "fr": { "title": "Palette neutre et douce" },
-          "it": { "title": "Palette neutra e morbida" }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "first-bedroom-03.jpeg",
-        "title": "Bedside details",
-        "i18n": {
-          "de": { "title": "Details am Bett" },
-          "fr": { "title": "Détails de chevet" },
-          "it": { "title": "Dettagli del comodino" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "first-bedroom-05.jpeg",
-        "title": "First Bedroom beds",
-        "i18n": {
-          "de": { "title": "Betten im ersten Schlafzimmer" },
-          "fr": { "title": "Lits de la première chambre" },
-          "it": { "title": "Letti della prima camera da letto" }
-        },
-        "format": "landscape"
-      }
+      { "file": "first-bedroom-01.jpeg", "format": "landscape", "fullscreen": true },
+      { "file": "first-bedroom-02.jpeg", "format": "landscape" },
+      { "file": "first-bedroom-03.jpeg", "format": "portrait" },
+      { "file": "first-bedroom-05.jpeg", "format": "landscape" }
     ]
   },
   {
     "title": "Second Bedroom",
-    "description": "A spacious retreat with vaulted ceilings and a private terrace overlooking the vineyards.",
     "i18n": {
-      "de": { "title": "Zweites Schlafzimmer", "description": "Ein geräumiger Rückzugsort mit Gewölbedecken und einer privaten Terrasse mit Blick auf die Weinberge." },
-      "fr": { "title": "Deuxième chambre", "description": "Une retraite spacieuse avec plafonds voûtés et terrasse privée surplombant les vignobles." },
-      "it": { "title": "Seconda camera", "description": "Un rifugio spazioso con soffitti a volta e terrazza privata con vista sui vigneti." }
+      "de": { "title": "Zweites Schlafzimmer" },
+      "fr": { "title": "Deuxième chambre" },
+      "it": { "title": "Seconda camera" }
     },
     "images": [
-      {
-        "file": "second-bedroom-01.jpeg",
-        "title": "Bed for one or two guests",
-        "i18n": {
-          "de": { "title": "Bett für ein oder zwei Gäste" },
-          "fr": { "title": "Lit pour un ou deux invités" },
-          "it": { "title": "Letto per uno o due ospiti" }
-        },
-        "format": "landscape",
-        "fullscreen": true
-      },
-      {
-        "file": "second-bedroom-02-portrait.jpeg",
-        "title": "Bedside details",
-        "i18n": {
-          "de": { "title": "Details am Bett" },
-          "fr": { "title": "Détails de chevet" },
-          "it": { "title": "Dettagli del comodino" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "second-bedroom-03-portrait.jpeg",
-        "title": "Second bedroom window",
-        "i18n": {
-          "de": { "title": "Fenster des zweiten Schlafzimmers" },
-          "fr": { "title": "Fenêtre de la deuxième chambre" },
-          "it": { "title": "Finestra della seconda camera" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "third-bedroom-04.jpeg",
-        "title": "Cozy ambiance",
-        "i18n": {
-          "de": { "title": "Gemütliche Atmosphäre" },
-          "fr": { "title": "Ambiance chaleureuse" },
-          "it": { "title": "Atmosfera accogliente" }
-        },
-        "format": "landscape"
-      }
+      { "file": "second-bedroom-01.jpeg", "format": "landscape", "fullscreen": true },
+      { "file": "second-bedroom-02-portrait.jpeg", "format": "portrait" },
+      { "file": "second-bedroom-03-portrait.jpeg", "format": "portrait" },
+      { "file": "third-bedroom-04.jpeg", "format": "landscape" }
     ]
   },
   {
     "title": "Third Bedroom",
-    "description": "A charming room with rustic beams and a tranquil garden outlook.",
     "i18n": {
-      "de": { "title": "Drittes Schlafzimmer", "description": "Ein charmantes Zimmer mit rustikalen Balken und ruhigem Gartenblick." },
-      "fr": { "title": "Troisième chambre", "description": "Une chambre charmante avec poutres rustiques et vue tranquille sur le jardin." },
-      "it": { "title": "Terza camera", "description": "Una camera affascinante con travi rustiche e vista tranquilla sul giardino." }
+      "de": { "title": "Drittes Schlafzimmer" },
+      "fr": { "title": "Troisième chambre" },
+      "it": { "title": "Terza camera" }
     },
     "images": [
-      {
-        "file": "third-bedroom-01.jpeg",
-        "title": "Nice and cozy room",
-        "i18n": {
-          "de": { "title": "Schönes und gemütliches Zimmer" },
-          "fr": { "title": "Chambre agréable et confortable" },
-          "it": { "title": "Camera bella e accogliente" }
-        },
-        "format": "landscape",
-        "fullscreen": true
-      },
-      {
-        "file": "third-bedroom-02.jpeg",
-        "title": "Bed for two guests",
-        "i18n": {
-          "de": { "title": "Bett für zwei Gäste" },
-          "fr": { "title": "Lit pour deux invités" },
-          "it": { "title": "Letto per due ospiti" }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "third-bedroom-03.jpeg",
-        "title": "Warm accents",
-        "i18n": {
-          "de": { "title": "Warme Akzente" },
-          "fr": { "title": "Accents chaleureux" },
-          "it": { "title": "Accenti caldi" }
-        },
-        "format": "landscape"
-      }
+      { "file": "third-bedroom-01.jpeg", "format": "landscape", "fullscreen": true },
+      { "file": "third-bedroom-02.jpeg", "format": "landscape" },
+      { "file": "third-bedroom-03.jpeg", "format": "landscape" }
     ]
   },
   {
     "title": "Fourth Suite",
-    "description": "A bright and airy room with traditional Tuscan decor and vineyard views.",
     "i18n": {
-      "de": { "title": "Viertes Schlafzimmer", "description": "Ein helles und luftiges Zimmer mit traditionellem toskanischem Dekor und Blick auf die Weinberge." },
-      "fr": { "title": "Quatrième suite", "description": "Une chambre lumineuse et aérée avec décor toscan traditionnel et vue sur les vignobles." },
-      "it": { "title": "Quarta suite", "description": "Una camera luminosa e ariosa con arredamento toscano tradizionale e vista sui vigneti." }
+      "de": { "title": "Viertes Schlafzimmer" },
+      "fr": { "title": "Quatrième suite" },
+      "it": { "title": "Quarta suite" }
     },
     "images": [
-      {
-        "file": "fourth-bedroom-01.jpeg",
-        "title": "Bedroom for two guests",
-        "i18n": {
-          "de": { "title": "Schlafzimmer für zwei Gäste" },
-          "fr": { "title": "Chambre pour deux" },
-          "it": { "title": "Camera per due ospiti" }
-        },
-        "format": "landscape",
-        "fullscreen": true
-      },
-      {
-        "file": "fourth-bedroom-02.jpeg",
-        "title": "Traditional decor",
-        "i18n": {
-          "de": { "title": "Traditionelles Dekor" },
-          "fr": { "title": "Décor traditionnel" },
-          "it": { "title": "Arredamento tradizionale" }
-        },
-        "format": "landscape"
-      },
-      {
-        "file": "fourth-bedroom-03-portrait.jpeg",
-        "title": "Light-filled space",
-        "i18n": {
-          "de": { "title": "Lichtdurchfluteter Raum" },
-          "fr": { "title": "Espace baigné de lumière" },
-          "it": { "title": "Spazio pieno di luce" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "fourth-bedroom-04-portrait.jpeg",
-        "title": "Comfortable furnishings",
-        "i18n": {
-          "de": { "title": "Komfortable Einrichtung" },
-          "fr": { "title": "Mobilier confortable" },
-          "it": { "title": "Arredi confortevoli" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "fourth-bedroom-05-portrait.jpeg",
-        "title": "Elegant touches",
-        "i18n": {
-          "de": { "title": "Elegante Details" },
-          "fr": { "title": "Touches élégantes" },
-          "it": { "title": "Tocchi eleganti" }
-        },
-        "format": "portrait"
-      }
+      { "file": "fourth-bedroom-01.jpeg", "format": "landscape", "fullscreen": true },
+      { "file": "fourth-bedroom-02.jpeg", "format": "landscape" },
+      { "file": "fourth-bedroom-03-portrait.jpeg", "format": "portrait" },
+      { "file": "fourth-bedroom-04-portrait.jpeg", "format": "portrait" },
+      { "file": "fourth-bedroom-05-portrait.jpeg", "format": "portrait" }
     ]
   },
   {
     "title": "Bathrooms",
-    "description": "Two bathrooms with modern fixtures and serene views.",
     "i18n": {
-      "de": { "title": "Badezimmer", "description": "Zwei Badezimmer mit modernen Armaturen und ruhigem Ausblick." },
-      "fr": { "title": "Salles de bain", "description": "Deux salles de bain avec équipements modernes et vues sereines." },
-      "it": { "title": "Bagni", "description": "Due bagni con arredi moderni e viste serene." }
+      "de": { "title": "Badezimmer" },
+      "fr": { "title": "Salles de bain" },
+      "it": { "title": "Bagni" }
     },
     "images": [
-      {
-        "file": "first-bathroom-01-portrait.jpeg",
-        "title": "Bathroom entrance",
-        "i18n": {
-          "de": { "title": "Badezimmereingang" },
-          "fr": { "title": "Entrée de la salle de bains" },
-          "it": { "title": "Ingresso del bagno" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "first-bathroom-02-portrait.jpeg",
-        "title": "Elegant vanities",
-        "i18n": {
-          "de": { "title": "Elegante Waschtische" },
-          "fr": { "title": "Vasques élégantes" },
-          "it": { "title": "Lavabi eleganti" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "first-bathroom-03-portrait.jpeg",
-        "title": "Shower",
-        "i18n": {
-          "de": { "title": "Dusche" },
-          "fr": { "title": "Douche" },
-          "it": { "title": "Doccia" }
-        },
-        "format": "portrait"
-      },
-      {
-        "file": "first-bathroom-04-portrait.jpeg",
-        "title": "1 of 2 Toilets",
-        "i18n": {
-          "de": { "title": "1 von 2 Toiletten" },
-          "fr": { "title": "1 des 2 toilettes" },
-          "it": { "title": "1 di 2 bagni" }
-        },
-        "format": "portrait"
-      }
+      { "file": "first-bathroom-01-portrait.jpeg", "format": "portrait" },
+      { "file": "first-bathroom-02-portrait.jpeg", "format": "portrait" },
+      { "file": "first-bathroom-03-portrait.jpeg", "format": "portrait" },
+      { "file": "first-bathroom-04-portrait.jpeg", "format": "portrait" }
     ]
   }
 ]

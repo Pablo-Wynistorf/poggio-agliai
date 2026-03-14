@@ -138,7 +138,70 @@
         "description": "Fully equipped kitchen"
       }
     ],
-    "tourBookingPage": "https://www.poggio-agliai.com/#contact"
+    "tourBookingPage": "https://www.poggio-agliai.com/#contact",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "CHF",
+      "lowPrice": "111.43",
+      "highPrice": "157.14",
+      "offerCount": 6,
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Low Season (Jan–Mar)",
+          "price": "780",
+          "priceCurrency": "CHF",
+          "unitText": "WEEK",
+          "validFrom": "2026-01-01",
+          "validThrough": "2026-03-31"
+        },
+        {
+          "@type": "Offer",
+          "name": "Spring (Apr–Jun)",
+          "price": "880",
+          "priceCurrency": "CHF",
+          "unitText": "WEEK",
+          "validFrom": "2026-04-01",
+          "validThrough": "2026-06-30"
+        },
+        {
+          "@type": "Offer",
+          "name": "High Season (Jul–Aug)",
+          "price": "1100",
+          "priceCurrency": "CHF",
+          "unitText": "WEEK",
+          "validFrom": "2026-07-01",
+          "validThrough": "2026-08-31"
+        },
+        {
+          "@type": "Offer",
+          "name": "Early Autumn (1–15 Sep)",
+          "price": "880",
+          "priceCurrency": "CHF",
+          "unitText": "WEEK",
+          "validFrom": "2026-09-01",
+          "validThrough": "2026-09-15"
+        },
+        {
+          "@type": "Offer",
+          "name": "Autumn (16 Sep–Oct)",
+          "price": "980",
+          "priceCurrency": "CHF",
+          "unitText": "WEEK",
+          "validFrom": "2026-09-16",
+          "validThrough": "2026-10-31"
+        },
+        {
+          "@type": "Offer",
+          "name": "Winter (Nov–Dec)",
+          "price": "780",
+          "priceCurrency": "CHF",
+          "unitText": "WEEK",
+          "validFrom": "2026-11-01",
+          "validThrough": "2026-12-31"
+        }
+      ]
+    }
   }
   </script>
 
@@ -151,7 +214,8 @@
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.poggio-agliai.com/" },
       { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.poggio-agliai.com/#about" },
       { "@type": "ListItem", "position": 3, "name": "Gallery", "item": "https://www.poggio-agliai.com/#gallery" },
-      { "@type": "ListItem", "position": 4, "name": "Book Now", "item": "https://www.poggio-agliai.com/#contact" }
+      { "@type": "ListItem", "position": 4, "name": "Pricing", "item": "https://www.poggio-agliai.com/#pricing" },
+      { "@type": "ListItem", "position": 5, "name": "Book Now", "item": "https://www.poggio-agliai.com/#contact" }
     ]
   }
   </script>
@@ -202,7 +266,15 @@
         "name": "What is the minimum stay at Poggio Agliai?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The minimum rental period is 1 week. Booking is only possible two weeks in advance. Prices are weekly and seasonal, including bed linen, towels, and final cleaning."
+          "text": "The minimum rental period is 7 nights. Booking is only possible two weeks in advance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost to stay at Poggio Agliai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Seasonal base rates for the whole house range from CHF 780 to CHF 1100 per week (CHF 111–157 per night). Jan–Mar and Nov–Dec: CHF 780/week. Apr–Jun and 1–15 Sep: CHF 880/week. Jul–Aug: CHF 1100/week. 16 Sep–Oct: CHF 980/week. Additional fees: CHF 30 per person per stay for towels and bedding, CHF 75 per person per week, and CHF 120 final cleaning. Minimum stay is 7 nights."
         }
       },
       {
@@ -418,6 +490,19 @@
       transform: none !important;
     }
 
+    /* Booked dates in flatpickr */
+    .flatpickr-day.booked-date {
+      background: #fee2e2 !important;
+      color: #b91c1c !important;
+      border-color: #fca5a5 !important;
+      cursor: not-allowed !important;
+      text-decoration: line-through;
+    }
+    .flatpickr-day.booked-date:hover {
+      background: #fecaca !important;
+      color: #991b1b !important;
+    }
+
     /* Store Locator theme overrides */
     gmpx-store-locator {
       --gmpx-color-surface: #0f172a;
@@ -457,6 +542,7 @@
       Book Now
     </a>
     <a href="#gallery" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="gallery" data-i18n="navGallery">Gallery</a>
+    <a href="#pricing" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="pricing" data-i18n="navPricing">Pricing</a>
     <a href="#contact" class="nav-link hover:text-brand-200 transition px-2 py-1" data-nav="contact" data-i18n="navContact">Contact</a>
 
     <!-- Language Switcher -->
@@ -486,6 +572,7 @@
       <a href="#about" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="about" data-i18n="navAbout">About</a>
       <a href="#nearby" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="nearby" data-i18n="navNearby">Nearby</a>
       <a href="#gallery" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="gallery" data-i18n="navGallery">Gallery</a>
+      <a href="#pricing" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="pricing" data-i18n="navPricing">Pricing</a>
       <a href="#contact" onclick="document.getElementById('mobile-nav-toggle').click()" class="nav-link rounded-lg px-3 py-2 hover:bg-white/10 transition" data-nav="contact" data-i18n="navContact">Contact</a>
       <a href="#contact" onclick="document.getElementById('mobile-nav-toggle').click()" class="mt-1 rounded-full border border-white/40 px-4 py-2 text-center hover:bg-white/10 transition" data-nav="contact" data-i18n="navBookNow">Book Now</a>
       <div class="flex items-center justify-center gap-1 mt-2 pt-2 border-t border-white/20">
@@ -559,41 +646,55 @@
             The portico and veranda around the house also offer many opportunities to spend time outdoors.
           </p>
         </div>
-        <div class="grid gap-8 sm:grid-cols-2">
+        <div class="grid gap-8 sm:grid-cols-2 items-start">
           <!-- At a glance card -->
           <div class="rounded-3xl border border-brand-100 bg-brand-50 p-8 shadow-sm" data-scroll="up" data-scroll-delay="100">
-            <h3 class="font-display text-xl text-brand-800" data-i18n="glanceTitle">At a glance</h3>
-            <dl class="mt-6 space-y-3 text-sm text-slate-700">
-              <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
+            <h3 class="font-display text-xl text-brand-800 mb-1" data-i18n="glanceTitle">At a glance</h3>
+            <p class="text-xs uppercase tracking-widest text-brand-400 mb-6" data-i18n="glanceSubtitle">Property details</p>
+            <dl class="text-sm text-slate-700">
+              <div class="border-b border-brand-100 py-4">
                 <dt class="font-semibold text-brand-700" data-i18n="glanceBedrooms">Bedrooms</dt>
-                <dd data-i18n="glanceBedroomsVal">Four, plus two single beds in the 1st floor salon</dd>
+                <dd class="mt-1" data-i18n="glanceBedroomsVal">Four, plus two single beds in the 1st floor salon</dd>
               </div>
-              <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
+              <div class="border-b border-brand-100 py-4">
                 <dt class="font-semibold text-brand-700" data-i18n="glanceWifi">WiFi</dt>
-                <dd data-i18n="glanceWifiVal">5G-based WiFi</dd>
+                <dd class="mt-1" data-i18n="glanceWifiVal">5G-based WiFi</dd>
               </div>
-              <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
+              <div class="border-b border-brand-100 py-4">
                 <dt class="font-semibold text-brand-700" data-i18n="glanceBathrooms">Bathrooms/WC</dt>
-                <dd data-i18n="glanceBathroomsVal">Two, ground floor and first floor</dd>
+                <dd class="mt-1" data-i18n="glanceBathroomsVal">Two, ground floor and first floor</dd>
               </div>
-              <div class="flex justify-between gap-3 border-b border-brand-100 pb-3">
+              <div class="border-b border-brand-100 py-4">
                 <dt class="font-semibold text-brand-700" data-i18n="glanceOutdoor">Outdoor</dt>
-                <dd data-i18n="glanceOutdoorVal">Hiking &amp; bike trails start right at the house</dd>
+                <dd class="mt-1" data-i18n="glanceOutdoorVal">Hiking &amp; bike trails start right at the house</dd>
               </div>
-              <div class="flex justify-between gap-3">
+              <div class="py-4">
                 <dt class="font-semibold text-brand-700" data-i18n="glanceGuests">Guests</dt>
-                <dd data-i18n="glanceGuestsVal">Up to 10</dd>
+                <dd class="mt-1" data-i18n="glanceGuestsVal">Up to 10</dd>
               </div>
             </dl>
           </div>
           <!-- Seasonal highlights card -->
           <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm" data-scroll="up" data-scroll-delay="200">
-            <h3 class="font-display text-xl text-brand-800" data-i18n="seasonsTitle">Every season tells its own story</h3>
-            <ul class="mt-6 space-y-4 text-sm text-slate-700">
-              <li><span class="font-semibold text-brand-700" data-i18n="seasonsSpring">Spring:</span> <span data-i18n="seasonsSpringDesc">Nature's colours burst into life, wildflower walks and cycling tours</span></li>
-              <li><span class="font-semibold text-brand-700" data-i18n="seasonsSummer">Summer:</span> <span data-i18n="seasonsSummerDesc">Marvel at the Milky Way during the cicada concert, coastal escapes to Baratti</span></li>
-              <li><span class="font-semibold text-brand-700" data-i18n="seasonsAutumn">Autumn:</span> <span data-i18n="seasonsAutumnDesc">Mild climate extends outdoor time late into the year, harvest festivals</span></li>
-              <li><span class="font-semibold text-brand-700" data-i18n="seasonsWinter">Winter:</span> <span data-i18n="seasonsWinterDesc">Stormy winds invite cosy evenings by the open fire, thermal spas</span></li>
+            <h3 class="font-display text-xl text-brand-800 mb-1" data-i18n="seasonsTitle">Every season tells its own story</h3>
+            <p class="text-xs uppercase tracking-widest text-brand-400 mb-6" data-i18n="seasonsSubtitle">Year-round charm</p>
+            <ul class="text-sm text-slate-700">
+              <li class="border-b border-slate-100 py-4">
+                <span class="font-semibold text-brand-700" data-i18n="seasonsSpring">Spring</span>
+                <p class="mt-1" data-i18n="seasonsSpringDesc">Nature's colours burst into life, wildflower walks and cycling tours</p>
+              </li>
+              <li class="border-b border-slate-100 py-4">
+                <span class="font-semibold text-brand-700" data-i18n="seasonsSummer">Summer</span>
+                <p class="mt-1" data-i18n="seasonsSummerDesc">Marvel at the Milky Way during the cicada concert, coastal escapes to Baratti</p>
+              </li>
+              <li class="border-b border-slate-100 py-4">
+                <span class="font-semibold text-brand-700" data-i18n="seasonsAutumn">Autumn</span>
+                <p class="mt-1" data-i18n="seasonsAutumnDesc">Mild climate extends outdoor time late into the year, harvest festivals</p>
+              </li>
+              <li class="py-4">
+                <span class="font-semibold text-brand-700" data-i18n="seasonsWinter">Winter</span>
+                <p class="mt-1" data-i18n="seasonsWinterDesc">Stormy winds invite cosy evenings by the open fire, thermal spas</p>
+              </li>
             </ul>
           </div>
         </div>
@@ -718,6 +819,152 @@
       </div>
     </section>
 
+    <!-- Pricing Section -->
+    <section id="pricing" class="relative overflow-hidden py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="space-y-6 max-w-3xl mb-16" data-scroll="up">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-brand-500" data-i18n="pricingLabel">Pricing</p>
+          <h2 class="font-display text-3xl font-semibold text-brand-800 sm:text-4xl" data-i18n="pricingTitle">Seasonal rates</h2>
+          <p class="text-lg text-slate-700" data-i18n="pricingDesc">Base price per night for the whole house (minimum 7 nights). Additional fees for guests and cleaning apply.</p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+          <!-- Seasonal rate table -->
+          <div class="rounded-3xl border border-brand-100 bg-brand-50 p-8 shadow-sm" data-scroll="up">
+            <h3 class="font-display text-xl text-brand-800 mb-6" data-i18n="pricingSeasonalRates">Seasonal rates</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-slate-700">
+                <thead>
+                  <tr class="border-b-2 border-brand-200">
+                    <th class="py-3 pr-4 text-left font-semibold text-brand-700" data-i18n="pricingSeason">Season</th>
+                    <th class="py-3 px-4 text-right font-semibold text-brand-700" data-i18n="pricingPerWeek">Per week</th>
+                    <th class="py-3 pl-4 text-right font-semibold text-brand-700" data-i18n="pricingPerNight">Per night</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-brand-100">
+                    <td class="py-3 pr-4" data-i18n="pricingJanMar">Jan – Mar</td>
+                    <td class="py-3 px-4 text-right">CHF 780</td>
+                    <td class="py-3 pl-4 text-right">CHF 111.43</td>
+                  </tr>
+                  <tr class="border-b border-brand-100">
+                    <td class="py-3 pr-4" data-i18n="pricingAprJun">Apr – Jun</td>
+                    <td class="py-3 px-4 text-right">CHF 880</td>
+                    <td class="py-3 pl-4 text-right">CHF 125.71</td>
+                  </tr>
+                  <tr class="border-b border-brand-100 bg-brand-100/40">
+                    <td class="py-3 pr-4 font-semibold" data-i18n="pricingJulAug">Jul – Aug</td>
+                    <td class="py-3 px-4 text-right font-semibold">CHF 1'100</td>
+                    <td class="py-3 pl-4 text-right font-semibold">CHF 157.14</td>
+                  </tr>
+                  <tr class="border-b border-brand-100">
+                    <td class="py-3 pr-4" data-i18n="pricingSep1_15">1 – 15 Sep</td>
+                    <td class="py-3 px-4 text-right">CHF 880</td>
+                    <td class="py-3 pl-4 text-right">CHF 125.71</td>
+                  </tr>
+                  <tr class="border-b border-brand-100">
+                    <td class="py-3 pr-4" data-i18n="pricingSep16Oct">16 Sep – Oct</td>
+                    <td class="py-3 px-4 text-right">CHF 980</td>
+                    <td class="py-3 pl-4 text-right">CHF 140.00</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 pr-4" data-i18n="pricingNovDec">Nov – Dec</td>
+                    <td class="py-3 px-4 text-right">CHF 780</td>
+                    <td class="py-3 pl-4 text-right">CHF 111.43</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Additional fees + calculator -->
+          <div class="space-y-8">
+            <div class="rounded-3xl border border-brand-100 bg-white p-8 shadow-sm" data-scroll="up" data-scroll-delay="100">
+              <h3 class="font-display text-xl text-brand-800 mb-4" data-i18n="pricingAdditionalFees">Additional fees</h3>
+              <dl class="text-sm text-slate-700 space-y-4">
+                <div class="flex justify-between border-b border-brand-100 pb-3">
+                  <dt data-i18n="pricingLinenFee">Towels, bedding & linen per person</dt>
+                  <dd class="font-semibold text-brand-700">CHF 30 / <span data-i18n="pricingPerStay">stay</span></dd>
+                </div>
+                <div class="flex justify-between border-b border-brand-100 pb-3">
+                  <dt data-i18n="pricingGuestFee">Per person surcharge</dt>
+                  <dd class="font-semibold text-brand-700" data-i18n="pricingGuestFeeVal">CHF 10.71 / night</dd>
+                </div>
+                <div class="flex justify-between border-b border-brand-100 pb-3">
+                  <dt data-i18n="pricingGuestFeeWeek">per person per week</dt>
+                  <dd class="font-semibold text-brand-700">CHF 75</dd>
+                </div>
+                <div class="flex justify-between">
+                  <dt data-i18n="pricingCleaning">Final cleaning</dt>
+                  <dd class="font-semibold text-brand-700">CHF 120</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Price calculator -->
+            <div class="rounded-3xl border border-brand-200 bg-brand-800 p-8 shadow-lg text-white" data-scroll="up" data-scroll-delay="200">
+              <h3 class="font-display text-xl text-brand-100 mb-6" data-i18n="pricingCalculator">Price calculator</h3>
+              <div class="space-y-4">
+                <div>
+                  <label class="text-xs font-semibold uppercase tracking-widest text-brand-300 mb-1 block" data-i18n="pricingCalcDates">Travel dates</label>
+                  <p class="text-xs text-brand-200/60 mb-2" data-i18n="pricingMinStayHint">Minimum stay: 7 nights</p>
+                  <div class="flex gap-2">
+                    <input id="calc-start" type="text" readonly placeholder="From" data-i18n-placeholder="formFrom"
+                      class="w-1/2 rounded-xl bg-white/10 border border-white/20 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-brand-300/60 cursor-pointer" />
+                    <input id="calc-end" type="text" readonly placeholder="To" data-i18n-placeholder="formTo"
+                      class="w-1/2 rounded-xl bg-white/10 border border-white/20 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-brand-300/60 cursor-pointer" />
+                  </div>
+                </div>
+                <div>
+                  <label class="text-xs font-semibold uppercase tracking-widest text-brand-300 mb-1 block" data-i18n="pricingCalcGuests">Guests</label>
+                  <select id="calc-guests"
+                    class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-300/60">
+                    <option value="1">1</option>
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                </div>
+                <div id="calc-result" class="hidden mt-4 pt-4 border-t border-white/20 space-y-2 text-sm">
+                  <div class="flex justify-between text-brand-100">
+                    <span data-i18n="pricingCalcNights">Nights</span>
+                    <span id="calc-nights">—</span>
+                  </div>
+                  <div class="flex justify-between text-brand-100">
+                    <span data-i18n="pricingCalcBase">Base price</span>
+                    <span id="calc-base">—</span>
+                  </div>
+                  <div class="flex justify-between text-brand-100">
+                    <span data-i18n="pricingCalcLinen">Towels & bedding</span>
+                    <span id="calc-linen-fee">—</span>
+                  </div>
+                  <div class="flex justify-between text-brand-100">
+                    <span data-i18n="pricingCalcGuestSurcharge">Guest surcharge</span>
+                    <span id="calc-guest-fee">—</span>
+                  </div>
+                  <div class="flex justify-between text-brand-100">
+                    <span data-i18n="pricingCalcCleaning">Cleaning</span>
+                    <span id="calc-cleaning">—</span>
+                  </div>
+                  <div class="flex justify-between font-semibold text-white text-base pt-2 border-t border-white/20">
+                    <span data-i18n="pricingCalcTotal">Total</span>
+                    <span id="calc-total">—</span>
+                  </div>
+                </div>
+                <p id="calc-error" class="hidden text-xs text-rose-300 mt-2"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Booking / Contact Section -->
     <section id="contact" class="bg-slate-950 py-24 text-white sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:px-8">
@@ -745,6 +992,7 @@
 
             <div class="space-y-3 text-sm font-medium text-white">
               <span class="block" data-i18n="formDates">Travel Dates</span>
+              <p class="text-xs text-white/50" data-i18n="pricingMinStayHint">Minimum stay: 7 nights</p>
               <div id="date-range-picker" date-rangepicker class="flex flex-col sm:flex-row items-center gap-4 w-full">
                 <div class="flex items-center w-full sm:w-1/2 rounded-2xl bg-white/95 px-4 py-3 shadow-inner text-slate-900 focus-within:ring-0 focus-within:outline-none transition">
                   <span class="text-sm font-semibold text-brand-700 w-14 tracking-wide" data-i18n="formFrom">From</span>
@@ -769,15 +1017,53 @@
 
             <label class="space-y-2 text-sm font-medium text-white">
               <span data-i18n="formGuests">Number of Guests</span>
-              <input type="number" name="guests" min="1" max="10" required placeholder="Enter number of guests" data-i18n-placeholder="formGuestsPh"
-                class="w-full rounded-2xl border border-white/20 bg-white/95 px-5 py-3 text-sm text-slate-900 shadow-inner placeholder:text-slate-500 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60" />
+              <select name="guests" required
+                class="w-full rounded-2xl border border-white/20 bg-white/95 px-5 py-3 text-sm text-slate-900 shadow-inner focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
             </label>
-
             <label class="space-y-2 text-sm font-medium text-white">
               <span data-i18n="formMessage">Message</span>
               <textarea name="message" rows="4" required placeholder="Tell us about your ideal Tuscan holiday" data-i18n-placeholder="formMessagePh"
                 class="w-full rounded-2xl border border-white/20 bg-white/95 px-5 py-3 text-sm text-slate-900 shadow-inner placeholder:text-slate-500 focus:border-brand-300 focus:outline-none focus:ring-2 focus:ring-brand-300/60"></textarea>
             </label>
+
+            <!-- Inline price estimate -->
+            <div id="form-price-estimate" class="hidden rounded-2xl border border-brand-300/30 bg-brand-900/40 p-5 space-y-2 text-sm">
+              <div class="flex justify-between text-brand-100">
+                <span data-i18n="pricingCalcNights">Nights</span>
+                <span id="form-est-nights">—</span>
+              </div>
+              <div class="flex justify-between text-brand-100">
+                <span data-i18n="pricingCalcBase">Base price</span>
+                <span id="form-est-base">—</span>
+              </div>
+              <div class="flex justify-between text-brand-100">
+                <span data-i18n="pricingCalcLinen">Towels & bedding</span>
+                <span id="form-est-linen">—</span>
+              </div>
+              <div class="flex justify-between text-brand-100">
+                <span data-i18n="pricingCalcGuestSurcharge">Guest surcharge</span>
+                <span id="form-est-guest">—</span>
+              </div>
+              <div class="flex justify-between text-brand-100">
+                <span data-i18n="pricingCalcCleaning">Cleaning</span>
+                <span id="form-est-cleaning">—</span>
+              </div>
+              <div class="flex justify-between font-semibold text-white text-base pt-2 border-t border-white/20">
+                <span data-i18n="pricingCalcTotal">Total</span>
+                <span id="form-est-total">—</span>
+              </div>
+            </div>
 
             <button type="submit"
               class="mt-2 inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-brand-400 px-10 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-900/30 transition hover:bg-brand-300"
@@ -815,12 +1101,12 @@
   <!-- Footer -->
   <footer class="border-t border-slate-200 bg-white py-10">
     <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 text-sm text-slate-600 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-      <p data-i18n="footerRights">&copy; 2026 Poggio Agliai. All rights reserved.</p>
-      <nav aria-label="Footer navigation" class="flex flex-wrap items-center gap-4">
+      <p data-i18n="footerRights">© 2026 Poggio Agliai. All rights reserved.</p>
+      <nav class="flex items-center gap-6">
         <a href="#about" class="transition hover:text-brand-600" data-i18n="navAbout">About</a>
+        <a href="#pricing" class="transition hover:text-brand-600" data-i18n="navPricing">Pricing</a>
         <a href="#gallery" class="transition hover:text-brand-600" data-i18n="navGallery">Gallery</a>
         <a href="#contact" class="transition hover:text-brand-600" data-i18n="navContact">Contact</a>
-        <span class="hidden h-5 w-px bg-slate-300 lg:inline-block"></span>
       </nav>
     </div>
   </footer>

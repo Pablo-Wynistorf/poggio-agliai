@@ -53,7 +53,7 @@ function renderGallery(galleryData) {
 
       const itemData = {
         src,
-        title: i18nText(normalized, 'title') || createTitle(normalized.file),
+        title: i18nText(normalized, 'title') || '',
         description: i18nText(normalized, 'description'),
         format,
         fullscreen
@@ -79,10 +79,18 @@ function renderGallery(galleryData) {
         button.style.gridColumn = '1 / -1';
       }
 
-      if (titleEl) titleEl.textContent = itemData.title;
+      if (titleEl) {
+        if (itemData.title) titleEl.textContent = itemData.title;
+        else titleEl.classList.add('hidden');
+      }
       if (descriptionEl) {
         if (itemData.description) descriptionEl.textContent = itemData.description;
         else descriptionEl.classList.add('hidden');
+      }
+      // Hide the overlay card entirely if no title and no description
+      if (!itemData.title && !itemData.description) {
+        const overlay = button.querySelector('.pointer-events-none');
+        if (overlay) overlay.classList.add('hidden');
       }
 
       button.dataset.index = String(itemIndex);
@@ -296,6 +304,35 @@ document.addEventListener('keydown', e => {
 const form = document.getElementById('contact-form')
 const feedback = document.getElementById('form-feedback')
 
+// Seasonal rates: CHF per week → per night = weekly / 7
+function getNightlyRate(date) {
+  const m = date.getMonth() // 0-indexed
+  const d = date.getDate()
+  if (m >= 0 && m <= 2) return 780 / 7                    // Jan–Mar
+  if (m >= 3 && m <= 5) return 880 / 7                    // Apr–Jun
+  if (m === 6 || m === 7) return 1100 / 7                 // Jul–Aug
+  if (m === 8 && d <= 15) return 880 / 7                  // 1–15 Sep
+  if ((m === 8 && d >= 16) || m === 9) return 980 / 7     // 16 Sep–Oct
+  return 780 / 7                                           // Nov–Dec
+}
+
+function computeBookingPrice(startDate, endDate, guestCount) {
+  const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24))
+  if (nights < 7) return null
+  const validGuests = (!guestCount || guestCount < 1) ? 1 : Math.min(guestCount, 10)
+  let basePrice = 0
+  const day = new Date(startDate)
+  for (let i = 0; i < nights; i++) {
+    basePrice += getNightlyRate(day)
+    day.setDate(day.getDate() + 1)
+  }
+  const linenFee = validGuests * 30                        // 30 CHF per person per stay
+  const guestFee = validGuests * (75 / 7) * nights         // 75 CHF per person per week
+  const cleaning = 120
+  const total = basePrice + linenFee + guestFee + cleaning
+  return { nights, basePrice, linenFee, guestFee, cleaning, total, validGuests }
+}
+
 form?.addEventListener('submit', async e => {
   e.preventDefault()
   const fd = new FormData(form)
@@ -312,6 +349,21 @@ form?.addEventListener('submit', async e => {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
     return setFeedback(t('formEmailError'), 'error')
 
+  // Calculate price for the inquiry
+  const startDate = flatpickr.parseDate(start, 'd/m/Y')
+  const endDate = flatpickr.parseDate(end, 'd/m/Y')
+  const guestCount = parseInt(guests, 10) || 1
+  const pricing = (startDate && endDate) ? computeBookingPrice(startDate, endDate, guestCount) : null
+  const priceBreakdown = pricing ? {
+    nights: pricing.nights,
+    guests: pricing.validGuests,
+    basePrice: pricing.basePrice.toFixed(2),
+    linenFee: pricing.linenFee.toFixed(2),
+    guestFee: pricing.guestFee.toFixed(2),
+    cleaning: pricing.cleaning.toFixed(2),
+    total: pricing.total.toFixed(2)
+  } : null
+
   try {
     grecaptcha.enterprise.ready(async () => {
       const token = await grecaptcha.enterprise.execute(
@@ -322,7 +374,7 @@ form?.addEventListener('submit', async e => {
       const res = await fetch('https://ucs565k35fstrkdxejprc4uaoa0zaixg.lambda-url.eu-central-1.on.aws', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message, guests, start, end, recaptchaToken: token })
+        body: JSON.stringify({ name, email, message, guests, start, end, priceBreakdown, recaptchaToken: token })
       })
 
       if (res.ok) {
@@ -357,15 +409,49 @@ document.addEventListener("DOMContentLoaded", () => {
   endBox.addEventListener('click', () => endInput._flatpickr.open())
 
   const today = new Date()
+  const minBookingDate = new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000)
 
-  const startPicker = flatpickr(startInput, {
+  // Load booked dates and configure all pickers once ready
+  let bookedRanges = []
+
+  function expandBookedDates(ranges) {
+    const dates = []
+    ranges.forEach(r => {
+      const start = new Date(r.from + 'T00:00:00')
+      const end = new Date(r.to + 'T00:00:00')
+      const d = new Date(start)
+      while (d <= end) {
+        dates.push(new Date(d))
+        d.setDate(d.getDate() + 1)
+      }
+    })
+    return dates
+  }
+
+  function bookedDayCreate(dObj, dStr, fp, dayElem) {
+    const dateStr = dayElem.dateObj.toISOString().slice(0, 10)
+    const isBooked = bookedRanges.some(r => dateStr >= r.from && dateStr <= r.to)
+    if (isBooked) {
+      dayElem.classList.add('booked-date')
+      dayElem.setAttribute('title', t('bookedTooltip'))
+    }
+  }
+
+  function initPickers(ranges) {
+    bookedRanges = ranges
+    const disabledDates = expandBookedDates(ranges)
+    const sharedDisable = disabledDates.length > 0 ? disabledDates : []
+
+    const startPicker = flatpickr(startInput, {
     dateFormat: "d/m/Y",
-    minDate: today,
+    minDate: minBookingDate,
     disableMobile: true,
+    disable: sharedDisable,
+    onDayCreate: bookedDayCreate,
     onChange: function (selectedDates) {
       if (selectedDates.length > 0) {
         const startDate = selectedDates[0]
-        endPicker.set('minDate', new Date(startDate.getTime() + 24 * 60 * 60 * 1000))
+        endPicker.set('minDate', new Date(startDate.getTime() + 7 * 24 * 60 * 60 * 1000))
         setTimeout(() => endInput._flatpickr.open(), 100)
       }
     }
@@ -374,18 +460,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const endPicker = flatpickr(endInput, {
     dateFormat: "d/m/Y",
     disableMobile: true,
+    disable: sharedDisable,
+    onDayCreate: bookedDayCreate,
     onChange: function (selectedDates) {
       if (selectedDates.length > 0 && startInput.value) {
         const startDate = flatpickr.parseDate(startInput.value, "d/m/Y")
         const endDate = selectedDates[0]
-        const nights = (endDate - startDate) / (1000 * 60 * 60 * 24)
-        if (nights < 6) {
+        const nights = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24))
+        if (nights < 7) {
           showAlert(t('minStayAlert').replace('{n}', nights))
           endInput.value = ""
         }
       }
+      updateFormEstimate()
     }
   })
+
+  // Live price estimate in the booking form
+  const formEstimate = document.getElementById('form-price-estimate')
+  const guestsInput = form?.querySelector('select[name="guests"]')
+
+  function updateFormEstimate() {
+    if (!formEstimate || !startInput.value || !endInput.value) {
+      if (formEstimate) formEstimate.classList.add('hidden')
+      return
+    }
+    const s = flatpickr.parseDate(startInput.value, 'd/m/Y')
+    const e = flatpickr.parseDate(endInput.value, 'd/m/Y')
+    const g = parseInt(guestsInput?.value, 10) || 1
+    if (!s || !e) { formEstimate.classList.add('hidden'); return }
+    const p = computeBookingPrice(s, e, g)
+    if (!p) { formEstimate.classList.add('hidden'); return }
+    formEstimate.classList.remove('hidden')
+    document.getElementById('form-est-nights').textContent = p.nights
+    document.getElementById('form-est-base').textContent = 'CHF ' + p.basePrice.toFixed(2)
+    document.getElementById('form-est-linen').textContent = p.validGuests + ' × CHF 30.00 = CHF ' + p.linenFee.toFixed(2)
+    document.getElementById('form-est-guest').textContent = p.validGuests + ' × CHF ' + (p.guestFee / p.validGuests).toFixed(2) + ' = CHF ' + p.guestFee.toFixed(2)
+    document.getElementById('form-est-cleaning').textContent = 'CHF ' + p.cleaning.toFixed(2)
+    document.getElementById('form-est-total').textContent = 'CHF ' + p.total.toFixed(2)
+  }
+
+  // Also recalculate when start date changes
+  startInput.addEventListener('change', () => setTimeout(updateFormEstimate, 150))
+  if (guestsInput) guestsInput.addEventListener('change', updateFormEstimate)
 
   function showAlert(msg) {
     let alertBox = document.getElementById('alert-box')
@@ -406,7 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.getElementById('main-nav')
   const navOutline = document.getElementById('nav-outline')
   const navLinks = mainNav.querySelectorAll('.nav-link')
-  const sections = ['home', 'about', 'nearby', 'gallery', 'contact']
+  const sections = ['home', 'about', 'nearby', 'gallery', 'pricing', 'contact']
 
   function moveOutline(target) {
     if (!target || !navOutline) return
@@ -433,6 +550,91 @@ document.addEventListener("DOMContentLoaded", () => {
   // Outline only follows scroll position (active section), not hover
   window.addEventListener('scroll', updateActiveNav, { passive: true })
   window.addEventListener('resize', updateActiveNav)
+
+  // ====================
+  // PRICING CALCULATOR
+  // ====================
+  const calcStartInput = document.getElementById('calc-start')
+  const calcEndInput = document.getElementById('calc-end')
+  const calcGuestsInput = document.getElementById('calc-guests')
+  const calcResult = document.getElementById('calc-result')
+  const calcError = document.getElementById('calc-error')
+
+  // Seasonal rates: CHF per week → per night = weekly / 7
+  // (getNightlyRate and computeBookingPrice are defined globally above)
+
+  function calculatePrice() {
+    if (!calcStartInput || !calcEndInput || !calcGuestsInput) return
+    const startVal = calcStartInput.value
+    const endVal = calcEndInput.value
+    const guests = parseInt(calcGuestsInput.value, 10)
+
+    if (!startVal || !endVal) {
+      calcResult.classList.add('hidden')
+      calcError.classList.add('hidden')
+      return
+    }
+
+    const startDate = flatpickr.parseDate(startVal, 'd/m/Y')
+    const endDate = flatpickr.parseDate(endVal, 'd/m/Y')
+    if (!startDate || !endDate || endDate <= startDate) {
+      calcResult.classList.add('hidden')
+      calcError.classList.add('hidden')
+      return
+    }
+
+    const pricing = computeBookingPrice(startDate, endDate, guests)
+    if (!pricing) {
+      calcResult.classList.add('hidden')
+      calcError.textContent = t('pricingCalcMinNights')
+      calcError.classList.remove('hidden')
+      return
+    }
+
+    calcError.classList.add('hidden')
+    calcResult.classList.remove('hidden')
+    document.getElementById('calc-nights').textContent = pricing.nights
+    document.getElementById('calc-base').textContent = 'CHF ' + pricing.basePrice.toFixed(2)
+    document.getElementById('calc-linen-fee').textContent = pricing.validGuests + ' × CHF 30.00 = CHF ' + pricing.linenFee.toFixed(2)
+    document.getElementById('calc-guest-fee').textContent = pricing.validGuests + ' × CHF ' + (pricing.guestFee / pricing.validGuests).toFixed(2) + ' = CHF ' + pricing.guestFee.toFixed(2)
+    document.getElementById('calc-cleaning').textContent = 'CHF ' + pricing.cleaning.toFixed(2)
+    document.getElementById('calc-total').textContent = 'CHF ' + pricing.total.toFixed(2)
+  }
+
+  if (calcStartInput && calcEndInput) {
+    const calcStartPicker = flatpickr(calcStartInput, {
+      dateFormat: 'd/m/Y',
+      minDate: minBookingDate,
+      disableMobile: true,
+      disable: sharedDisable,
+      onDayCreate: bookedDayCreate,
+      onChange(selectedDates) {
+        if (selectedDates.length > 0) {
+          calcEndPicker.set('minDate', new Date(selectedDates[0].getTime() + 7 * 24 * 60 * 60 * 1000))
+          setTimeout(() => calcEndInput._flatpickr.open(), 100)
+        }
+        calculatePrice()
+      }
+    })
+    const calcEndPicker = flatpickr(calcEndInput, {
+      dateFormat: 'd/m/Y',
+      disableMobile: true,
+      disable: sharedDisable,
+      onDayCreate: bookedDayCreate,
+      onChange() { calculatePrice() }
+    })
+  }
+  if (calcGuestsInput) {
+    calcGuestsInput.addEventListener('change', calculatePrice)
+  }
+
+  } // end initPickers
+
+  // Load booked dates then initialize all pickers
+  fetch(`${assetPrefix}/booked-dates.json`)
+    .then(r => r.ok ? r.json() : [])
+    .then(data => initPickers(data))
+    .catch(() => initPickers([]))
 
   // ====================
   // INIT TRANSLATIONS
