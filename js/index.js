@@ -414,25 +414,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load booked dates and configure all pickers once ready
   let bookedRanges = []
 
-  function parseLocalDate(str) {
-    const [y, m, d] = str.split('-').map(Number)
-    return new Date(y, m - 1, d)
-  }
-
-  function expandBookedDates(ranges) {
-    const dates = []
-    ranges.forEach(r => {
-      const start = parseLocalDate(r.from)
-      const end = parseLocalDate(r.to)
-      const d = new Date(start)
-      while (d <= end) {
-        dates.push(new Date(d))
-        d.setDate(d.getDate() + 1)
-      }
-    })
-    return dates
-  }
-
   function localDateStr(d) {
     const y = d.getFullYear()
     const m = String(d.getMonth() + 1).padStart(2, '0')
@@ -451,8 +432,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initPickers(ranges) {
     bookedRanges = ranges
-    const disabledDates = expandBookedDates(ranges)
-    const sharedDisable = disabledDates.length > 0 ? disabledDates : []
+
+    // Disable function: flatpickr calls this for each date, return true to disable
+    function isDateBooked(date) {
+      const ds = localDateStr(date)
+      return bookedRanges.some(r => ds >= r.from && ds <= r.to)
+    }
+    const sharedDisable = [isDateBooked]
 
     const startPicker = flatpickr(startInput, {
     dateFormat: "d/m/Y",
