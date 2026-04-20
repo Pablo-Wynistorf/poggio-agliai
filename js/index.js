@@ -428,8 +428,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return dates
   }
 
+  function localDateStr(d) {
+    const y = d.getFullYear()
+    const m = String(d.getMonth() + 1).padStart(2, '0')
+    const day = String(d.getDate()).padStart(2, '0')
+    return `${y}-${m}-${day}`
+  }
+
   function bookedDayCreate(dObj, dStr, fp, dayElem) {
-    const dateStr = dayElem.dateObj.toISOString().slice(0, 10)
+    const dateStr = localDateStr(dayElem.dateObj)
     const isBooked = bookedRanges.some(r => dateStr >= r.from && dateStr <= r.to)
     if (isBooked) {
       dayElem.classList.add('booked-date')
