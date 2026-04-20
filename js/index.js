@@ -414,11 +414,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load booked dates and configure all pickers once ready
   let bookedRanges = []
 
+  function parseLocalDate(str) {
+    const [y, m, d] = str.split('-').map(Number)
+    return new Date(y, m - 1, d)
+  }
+
   function expandBookedDates(ranges) {
     const dates = []
     ranges.forEach(r => {
-      const start = new Date(r.from + 'T00:00:00')
-      const end = new Date(r.to + 'T00:00:00')
+      const start = parseLocalDate(r.from)
+      const end = parseLocalDate(r.to)
       const d = new Date(start)
       while (d <= end) {
         dates.push(new Date(d))
